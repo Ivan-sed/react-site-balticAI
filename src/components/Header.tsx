@@ -41,31 +41,31 @@ const Header: React.FC = () => {
                   </Link>
                 </li>
                 <li className="header__dropdown-item">
-                  <a href="/consulting" className="header__dropdown-link">
+                  <Link to="/consulting" className="header__dropdown-link">
                     Consulting
-                  </a>
+                  </Link>
                 </li>
                 <li className="header__dropdown-item">
-                  <a href="/it-solutions" className="header__dropdown-link">
+                  <Link to="/it-solutions" className="header__dropdown-link">
                     IT Solutions
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </li>
             <li className="header__nav-item">
-              <a href="/cases" className="header__nav-link">
+              <Link to="/cases" className="header__nav-link">
                 Projects
-              </a>
+              </Link>
             </li>
             <li className="header__nav-item">
-              <a href="/about-us" className="header__nav-link">
+              <Link to="/about-us" className="header__nav-link">
                 About us
-              </a>
+              </Link>
             </li>
             <li className="header__nav-item">
-              <a href="/contacts" className="header__nav-link">
+              <Link to="/contacts" className="header__nav-link">
                 Contacts
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>

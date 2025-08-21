@@ -15,3 +15,8 @@ export { default as ConsultingIntroSection } from "./ConsultingIntroSection";
 export { default as ConsultingMethodologySection } from "./ConsultingMethodologySection";
 export { default as ConsultingBenefitsSection } from "./ConsultingBenefitsSection";
 export { default as ConsultingBookingSection } from "./ConsultingBookingSection";
+export { default as AboutIntroSection } from "./AboutIntroSection";
+export { default as AboutPrinciplesSection } from "./AboutPrinciplesSection";
+export { default as AboutStorySection } from "./AboutStorySection";
+export { default as AboutTeamSection } from "./AboutTeamSection";
+export { default as AboutAchievementsSection } from "./AboutAchievementsSection";
