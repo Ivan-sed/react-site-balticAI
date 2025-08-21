@@ -1,5 +1,12 @@
 import React from "react";
 import {
+  useTestimonials,
+  useHeaderScroll,
+  useAccordion,
+  useDropdown,
+  useProjectCardsHover,
+} from "../hooks";
+import {
   logo,
   partner1,
   partner2,
@@ -58,10 +65,23 @@ import {
 } from "../assets";
 
 const HomePage: React.FC = () => {
+  // Инициализация всех хуков
+  const {
+    activeClient,
+    currentTestimonial,
+    isTransitioning,
+    switchTestimonial,
+  } = useTestimonials();
+  const isHeaderScrolled = useHeaderScroll();
+  const accordion = useAccordion(0);
+  const dropdown = useDropdown();
+  const projectHover = useProjectCardsHover();
   return (
     <div className="page">
       {/* Header */}
-      <header className="header">
+      <header
+        className={`header ${isHeaderScrolled ? "header--scrolled" : ""}`}
+      >
         <div className="header__container">
           <div className="header__logo">
             <a href="/" className="header__logo-link">
@@ -74,8 +94,20 @@ const HomePage: React.FC = () => {
           </div>
           <nav className="header__nav">
             <ul className="header__nav-list">
-              <li className="header__nav-item header__nav-item--dropdown">
-                <a href="/services" className="header__nav-link">
+              <li
+                ref={dropdown.dropdownRef}
+                className={`header__nav-item header__nav-item--dropdown ${
+                  dropdown.isOpen ? "dropdown-open" : ""
+                }`}
+              >
+                <a
+                  href="/services"
+                  className="header__nav-link"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    dropdown.toggleDropdown();
+                  }}
+                >
                   <span className="header__nav-text">Services</span>
                   <span className="header__nav-arrow"></span>
                 </a>
@@ -349,7 +381,11 @@ const HomePage: React.FC = () => {
             </div>
           </header>
 
-          <div className="projects__grid">
+          <div
+            className={`projects__grid ${
+              projectHover.isOtherCardHovered ? "other-card-hovered" : ""
+            }`}
+          >
             <article className="project-card project-card--clinic">
               <div className="project-card__content">
                 <div className="project-card__text-group">
@@ -366,7 +402,11 @@ const HomePage: React.FC = () => {
               </div>
             </article>
 
-            <article className="project-card project-card--cosmetology">
+            <article
+              className="project-card project-card--cosmetology"
+              onMouseEnter={projectHover.handleCardEnter}
+              onMouseLeave={projectHover.handleCardLeave}
+            >
               <div className="project-card__content">
                 <div className="project-card__text-group">
                   <h3 className="project-card__title">Cosmetology chatbot</h3>
@@ -382,7 +422,11 @@ const HomePage: React.FC = () => {
               </div>
             </article>
 
-            <article className="project-card project-card--calculator">
+            <article
+              className="project-card project-card--calculator"
+              onMouseEnter={projectHover.handleCardEnter}
+              onMouseLeave={projectHover.handleCardLeave}
+            >
               <div className="project-card__content">
                 <div className="project-card__text-group">
                   <h3 className="project-card__title">AI calculator</h3>
@@ -398,7 +442,11 @@ const HomePage: React.FC = () => {
               </div>
             </article>
 
-            <article className="project-card project-card--travel">
+            <article
+              className="project-card project-card--travel"
+              onMouseEnter={projectHover.handleCardEnter}
+              onMouseLeave={projectHover.handleCardLeave}
+            >
               <div className="project-card__content">
                 <div className="project-card__text-group">
                   <h3 className="project-card__title">Travel chatbot</h3>
@@ -672,7 +720,13 @@ const HomePage: React.FC = () => {
             <h2 className="clients__title">Trusted by Leading Companies</h2>
             <div className="clients__logos">
               <div className="logo-separator logo-separator--left"></div>
-              <div className="client-logo">
+              <div
+                className={`client-logo ${
+                  activeClient === "client1" ? "client-logo--active" : ""
+                }`}
+                onClick={() => switchTestimonial("client1")}
+                style={{ cursor: "pointer" }}
+              >
                 <img
                   src={client1}
                   alt="Client 1"
@@ -680,7 +734,13 @@ const HomePage: React.FC = () => {
                 />
               </div>
               <div className="logo-separator"></div>
-              <div className="client-logo">
+              <div
+                className={`client-logo ${
+                  activeClient === "client2" ? "client-logo--active" : ""
+                }`}
+                onClick={() => switchTestimonial("client2")}
+                style={{ cursor: "pointer" }}
+              >
                 <img
                   src={client2}
                   alt="Client 2"
@@ -688,7 +748,13 @@ const HomePage: React.FC = () => {
                 />
               </div>
               <div className="logo-separator"></div>
-              <div className="client-logo">
+              <div
+                className={`client-logo ${
+                  activeClient === "client3" ? "client-logo--active" : ""
+                }`}
+                onClick={() => switchTestimonial("client3")}
+                style={{ cursor: "pointer" }}
+              >
                 <img
                   src={client3}
                   alt="Client 3"
@@ -696,7 +762,13 @@ const HomePage: React.FC = () => {
                 />
               </div>
               <div className="logo-separator"></div>
-              <div className="client-logo">
+              <div
+                className={`client-logo ${
+                  activeClient === "client4" ? "client-logo--active" : ""
+                }`}
+                onClick={() => switchTestimonial("client4")}
+                style={{ cursor: "pointer" }}
+              >
                 <img
                   src={client4}
                   alt="Client 4"
@@ -704,7 +776,13 @@ const HomePage: React.FC = () => {
                 />
               </div>
               <div className="logo-separator"></div>
-              <div className="client-logo">
+              <div
+                className={`client-logo ${
+                  activeClient === "client5" ? "client-logo--active" : ""
+                }`}
+                onClick={() => switchTestimonial("client5")}
+                style={{ cursor: "pointer" }}
+              >
                 <img
                   src={client5}
                   alt="Client 5"
@@ -712,7 +790,13 @@ const HomePage: React.FC = () => {
                 />
               </div>
               <div className="logo-separator logo-separator--right"></div>
-              <div className="client-logo">
+              <div
+                className={`client-logo ${
+                  activeClient === "client6" ? "client-logo--active" : ""
+                }`}
+                onClick={() => switchTestimonial("client6")}
+                style={{ cursor: "pointer" }}
+              >
                 <img
                   src={client6}
                   alt="Client 6"
@@ -720,6 +804,31 @@ const HomePage: React.FC = () => {
                 />
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="testimonials">
+        <div className="testimonials__container">
+          <div className="testimonials__main">
+            <blockquote
+              className="testimonial testimonial--featured"
+              style={{ opacity: isTransitioning ? 0.5 : 1 }}
+            >
+              <p className="testimonial__text">"{currentTestimonial.text}"</p>
+              <div className="testimonial__author">
+                <div className="testimonial__avatar"></div>
+                <div className="testimonial__info">
+                  <cite className="testimonial__name">
+                    {currentTestimonial.name}
+                  </cite>
+                  <span className="testimonial__role">
+                    {currentTestimonial.role}
+                  </span>
+                </div>
+              </div>
+            </blockquote>
           </div>
         </div>
       </section>
@@ -739,8 +848,15 @@ const HomePage: React.FC = () => {
               <img src={navArrow} alt="Arrow" className="about__arrow" />
             </div>
             <div className="about__stats">
-              <div className="stat-card" data-accordion-item="">
-                <div className="stat-card__header">
+              <div
+                className={`stat-card ${accordion.isActive(0) ? "active" : ""}`}
+                data-accordion-item=""
+              >
+                <div
+                  className="stat-card__header"
+                  onClick={() => accordion.toggleItem(0)}
+                  style={{ cursor: "pointer" }}
+                >
                   <h3 className="stat-card__title">10 Years of Experience</h3>
                   <div className="stat-card__icon"></div>
                 </div>
@@ -752,8 +868,15 @@ const HomePage: React.FC = () => {
                 </p>
               </div>
 
-              <div className="stat-card" data-accordion-item="">
-                <div className="stat-card__header">
+              <div
+                className={`stat-card ${accordion.isActive(1) ? "active" : ""}`}
+                data-accordion-item=""
+              >
+                <div
+                  className="stat-card__header"
+                  onClick={() => accordion.toggleItem(1)}
+                  style={{ cursor: "pointer" }}
+                >
                   <h3 className="stat-card__title">50+ Team members</h3>
                   <div className="stat-card__icon"></div>
                 </div>
@@ -764,8 +887,15 @@ const HomePage: React.FC = () => {
                 </p>
               </div>
 
-              <div className="stat-card" data-accordion-item="">
-                <div className="stat-card__header">
+              <div
+                className={`stat-card ${accordion.isActive(2) ? "active" : ""}`}
+                data-accordion-item=""
+              >
+                <div
+                  className="stat-card__header"
+                  onClick={() => accordion.toggleItem(2)}
+                  style={{ cursor: "pointer" }}
+                >
                   <h3 className="stat-card__title">2 Offices</h3>
                   <div className="stat-card__icon"></div>
                 </div>
