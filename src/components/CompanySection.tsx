@@ -1,4 +1,6 @@
 import React from "react";
+import { useAccordion } from "../hooks";
+import navArrowImg from "../assets/images/nav-arrow.png";
 
 interface FAQItem {
   id: string;
@@ -25,6 +27,7 @@ const CompanySection: React.FC<CompanySectionProps> = ({
   faqItems,
   className = "",
 }) => {
+  const { toggleItem, isActive } = useAccordion(-1); // Start with all items closed
   return (
     <section className={`company ${className}`} id="company">
       <div className="company__container">
@@ -39,20 +42,22 @@ const CompanySection: React.FC<CompanySectionProps> = ({
         <div className="company__content">
           <div className="company__text-block">
             <span className="company__text">{aboutText}</span>
-            <img
-              src="../assets/images/nav-arrow.png"
-              alt="Arrow"
-              className="company__arrow"
-            />
+            <img src={navArrowImg} alt="Arrow" className="company__arrow" />
           </div>
           <div className="company__stats">
-            {faqItems.map((item) => (
+            {faqItems.map((item, index) => (
               <div
                 key={item.id}
-                className="company__stat-card"
+                className={`company__stat-card ${
+                  isActive(index) ? "active" : ""
+                }`}
                 data-accordion-item
               >
-                <div className="company__stat-card-header">
+                <div
+                  className="company__stat-card-header"
+                  onClick={() => toggleItem(index)}
+                  style={{ cursor: "pointer" }}
+                >
                   <h3 className="company__stat-card-title">{item.question}</h3>
                   <div className="company__stat-card-icon"></div>
                 </div>
