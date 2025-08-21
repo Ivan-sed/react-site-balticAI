@@ -23,17 +23,21 @@ const Header: React.FC = () => {
                 dropdown.isOpen ? "dropdown-open" : ""
               }`}
             >
-              <a
-                href="/services"
+              <Link
+                to="/services"
                 className="header__nav-link"
                 onClick={(e) => {
-                  e.preventDefault();
-                  dropdown.toggleDropdown();
+                  // Если дропдаун открыт, то работаем как дропдаун
+                  if (dropdown.isOpen) {
+                    e.preventDefault();
+                    dropdown.toggleDropdown();
+                  }
+                  // Иначе переходим на страницу Services
                 }}
               >
                 <span className="header__nav-text">Services</span>
                 <span className="header__nav-arrow"></span>
-              </a>
+              </Link>
               <ul className="header__dropdown">
                 <li className="header__dropdown-item">
                   <Link to="/ai-solutions" className="header__dropdown-link">

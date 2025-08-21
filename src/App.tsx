@@ -8,6 +8,7 @@ import {
   ConsultingPage,
   ItSolutionsPage,
   AboutUsPage,
+  ServicesPage,
 } from "./pages";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/consulting" element={<ConsultingPage />} />
           <Route path="/it-solutions" element={<ItSolutionsPage />} />
           <Route path="/about-us" element={<AboutUsPage />} />
+          <Route path="/services" element={<ServicesPage />} />
         </Routes>
       </Router>
     </div>
