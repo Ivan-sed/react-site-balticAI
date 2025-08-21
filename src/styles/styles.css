@@ -7783,6 +7783,10 @@ textarea {
   flex-direction: row;
   gap: 10px;
 }
+.contacts__icon{
+  width: 24px;
+  height: 24px;
+}
 
 .contacts__social-box {
   display: flex;
