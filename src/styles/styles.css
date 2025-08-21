@@ -6073,7 +6073,7 @@ img {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 51px;
+  gap: 100px;
 }
 
 .consulting-methodology__title {
@@ -6101,7 +6101,7 @@ img {
   align-items: center;
   gap: 51px;
   position: relative;
-  width: 351px;
+  width: 100%;
 }
 
 .consulting-methodology__button {

@@ -11,3 +11,7 @@ export { default as VisualizationSection } from "./VisualizationSection";
 export { default as ConsultationSection } from "./ConsultationSection";
 export { default as ProcessFeaturesSection } from "./ProcessFeaturesSection";
 export { default as CompanySection } from "./CompanySection";
+export { default as ConsultingIntroSection } from "./ConsultingIntroSection";
+export { default as ConsultingMethodologySection } from "./ConsultingMethodologySection";
+export { default as ConsultingBenefitsSection } from "./ConsultingBenefitsSection";
+export { default as ConsultingBookingSection } from "./ConsultingBookingSection";
