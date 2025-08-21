@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useHeaderScroll, useDropdown } from "../hooks";
 import { logo } from "../assets";
 
@@ -10,9 +11,9 @@ const Header: React.FC = () => {
     <header className={`header ${isHeaderScrolled ? "header--scrolled" : ""}`}>
       <div className="header__container">
         <div className="header__logo">
-          <a href="/" className="header__logo-link">
+          <Link to="/" className="header__logo-link">
             <img src={logo} alt="AI Solutions" className="header__logo-image" />
-          </a>
+          </Link>
         </div>
         <nav className="header__nav">
           <ul className="header__nav-list">
@@ -35,9 +36,9 @@ const Header: React.FC = () => {
               </a>
               <ul className="header__dropdown">
                 <li className="header__dropdown-item">
-                  <a href="/ai-solutions" className="header__dropdown-link">
+                  <Link to="/ai-solutions" className="header__dropdown-link">
                     AI Solutions
-                  </a>
+                  </Link>
                 </li>
                 <li className="header__dropdown-item">
                   <a href="/consulting" className="header__dropdown-link">
