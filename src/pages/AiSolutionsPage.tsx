@@ -8,6 +8,10 @@ import {
   ProcessSection,
   TransformationSection,
   VisualizationSection,
+  ConsultationSection,
+  ProcessFeaturesSection,
+  ProjectsSection,
+  CompanySection,
 } from "../components";
 
 const AiSolutionsPage: React.FC = () => {
@@ -230,6 +234,95 @@ Our three-step, AI-first methodology pinpoints these inefficiencies, implements 
             buttonText: "Get started",
             buttonClassName: "visualization__second-get-started-btn",
             isLarge: true,
+          },
+        ]}
+      />
+
+      {/* Consultation Section */}
+      <ConsultationSection
+        title="Ready to Transform Your Business with AI?"
+        description={`Discover how our AI-driven automation can streamline your operations, reduce costs, and empower your team to focus on strategic growth. Book a personalized consultation to see exactly how our solutions will fit your unique workflows and deliver measurable results.
+
+During the session, our experts will walk you through a tailored AI roadmap, demonstrate real-world case studies, and answer any questions about implementation timelines, ROI expectations, and ongoing support. You'll leave with clear next steps and confidence in your business's digital future.`}
+        buttonText="Let's Set Your Appointment"
+        formTitle="Book Your Consultation"
+        formSubtitle="No fluff. Just a solution for your business automation."
+        submitButtonText="Send request"
+        onFormSubmit={(data) => {
+          console.log("Form submitted:", data);
+          // Здесь можно добавить обработку отправки формы
+        }}
+      />
+
+      {/* Process Features Section */}
+      <ProcessFeaturesSection
+        title="Explore the Details. Start Your AI Journey."
+        description="Get a transparent look at the modules powering your transformation. Each block addresses real business needs—security, integration, customization, and performance—so you know exactly what drives your results."
+        buttonText="Get Started"
+        mainCards={[
+          {
+            id: "features-integrations",
+            title: "Features & Integrations",
+            description:
+              "Seamlessly connect with your current systems using our flexible APIs and modular features. New capabilities can be added without disruption.",
+          },
+          {
+            id: "use-case-stories",
+            title: "Use-Case Stories",
+            description:
+              "See real-world examples from healthcare, travel, and e-commerce. Each story highlights challenges solved and measurable results.",
+          },
+        ]}
+        securityCards={[
+          {
+            id: "security-compliance",
+            title: "Security & Compliance",
+            description:
+              "Our solutions meet strict GDPR and ISO standards, with regular audits to protect your data and ensure compliance.",
+          },
+          {
+            id: "tech-stack-performance",
+            title: "Tech Stack & Performance",
+            description:
+              "Built on leading frameworks for speed and reliability, our AI delivers 99.9% uptime and instant response—even at scale.",
+          },
+        ]}
+      />
+
+      {/* Portfolio Section (Projects) */}
+      <ProjectsSection showViewAllButton={true} className="portfolio" />
+
+      {/* Company Section (FAQ) */}
+      <CompanySection
+        title="Frequently Asked Questions"
+        subtitle="Find quick answers to common questions about our AI solutions, implementation process, and ongoing support."
+        linkText="Book free consultation"
+        linkHref="#consultation"
+        aboutText="About us"
+        faqItems={[
+          {
+            id: "setup-speed",
+            question: "How fast is setup?",
+            answer:
+              "Most of our AI solutions are fully implemented and operational within just 10 days. The process includes initial assessment, customization to your business needs, seamless integration with your existing systems, and thorough testing to ensure everything works smoothly from day one.",
+          },
+          {
+            id: "data-security",
+            question: "Is my data secure?",
+            answer:
+              "Our diverse team of experts includes AI specialists, developers, consultants, and industry veterans who bring their unique perspectives and skills to every project.",
+          },
+          {
+            id: "customization",
+            question: "Can I customize features?",
+            answer:
+              "Absolutely! We understand that every business has unique needs. Our AI solutions are designed to be flexible and customizable, allowing you to tailor features and functionalities to align perfectly with your specific requirements.",
+          },
+          {
+            id: "ongoing-support",
+            question: "Do you offer ongoing support?",
+            answer:
+              "Absolutely! We provide comprehensive ongoing support to ensure your AI solutions continue to meet your evolving business needs. Our team is always available to assist you with any questions or challenges you may encounter.",
           },
         ]}
       />

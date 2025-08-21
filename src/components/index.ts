@@ -8,3 +8,6 @@ export { default as AdvantagesSection } from "./AdvantagesSection";
 export { default as ProcessSection } from "./ProcessSection";
 export { default as TransformationSection } from "./TransformationSection";
 export { default as VisualizationSection } from "./VisualizationSection";
+export { default as ConsultationSection } from "./ConsultationSection";
+export { default as ProcessFeaturesSection } from "./ProcessFeaturesSection";
+export { default as CompanySection } from "./CompanySection";

@@ -1,0 +1,69 @@
+import React from "react";
+
+interface FAQItem {
+  id: string;
+  question: string;
+  answer: string;
+}
+
+interface CompanySectionProps {
+  title?: string;
+  subtitle?: string;
+  linkText?: string;
+  linkHref?: string;
+  aboutText?: string;
+  faqItems: FAQItem[];
+  className?: string;
+}
+
+const CompanySection: React.FC<CompanySectionProps> = ({
+  title = "Frequently Asked Questions",
+  subtitle = "Find quick answers to common questions about our AI solutions, implementation process, and ongoing support.",
+  linkText = "Book free consultation",
+  linkHref = "#consultation",
+  aboutText = "About us",
+  faqItems,
+  className = "",
+}) => {
+  return (
+    <section className={`company ${className}`} id="company">
+      <div className="company__container">
+        <div className="company__visual">
+          <h2 className="company__visual-title">{title}</h2>
+          <p className="company__visual-subtitle">{subtitle}</p>
+          <a href={linkHref} className="company__visual-link">
+            {linkText}
+          </a>
+        </div>
+
+        <div className="company__content">
+          <div className="company__text-block">
+            <span className="company__text">{aboutText}</span>
+            <img
+              src="../assets/images/nav-arrow.png"
+              alt="Arrow"
+              className="company__arrow"
+            />
+          </div>
+          <div className="company__stats">
+            {faqItems.map((item) => (
+              <div
+                key={item.id}
+                className="company__stat-card"
+                data-accordion-item
+              >
+                <div className="company__stat-card-header">
+                  <h3 className="company__stat-card-title">{item.question}</h3>
+                  <div className="company__stat-card-icon"></div>
+                </div>
+                <p className="company__stat-card-description">{item.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default CompanySection;
