@@ -71,10 +71,12 @@ const ContactsSection: React.FC<ContactsSectionProps> = ({
             <div className="contacts__column-section">
               <h2 className="contacts__subtitle">{companyDetails.title}</h2>
               <p className="contacts__second-text">
-                {companyDetails.text.split('\n').map((line, index) => (
+                {companyDetails.text.split("\n").map((line, index) => (
                   <React.Fragment key={index}>
                     {line}
-                    {index < companyDetails.text.split('\n').length - 1 && <br />}
+                    {index < companyDetails.text.split("\n").length - 1 && (
+                      <br />
+                    )}
                   </React.Fragment>
                 ))}
               </p>
@@ -83,10 +85,10 @@ const ContactsSection: React.FC<ContactsSectionProps> = ({
             <div className="contacts__column-section">
               <h2 className="contacts__subtitle">{address.title}</h2>
               <p className="contacts__second-text">
-                {address.text.split('\n').map((line, index) => (
+                {address.text.split("\n").map((line, index) => (
                   <React.Fragment key={index}>
                     {line}
-                    {index < address.text.split('\n').length - 1 && <br />}
+                    {index < address.text.split("\n").length - 1 && <br />}
                   </React.Fragment>
                 ))}
               </p>
@@ -118,13 +120,25 @@ const ContactsSection: React.FC<ContactsSectionProps> = ({
               <h2 className="contacts__subtitle">{socialMedia.title}</h2>
               <div className="contacts__social-box">
                 <a href={socialMedia.links.linkedin}>
-                  <img className="contacts__icon" src={socialLinkedin} alt="LinkedIn" />
+                  <img
+                    className="contacts__icon"
+                    src={socialLinkedin}
+                    alt="LinkedIn"
+                  />
                 </a>
                 <a href={socialMedia.links.facebook}>
-                  <img className="contacts__icon" src={socialFacebook} alt="Facebook" />
+                  <img
+                    className="contacts__icon"
+                    src={socialFacebook}
+                    alt="Facebook"
+                  />
                 </a>
                 <a href={socialMedia.links.instagram}>
-                  <img className="contacts__icon" src={socialInstagram} alt="Instagram" />
+                  <img
+                    className="contacts__icon"
+                    src={socialInstagram}
+                    alt="Instagram"
+                  />
                 </a>
               </div>
             </div>
@@ -134,7 +148,9 @@ const ContactsSection: React.FC<ContactsSectionProps> = ({
         <div className="contacts__right-section">
           <div className="cases__form consultation__form">
             <div className="consultation__form-header">
-              <h3 className="consultation__form-title">Book Your Consultation</h3>
+              <h3 className="consultation__form-title">
+                Book Your Consultation
+              </h3>
               <p className="consultation__form-subtitle">
                 No fluff. Just a solution for your business automation.
               </p>
