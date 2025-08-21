@@ -1,6 +1,6 @@
 import React from "react";
-import { useTestimonials, useAccordion, useProjectCardsHover } from "../hooks";
-import { Header } from "../components";
+import { useTestimonials, useAccordion } from "../hooks";
+import { Header, ProjectsSection } from "../components";
 import {
   partner1,
   partner2,
@@ -67,7 +67,6 @@ const HomePage: React.FC = () => {
     switchTestimonial,
   } = useTestimonials();
   const accordion = useAccordion(0);
-  const projectHover = useProjectCardsHover();
   return (
     <div className="page">
       {/* Header */}
@@ -286,106 +285,7 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Projects Section */}
-      <section className="projects" id="projects">
-        <div className="projects__container">
-          <header className="projects__header">
-            <div className="projects__header-content">
-              <h2 className="projects__title">Featured Projects</h2>
-              <p className="projects__subtitle">
-                Take a look at some of our standout AI solutions
-              </p>
-            </div>
-          </header>
-
-          <div
-            className={`projects__grid ${
-              projectHover.isOtherCardHovered ? "other-card-hovered" : ""
-            }`}
-          >
-            <article className="project-card project-card--clinic">
-              <div className="project-card__content">
-                <div className="project-card__text-group">
-                  <h3 className="project-card__title">Clinic Chatbot</h3>
-                  <p className="project-card__description">
-                    Custom chatbot for a private clinic to reduce the calling
-                    pressure and help clients find out info etc.
-                  </p>
-                </div>
-                <a href="/case-page" className="project-card__link">
-                  <span className="project-card__link-text">View Project</span>
-                  <span className="project-card__link-arrow"></span>
-                </a>
-              </div>
-            </article>
-
-            <article
-              className="project-card project-card--cosmetology"
-              onMouseEnter={projectHover.handleCardEnter}
-              onMouseLeave={projectHover.handleCardLeave}
-            >
-              <div className="project-card__content">
-                <div className="project-card__text-group">
-                  <h3 className="project-card__title">Cosmetology chatbot</h3>
-                  <p className="project-card__description">
-                    AI-powered beauty consultant that provides personalized
-                    skincare recommendations and appointment scheduling.
-                  </p>
-                </div>
-                <a href="/case-page" className="project-card__link">
-                  <span className="project-card__link-text">View Project</span>
-                  <span className="project-card__link-arrow"></span>
-                </a>
-              </div>
-            </article>
-
-            <article
-              className="project-card project-card--calculator"
-              onMouseEnter={projectHover.handleCardEnter}
-              onMouseLeave={projectHover.handleCardLeave}
-            >
-              <div className="project-card__content">
-                <div className="project-card__text-group">
-                  <h3 className="project-card__title">AI calculator</h3>
-                  <p className="project-card__description">
-                    Smart calculator with natural language processing that
-                    solves complex mathematical problems and equations.
-                  </p>
-                </div>
-                <a href="/case-page" className="project-card__link">
-                  <span className="project-card__link-text">View Project</span>
-                  <span className="project-card__link-arrow"></span>
-                </a>
-              </div>
-            </article>
-
-            <article
-              className="project-card project-card--travel"
-              onMouseEnter={projectHover.handleCardEnter}
-              onMouseLeave={projectHover.handleCardLeave}
-            >
-              <div className="project-card__content">
-                <div className="project-card__text-group">
-                  <h3 className="project-card__title">Travel chatbot</h3>
-                  <p className="project-card__description">
-                    Intelligent travel assistant that helps plan trips, find
-                    deals, and provides real-time travel information.
-                  </p>
-                </div>
-                <a href="/case-page" className="project-card__link">
-                  <span className="project-card__link-text">View Project</span>
-                  <span className="project-card__link-arrow"></span>
-                </a>
-              </div>
-            </article>
-          </div>
-
-          <div className="projects__actions">
-            <button className="button projects__button button--primary projects__button--primary">
-              View all
-            </button>
-          </div>
-        </div>
-      </section>
+      <ProjectsSection />
 
       {/* Contact Section */}
       <section className="contact">
