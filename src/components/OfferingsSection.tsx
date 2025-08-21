@@ -24,7 +24,6 @@ interface OfferingsSectionProps {
 const OfferingsSection: React.FC<OfferingsSectionProps> = ({
   title = "Our Services",
   subtitle = "Transforming businesses with cutting-edge AI solutions",
-  description,
   offerings,
   className = "",
 }) => {

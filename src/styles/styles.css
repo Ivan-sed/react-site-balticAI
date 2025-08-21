@@ -1577,11 +1577,13 @@ img {
 /* Projects Block */
 .projects {
   padding: 150px 0;
+  overflow: hidden;
 }
 
 .projects__container {
   max-width: 1160px;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 .projects__header {
@@ -1610,7 +1612,7 @@ img {
   display: flex;
   gap: 20px;
   margin-bottom: 66px;
-  overflow-x: auto;
+  overflow: hidden;
   padding: 10px 0;
 }
 
