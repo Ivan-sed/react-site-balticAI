@@ -1,5 +1,11 @@
 import React from "react";
-import { Header, Footer, IntroSection, OfferingsSection } from "../components";
+import {
+  Header,
+  Footer,
+  IntroSection,
+  OfferingsSection,
+  AdvantagesSection,
+} from "../components";
 
 const AiSolutionsPage: React.FC = () => {
   const breadcrumbs = [
@@ -69,6 +75,42 @@ const AiSolutionsPage: React.FC = () => {
             isFeatured: false,
             buttonText: "View more",
             className: "offerings__card--consultation",
+          },
+        ]}
+      />
+
+      {/* Advantages Section */}
+      <AdvantagesSection
+        title="The Hidden Costs Dragging Your Business Down"
+        headerButtonText="Get started today"
+        cards={[
+          {
+            id: "automation",
+            type: "automation",
+            description: `Every manual process introduces the risk of costly mistakes.
+
+Manual data entry has an average error rate of 4.8%, meaning 1 in every 20 entries contains an error.
+
+These errors don't just require time to fix—they create ripple effects throughout your business, from incorrect orders and shipping delays to dissatisfied customers and damaged reputation.`,
+            className: "advantages__card--automation",
+          },
+          {
+            id: "time",
+            type: "time",
+            description: `Your team loses valuable time to manual, repetitive tasks like data entry and order processing.
+
+These distractions limit focus on growth-driving work. Studies show employees waste at least 30 minutes a day — with the least efficient losing over 3 hours.`,
+            statsLabel: "Employees waste time daily",
+            className: "advantages__card--time",
+          },
+          {
+            id: "testimonial",
+            type: "testimonial",
+            description:
+              "Delayed approvals hurt business. Deals are 25% less likely to close if decisions take over 48 hours, and slowdowns can cut revenue by up to 20%.",
+            testimonialText:
+              "Delayed approvals hurt business. Deals are 25% less likely to close if decisions take over 48 hours, and slowdowns can cut revenue by up to 20%.",
+            className: "advantages__card--testimonial",
           },
         ]}
       />
