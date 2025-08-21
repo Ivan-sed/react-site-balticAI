@@ -57,14 +57,26 @@ const AboutUsPage: React.FC = () => {
     },
     {
       id: "2",
-      name: "Mikael Smith",
-      role: "Co-founder & Software engineer",
+      name: "Anna Johnson",
+      role: "AI Research Lead",
       avatar: "",
     },
     {
       id: "3",
-      name: "Mikael Smith",
-      role: "Co-founder & Software engineer",
+      name: "David Chen",
+      role: "Data Science Director",
+      avatar: "",
+    },
+    {
+      id: "4",
+      name: "Sarah Williams",
+      role: "Machine Learning Engineer",
+      avatar: "",
+    },
+    {
+      id: "5",
+      name: "Alex Rodriguez",
+      role: "Product Manager",
       avatar: "",
     },
   ];
