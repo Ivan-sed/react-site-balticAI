@@ -1,5 +1,5 @@
 import React from "react";
-import { Header, Footer, IntroSection } from "../components";
+import { Header, Footer, IntroSection, OfferingsSection } from "../components";
 
 const AiSolutionsPage: React.FC = () => {
   const breadcrumbs = [
@@ -36,13 +36,42 @@ const AiSolutionsPage: React.FC = () => {
         stats={stats}
       />
 
-      {/* Placeholder for more content - будем добавлять постепенно */}
-      <div style={{ padding: "50px", textAlign: "center" }}>
-        <h2>Остальные секции будут добавлены постепенно...</h2>
-        <p>
-          Пока что у нас есть Intro секция с хлебными крошками и статистикой.
-        </p>
-      </div>
+      {/* Offerings Section */}
+      <OfferingsSection
+        title="AI solutions"
+        description="Discover how our advanced AI automation tools can streamline your operations, reduce costs, and accelerate growth. Choose the perfect solution tailored to your business needs."
+        offerings={[
+          {
+            id: "ai-solutions",
+            title: "AI Сhatbots",
+            description:
+              "Offering ready-made AI employees and strategic guidance for integrating.",
+            isFeatured: true,
+            showBadge: true,
+            badgeText: "Most popular",
+            buttonText: "View more",
+            className: "offerings__card--ai-solutions",
+          },
+          {
+            id: "it-solutions",
+            title: "AI Аutomation",
+            description:
+              "Automate and optimize your business processes with AI.",
+            isFeatured: false,
+            buttonText: "View more",
+            className: "offerings__card--it-solutions",
+          },
+          {
+            id: "ai-consultation",
+            title: "MCP Systems",
+            description:
+              "Strategic guidance to plan, scope, and launch AI initiatives tailored to your business.",
+            isFeatured: false,
+            buttonText: "View more",
+            className: "offerings__card--consultation",
+          },
+        ]}
+      />
 
       {/* Footer */}
       <Footer />
