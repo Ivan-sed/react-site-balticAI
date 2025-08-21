@@ -5,3 +5,6 @@ export { default as Footer } from "./Footer";
 export { default as IntroSection } from "./IntroSection";
 export { default as OfferingsSection } from "./OfferingsSection";
 export { default as AdvantagesSection } from "./AdvantagesSection";
+export { default as ProcessSection } from "./ProcessSection";
+export { default as TransformationSection } from "./TransformationSection";
+export { default as VisualizationSection } from "./VisualizationSection";
