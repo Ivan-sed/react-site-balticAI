@@ -1,6 +1,6 @@
 import React from "react";
-import { useTestimonials, useAccordion } from "../hooks";
-import { Header, ProjectsSection } from "../components";
+import { useAccordion } from "../hooks";
+import { Header, ProjectsSection, TestimonialsSection } from "../components";
 import {
   partner1,
   partner2,
@@ -13,12 +13,6 @@ import {
   industryHealthcare,
   industryLogistics,
   industryNgo,
-  client1,
-  client2,
-  client3,
-  client4,
-  client5,
-  client6,
   navArrow,
   newsletterIcon,
   footerLogo,
@@ -60,12 +54,6 @@ import {
 
 const HomePage: React.FC = () => {
   // Инициализация всех хуков
-  const {
-    activeClient,
-    currentTestimonial,
-    isTransitioning,
-    switchTestimonial,
-  } = useTestimonials();
   const accordion = useAccordion(0);
   return (
     <div className="page">
@@ -530,121 +518,7 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="testimonials">
-        <div className="testimonials__container">
-          <h2 className="testimonials__title">What Our Clients Say About Us</h2>
-
-          <div className="testimonials__content">
-            <div className="testimonials__logos testimonials__logos--left">
-              <div
-                className={`client-logo ${
-                  activeClient === "client1" ? "client-logo--active" : ""
-                }`}
-                onClick={() => switchTestimonial("client1")}
-                style={{ cursor: "pointer" }}
-              >
-                <img
-                  src={client1}
-                  alt="Client 1"
-                  className="client-logo__img"
-                />
-              </div>
-              <div className="logo-separator logo-separator--left"></div>
-              <div
-                className={`client-logo ${
-                  activeClient === "client2" ? "client-logo--active" : ""
-                }`}
-                onClick={() => switchTestimonial("client2")}
-                style={{ cursor: "pointer" }}
-              >
-                <img
-                  src={client2}
-                  alt="Client 2"
-                  className="client-logo__img"
-                />
-              </div>
-              <div className="logo-separator logo-separator--left"></div>
-              <div
-                className={`client-logo ${
-                  activeClient === "client3" ? "client-logo--active" : ""
-                }`}
-                onClick={() => switchTestimonial("client3")}
-                style={{ cursor: "pointer" }}
-              >
-                <img
-                  src={client3}
-                  alt="Client 3"
-                  className="client-logo__img"
-                />
-              </div>
-            </div>
-
-            <div className="testimonials__main">
-              <blockquote
-                className="testimonial testimonial--featured"
-                style={{ opacity: isTransitioning ? 0.5 : 1 }}
-              >
-                <p className="testimonial__text">"{currentTestimonial.text}"</p>
-                <div className="testimonial__author">
-                  <div className="testimonial__avatar"></div>
-                  <div className="testimonial__info">
-                    <cite className="testimonial__name">
-                      {currentTestimonial.name}
-                    </cite>
-                    <span className="testimonial__role">
-                      {currentTestimonial.role}
-                    </span>
-                  </div>
-                </div>
-              </blockquote>
-            </div>
-
-            <div className="testimonials__logos testimonials__logos--right">
-              <div
-                className={`client-logo ${
-                  activeClient === "client4" ? "client-logo--active" : ""
-                }`}
-                onClick={() => switchTestimonial("client4")}
-                style={{ cursor: "pointer" }}
-              >
-                <img
-                  src={client4}
-                  alt="Client 4"
-                  className="client-logo__img"
-                />
-              </div>
-              <div className="logo-separator logo-separator--right"></div>
-              <div
-                className={`client-logo ${
-                  activeClient === "client5" ? "client-logo--active" : ""
-                }`}
-                onClick={() => switchTestimonial("client5")}
-                style={{ cursor: "pointer" }}
-              >
-                <img
-                  src={client5}
-                  alt="Client 5"
-                  className="client-logo__img"
-                />
-              </div>
-              <div className="logo-separator logo-separator--right"></div>
-              <div
-                className={`client-logo ${
-                  activeClient === "client6" ? "client-logo--active" : ""
-                }`}
-                onClick={() => switchTestimonial("client6")}
-                style={{ cursor: "pointer" }}
-              >
-                <img
-                  src={client6}
-                  alt="Client 6"
-                  className="client-logo__img"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <TestimonialsSection />
 
       {/* About Section */}
       <section className="about" id="about">
