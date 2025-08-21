@@ -1,6 +1,11 @@
 import React from "react";
 import { useAccordion } from "../hooks";
-import { Header, ProjectsSection, TestimonialsSection } from "../components";
+import {
+  Header,
+  ProjectsSection,
+  TestimonialsSection,
+  Footer,
+} from "../components";
 import {
   partner1,
   partner2,
@@ -15,7 +20,6 @@ import {
   industryNgo,
   navArrow,
   newsletterIcon,
-  footerLogo,
   // Дополнительные изображения для правильного отображения
   firstBackground,
   secondBackground,
@@ -634,81 +638,7 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Footer */}
-      <footer className="footer">
-        <div className="footer__container">
-          <div className="footer__logo">
-            <img
-              src={footerLogo}
-              alt="AI Solutions"
-              className="footer__logo-img"
-            />
-          </div>
-
-          <div className="footer__info">
-            <div className="footer__section">
-              <div className="footer__section-content">
-                <h4 className="footer__section-title">Company Details:</h4>
-                <p className="footer__text">
-                  SIA AI Consulting Solutions
-                  <br />
-                  Reg. No.: 40203566336
-                </p>
-              </div>
-            </div>
-
-            <div className="footer__section">
-              <div className="footer__section-content">
-                <h4 className="footer__section-title">Address:</h4>
-                <p className="footer__text">
-                  Maza Nometnu Street
-                  <br />
-                  65B, Agenskalns
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="footer__contact">
-            <div className="footer__contact-info">
-              <a href="tel:+37125142420" className="footer__phone">
-                +371 25 142 42
-              </a>
-              <a href="mailto:info@balticai.lv" className="footer__email">
-                info@balticai.lv
-              </a>
-            </div>
-            <div className="footer__social">
-              <a
-                href="#"
-                className="social-link social-link--linkedin"
-                aria-label="LinkedIn"
-              ></a>
-              <a
-                href="#"
-                className="social-link social-link--facebook"
-                aria-label="Facebook"
-              ></a>
-              <a
-                href="#"
-                className="social-link social-link--instagram"
-                aria-label="Instagram"
-              ></a>
-            </div>
-          </div>
-
-          <div className="footer__legal">
-            <a href="#" className="footer__legal-link">
-              Privacy Policy
-            </a>
-            <a href="#" className="footer__legal-link">
-              Terms of Use
-            </a>
-            <a href="#" className="footer__legal-link">
-              Cookie Privacy
-            </a>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
