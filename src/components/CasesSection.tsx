@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 interface CaseItem {
   id: string;
@@ -23,9 +24,9 @@ const CasesSection: React.FC<CasesSectionProps> = ({
         <h2 className="cases__title">{title}</h2>
         <div className="cases__list">
           {cases.map((caseItem) => (
-            <a
+            <Link
               key={caseItem.id}
-              href={caseItem.linkHref}
+              to={caseItem.linkHref}
               className="cases__item-link"
             >
               <div className="cases__item">
@@ -42,7 +43,7 @@ const CasesSection: React.FC<CasesSectionProps> = ({
                 </div>
                 <div className="cases__button">View more</div>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>

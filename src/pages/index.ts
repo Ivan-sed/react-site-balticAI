@@ -5,3 +5,4 @@ export { default as ItSolutionsPage } from "./ItSolutionsPage";
 export { default as AboutUsPage } from "./AboutUsPage";
 export { default as ServicesPage } from "./ServicesPage";
 export { default as CasesPage } from "./CasesPage";
+export { CasePage } from "./cases";

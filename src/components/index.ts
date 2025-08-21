@@ -23,3 +23,4 @@ export { default as AboutAchievementsSection } from "./AboutAchievementsSection"
 export { default as BreadcrumbsSection } from "./BreadcrumbsSection";
 export { default as SolutionsSection } from "./SolutionsSection";
 export { default as CasesSection } from "./CasesSection";
+export { default as CaseDetailsSection } from "./CaseDetailsSection";

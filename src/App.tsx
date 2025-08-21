@@ -10,6 +10,7 @@ import {
   AboutUsPage,
   ServicesPage,
   CasesPage,
+  CasePage,
 } from "./pages";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path="/about-us" element={<AboutUsPage />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/cases" element={<CasesPage />} />
+          <Route path="/cases/:id" element={<CasePage />} />
         </Routes>
       </Router>
     </div>
