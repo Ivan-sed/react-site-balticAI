@@ -6,6 +6,7 @@ import {
   ConsultingMethodologySection,
   ConsultingBenefitsSection,
   ConsultingBookingSection,
+  CompanySection,
 } from "../components";
 
 const ConsultingPage: React.FC = () => {
@@ -166,6 +167,41 @@ const ConsultingPage: React.FC = () => {
           formSubtitle="No fluff. Just a solution for your business automation."
           submitButtonText="Send request"
           onFormSubmit={handleFormSubmit}
+        />
+
+        {/* Company Section (FAQ) */}
+        <CompanySection
+          title="Frequently Asked Questions"
+          subtitle="Find quick answers to common questions about our AI consulting services, methodology, and support process."
+          linkText="Book free consultation"
+          linkHref="#consulting-booking"
+          aboutText="About us"
+          faqItems={[
+            {
+              id: "consulting-duration",
+              question: "How long does the consulting ?",
+              answer:
+                "Our consulting engagements typically range from 2-12 weeks depending on your project scope and complexity. We start with a comprehensive assessment phase (1-2 weeks), followed by strategy development and implementation planning. Most clients see initial recommendations within the first week.",
+            },
+            {
+              id: "consulting-approach",
+              question: "What makes your consulting?",
+              answer:
+                "We combine deep technical AI expertise with practical business acumen. Our consultants don't just provide theoretical advice—we deliver actionable roadmaps, hands-on implementation guidance, and ongoing support to ensure your AI initiatives deliver measurable business value.",
+            },
+            {
+              id: "industry-experience",
+              question: "Do you have experience ?",
+              answer:
+                "Yes! Our consulting team has worked across diverse industries including healthcare, finance, manufacturing, retail, and professional services. We adapt our proven methodologies to your specific industry challenges and regulatory requirements.",
+            },
+            {
+              id: "roi-expectations",
+              question: "What ROI can I expect ?",
+              answer:
+                "Most of our clients see positive ROI within 3-6 months of implementation. Typical benefits include 30-50% reduction in manual processes, 20-40% improvement in decision-making speed, and 15-25% increase in operational efficiency. We help you set realistic expectations and measure progress throughout the engagement.",
+            },
+          ]}
         />
       </main>
 

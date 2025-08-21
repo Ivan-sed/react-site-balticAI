@@ -3811,7 +3811,6 @@ img {
   overflow: hidden;
   transition: max-height 0.3s ease-out;
   margin: 0;
-  padding: 0 27px;
 }
 
 .company__stat-card.active {
