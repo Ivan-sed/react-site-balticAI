@@ -2849,7 +2849,7 @@ img {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  width: 320px;
+
 }
 
 .intro__number-block-text {
