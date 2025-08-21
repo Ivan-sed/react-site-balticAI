@@ -713,19 +713,17 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Clients Section */}
-      <section className="clients">
-        <div className="clients__container">
-          <div className="clients__content">
-            <h2 className="clients__title">Trusted by Leading Companies</h2>
-            <div className="clients__logos">
-              <div className="logo-separator logo-separator--left"></div>
-              <div
-                className={`client-logo ${
-                  activeClient === "client1" ? "client-logo--active" : ""
-                }`}
-                onClick={() => switchTestimonial("client1")}
-                style={{ cursor: "pointer" }}
+      {/* Testimonials Section */}
+      <section className="testimonials">
+        <div className="testimonials__container">
+          <h2 className="testimonials__title">What Our Clients Say About Us</h2>
+
+          <div className="testimonials__content">
+            <div className="testimonials__logos testimonials__logos--left">
+              <div 
+                className={`client-logo ${activeClient === 'client1' ? 'client-logo--active' : ''}`}
+                onClick={() => switchTestimonial('client1')}
+                style={{ cursor: 'pointer' }}
               >
                 <img
                   src={client1}
@@ -733,13 +731,11 @@ const HomePage: React.FC = () => {
                   className="client-logo__img"
                 />
               </div>
-              <div className="logo-separator"></div>
-              <div
-                className={`client-logo ${
-                  activeClient === "client2" ? "client-logo--active" : ""
-                }`}
-                onClick={() => switchTestimonial("client2")}
-                style={{ cursor: "pointer" }}
+              <div className="logo-separator logo-separator--left"></div>
+              <div 
+                className={`client-logo ${activeClient === 'client2' ? 'client-logo--active' : ''}`}
+                onClick={() => switchTestimonial('client2')}
+                style={{ cursor: 'pointer' }}
               >
                 <img
                   src={client2}
@@ -747,13 +743,11 @@ const HomePage: React.FC = () => {
                   className="client-logo__img"
                 />
               </div>
-              <div className="logo-separator"></div>
-              <div
-                className={`client-logo ${
-                  activeClient === "client3" ? "client-logo--active" : ""
-                }`}
-                onClick={() => switchTestimonial("client3")}
-                style={{ cursor: "pointer" }}
+              <div className="logo-separator logo-separator--left"></div>
+              <div 
+                className={`client-logo ${activeClient === 'client3' ? 'client-logo--active' : ''}`}
+                onClick={() => switchTestimonial('client3')}
+                style={{ cursor: 'pointer' }}
               >
                 <img
                   src={client3}
@@ -761,13 +755,31 @@ const HomePage: React.FC = () => {
                   className="client-logo__img"
                 />
               </div>
-              <div className="logo-separator"></div>
-              <div
-                className={`client-logo ${
-                  activeClient === "client4" ? "client-logo--active" : ""
-                }`}
-                onClick={() => switchTestimonial("client4")}
-                style={{ cursor: "pointer" }}
+            </div>
+
+            <div className="testimonials__main">
+              <blockquote 
+                className="testimonial testimonial--featured"
+                style={{ opacity: isTransitioning ? 0.5 : 1 }}
+              >
+                <p className="testimonial__text">
+                  "{currentTestimonial.text}"
+                </p>
+                <div className="testimonial__author">
+                  <div className="testimonial__avatar"></div>
+                  <div className="testimonial__info">
+                    <cite className="testimonial__name">{currentTestimonial.name}</cite>
+                    <span className="testimonial__role">{currentTestimonial.role}</span>
+                  </div>
+                </div>
+              </blockquote>
+            </div>
+
+            <div className="testimonials__logos testimonials__logos--right">
+              <div 
+                className={`client-logo ${activeClient === 'client4' ? 'client-logo--active' : ''}`}
+                onClick={() => switchTestimonial('client4')}
+                style={{ cursor: 'pointer' }}
               >
                 <img
                   src={client4}
@@ -775,13 +787,11 @@ const HomePage: React.FC = () => {
                   className="client-logo__img"
                 />
               </div>
-              <div className="logo-separator"></div>
-              <div
-                className={`client-logo ${
-                  activeClient === "client5" ? "client-logo--active" : ""
-                }`}
-                onClick={() => switchTestimonial("client5")}
-                style={{ cursor: "pointer" }}
+              <div className="logo-separator logo-separator--right"></div>
+              <div 
+                className={`client-logo ${activeClient === 'client5' ? 'client-logo--active' : ''}`}
+                onClick={() => switchTestimonial('client5')}
+                style={{ cursor: 'pointer' }}
               >
                 <img
                   src={client5}
@@ -790,12 +800,10 @@ const HomePage: React.FC = () => {
                 />
               </div>
               <div className="logo-separator logo-separator--right"></div>
-              <div
-                className={`client-logo ${
-                  activeClient === "client6" ? "client-logo--active" : ""
-                }`}
-                onClick={() => switchTestimonial("client6")}
-                style={{ cursor: "pointer" }}
+              <div 
+                className={`client-logo ${activeClient === 'client6' ? 'client-logo--active' : ''}`}
+                onClick={() => switchTestimonial('client6')}
+                style={{ cursor: 'pointer' }}
               >
                 <img
                   src={client6}
@@ -804,31 +812,6 @@ const HomePage: React.FC = () => {
                 />
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="testimonials">
-        <div className="testimonials__container">
-          <div className="testimonials__main">
-            <blockquote
-              className="testimonial testimonial--featured"
-              style={{ opacity: isTransitioning ? 0.5 : 1 }}
-            >
-              <p className="testimonial__text">"{currentTestimonial.text}"</p>
-              <div className="testimonial__author">
-                <div className="testimonial__avatar"></div>
-                <div className="testimonial__info">
-                  <cite className="testimonial__name">
-                    {currentTestimonial.name}
-                  </cite>
-                  <span className="testimonial__role">
-                    {currentTestimonial.role}
-                  </span>
-                </div>
-              </div>
-            </blockquote>
           </div>
         </div>
       </section>
