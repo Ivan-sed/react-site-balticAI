@@ -10,6 +10,7 @@ interface ConsultingIntroSectionProps {
   linkText?: string;
   linkHref?: string;
   onPrimaryButtonClick?: () => void;
+  onLinkClick?: () => void;
 }
 
 const ConsultingIntroSection: React.FC<ConsultingIntroSectionProps> = ({
@@ -21,6 +22,7 @@ const ConsultingIntroSection: React.FC<ConsultingIntroSectionProps> = ({
   linkText = "See client stories",
   linkHref = "#consulting-booking",
   onPrimaryButtonClick,
+  onLinkClick,
 }) => {
   return (
     <section className="consulting-intro">
@@ -79,12 +81,12 @@ const ConsultingIntroSection: React.FC<ConsultingIntroSectionProps> = ({
             >
               {primaryButtonText}
             </button>
-            <a
-              href={linkHref}
+            <button
               className="consulting-intro__link consulting-intro__consultation-link"
+              onClick={onLinkClick}
             >
               {linkText}
-            </a>
+            </button>
           </div>
         </div>
         <div className="consulting-intro__numbers">

@@ -552,7 +552,10 @@ img {
 .hero__link:hover {
   color: #4e9fe8;
 }
-
+.hero__consultation-btn {
+  border: 0;
+  background: 0;
+}
 /* Feature Card Button Block */
 .feature-card__button {
   display: inline-flex;
@@ -677,7 +680,10 @@ img {
 .industry-card__link:hover {
   color: #4e9fe8;
 }
-
+.industry-card__consultation-btn{
+  border: 0;
+  background: 0;
+}
 /* Contact Card Button Block */
 .contact-card__button {
   display: inline-flex;
@@ -3035,7 +3041,10 @@ img {
 .intro__link:hover {
   color: #4e9fe8;
 }
-
+.intro__consultation-link {
+  border: 0;
+  background: 0;
+}
 .intro__partners {
   background: #ffffff;
   border-radius: 60px 60px 0 0;
@@ -3843,8 +3852,13 @@ img {
   text-decoration-thickness: auto;
   text-underline-offset: auto;
   text-underline-position: from-font;
+  border: 0;
+  background: 0;
 }
-
+.company__consultation-btn {
+  border: 0;
+  background: 0;
+}
 .company__stat-card {
   background: #ffffff;
   border-radius: 18px;
@@ -4776,7 +4790,10 @@ img {
   line-height: 22px;
   text-align: left;
 }
-
+.process__book-demo-link {
+  border: 0;
+  background: 0;
+}
 .process__link {
   display: flex;
   align-items: flex-start;
@@ -6238,7 +6255,10 @@ img {
   line-height: 22px;
   text-align: left;
 }
-
+.consulting-methodology__book-demo-link {
+  border: 0;
+  background: 0;
+}
 .consulting-methodology__link {
   display: flex;
   align-items: flex-start;

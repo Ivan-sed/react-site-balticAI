@@ -1,4 +1,5 @@
 import React from "react";
+import { useBookingPopup } from "../hooks";
 import {
   Header,
   BreadcrumbsSection,
@@ -6,9 +7,12 @@ import {
   ProjectsSection,
   TestimonialsSection,
   Footer,
+  BookingPopup,
 } from "../components";
 
 const ServicesPage: React.FC = () => {
+  const { isOpen, openPopup, closePopup, handleFormSubmit } = useBookingPopup();
+  
   // Данные для breadcrumbs
   const breadcrumbsData = [
     { text: "Main page", href: "/" },
@@ -24,6 +28,7 @@ const ServicesPage: React.FC = () => {
       description:
         "Want to learn more about how artificial intelligence can drive growth and innovation in your company? Visit our detailed page to explore real-world examples, benefits, and practical steps for implementing AI-first strategies.",
       buttonText: "Book now",
+      onButtonClick: openPopup,
     },
     {
       id: "2",
@@ -32,6 +37,7 @@ const ServicesPage: React.FC = () => {
       description:
         "Find out how digital solutions can streamline your processes and open up new opportunities. Head to our in-depth page for insights, case studies, and a step-by-step guide to digital transformation.",
       buttonText: "Book now",
+      onButtonClick: openPopup,
     },
     {
       id: "3",
@@ -40,12 +46,13 @@ const ServicesPage: React.FC = () => {
       description:
         "Curious about simplifying your IT and reducing routine work? Visit our dedicated page to discover strategies, tools, and real results that help teams focus on what matters most.",
       buttonText: "Book now",
+      onButtonClick: openPopup,
     },
   ];
 
   return (
     <div className="page">
-      <Header />
+      <Header onGetStartedClick={openPopup} />
       <main>
         <BreadcrumbsSection breadcrumbs={breadcrumbsData} />
         <SolutionsSection solutions={solutionsData} />
@@ -53,6 +60,13 @@ const ServicesPage: React.FC = () => {
         <TestimonialsSection />
       </main>
       <Footer />
+      
+      {/* Booking Popup */}
+      <BookingPopup 
+        isOpen={isOpen} 
+        onClose={closePopup} 
+        onSubmit={handleFormSubmit} 
+      />
     </div>
   );
 };

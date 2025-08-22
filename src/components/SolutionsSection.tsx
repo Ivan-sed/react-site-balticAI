@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 interface SolutionCard {
   id: string;
@@ -6,7 +7,7 @@ interface SolutionCard {
   title: string;
   description: string;
   buttonText: string;
-  onButtonClick?: () => void;
+  linkTo?: string;
 }
 
 interface SolutionsSectionProps {
@@ -49,12 +50,16 @@ const SolutionsSection: React.FC<SolutionsSectionProps> = ({
                         {solution.description}
                       </p>
                     </div>
-                    <button
+                    <Link
+                      to={solution.linkTo || (
+                        solution.type === "featured" ? "/ai-solutions" :
+                        solution.type === "it-solutions" ? "/it-solutions" : 
+                        "/consulting"
+                      )}
                       className="button solutions__card-button button--primary solutions__card-button--primary"
-                      onClick={solution.onButtonClick}
                     >
                       {solution.buttonText}
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>

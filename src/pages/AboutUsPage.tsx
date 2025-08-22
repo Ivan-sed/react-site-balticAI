@@ -1,4 +1,5 @@
 import React from "react";
+import { useBookingPopup } from "../hooks";
 import {
   Header,
   AboutIntroSection,
@@ -7,15 +8,19 @@ import {
   AboutTeamSection,
   AboutAchievementsSection,
   Footer,
+  BookingPopup,
 } from "../components";
 
 const AboutUsPage: React.FC = () => {
+  const { isOpen, openPopup, closePopup, handleFormSubmit } = useBookingPopup();
+  
   // Данные для интро секции
   const introData = {
     title: "About Us - Driving Innovation with AI Excellence",
     description:
       "Our diverse experts unite technology and business insight to deliver real results for clients worldwide.",
     buttonText: "Meet Our Team",
+    onButtonClick: openPopup,
     breadcrumbs: [
       { text: "Main page", href: "/" },
       { text: "About Us", href: "/about-us", isCurrent: true },
@@ -108,15 +113,22 @@ const AboutUsPage: React.FC = () => {
 
   return (
     <div className="page">
-      <Header />
+      <Header onGetStartedClick={openPopup} />
       <main>
         <AboutIntroSection {...introData} />
         <AboutPrinciplesSection principles={principlesData} />
-        <AboutStorySection />
+        <AboutStorySection onButtonClick={openPopup} />
         <AboutTeamSection members={teamData} />
         <AboutAchievementsSection achievements={achievementsData} />
       </main>
       <Footer />
+      
+      {/* Booking Popup */}
+      <BookingPopup 
+        isOpen={isOpen} 
+        onClose={closePopup} 
+        onSubmit={handleFormSubmit} 
+      />
     </div>
   );
 };

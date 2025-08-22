@@ -15,6 +15,7 @@ interface ConsultingMethodologySectionProps {
   linkHref?: string;
   steps: ConsultingMethodologyStep[];
   onPrimaryButtonClick?: () => void;
+  onLinkClick?: () => void;
 }
 
 const ConsultingMethodologySection: React.FC<
@@ -29,6 +30,7 @@ With our end-to-end guidance, you'll move from uncertainty to clear, measurable 
   linkHref = "#",
   steps,
   onPrimaryButtonClick,
+  onLinkClick,
 }) => {
   return (
     <section className="consulting-methodology">
@@ -55,12 +57,12 @@ With our end-to-end guidance, you'll move from uncertainty to clear, measurable 
             >
               {primaryButtonText}
             </button>
-            <a
-              href={linkHref}
+            <button
               className="consulting-methodology__link consulting-methodology__book-demo-link"
+              onClick={onLinkClick}
             >
               {linkText}
-            </a>
+            </button>
           </div>
         </div>
         <div className="consulting-methodology__steps">

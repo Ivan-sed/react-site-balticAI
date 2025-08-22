@@ -1,4 +1,5 @@
 import React from "react";
+import { useBookingPopup } from "../hooks";
 import {
   Header,
   Footer,
@@ -7,9 +8,12 @@ import {
   ConsultingBenefitsSection,
   ConsultingBookingSection,
   CompanySection,
+  BookingPopup,
 } from "../components";
 
 const ConsultingPage: React.FC = () => {
+  const { isOpen, openPopup, closePopup, handleFormSubmit } = useBookingPopup();
+  
   const consultingData = {
     intro: {
       title: "AI Consulting That Drives Real Business Results",
@@ -95,31 +99,7 @@ const ConsultingPage: React.FC = () => {
     },
   };
 
-  const handleBookConsultation = () => {
-    // Scroll to consultation booking section
-    const element = document.getElementById("consulting-booking");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
-  const handleStartConsultation = () => {
-    // Scroll to consultation booking section
-    const element = document.getElementById("consulting-booking");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
-  const handleGetStarted = () => {
-    // Scroll to consultation booking section
-    const element = document.getElementById("consulting-booking");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
-  const handleFormSubmit = (data: any) => {
+  const handleConsultingFormSubmit = (data: any) => {
     console.log("Form submitted:", data);
     // Here you would handle the form submission
     alert("Thank you for your request! We'll get back to you soon.");
@@ -128,7 +108,7 @@ const ConsultingPage: React.FC = () => {
   return (
     <div className="page">
       {/* Header */}
-      <Header />
+      <Header onGetStartedClick={openPopup} />
 
       <main>
         <ConsultingIntroSection
@@ -139,7 +119,8 @@ const ConsultingPage: React.FC = () => {
           primaryButtonText="Book Consultation"
           linkText="See client stories"
           linkHref="#client-stories"
-          onPrimaryButtonClick={handleBookConsultation}
+          onPrimaryButtonClick={openPopup}
+          onLinkClick={openPopup}
         />
 
         <ConsultingMethodologySection
@@ -149,14 +130,15 @@ const ConsultingPage: React.FC = () => {
           primaryButtonText="Start Your Consultation"
           linkText="Talk to an Expert"
           linkHref="#expert-consultation"
-          onPrimaryButtonClick={handleStartConsultation}
+          onPrimaryButtonClick={openPopup}
+          onLinkClick={openPopup}
         />
 
         <ConsultingBenefitsSection
           title={consultingData.benefits.title}
           cards={consultingData.benefits.cards}
           headerButtonText="Get started today"
-          onHeaderButtonClick={handleGetStarted}
+          onHeaderButtonClick={openPopup}
         />
 
         <ConsultingBookingSection
@@ -166,7 +148,8 @@ const ConsultingPage: React.FC = () => {
           formTitle="Book Your Consultation"
           formSubtitle="No fluff. Just a solution for your business automation."
           submitButtonText="Send request"
-          onFormSubmit={handleFormSubmit}
+          onButtonClick={openPopup}
+          onFormSubmit={handleConsultingFormSubmit}
         />
 
         {/* Company Section (FAQ) */}
@@ -176,6 +159,7 @@ const ConsultingPage: React.FC = () => {
           linkText="Book free consultation"
           linkHref="#consulting-booking"
           aboutText="About us"
+          onLinkClick={openPopup}
           faqItems={[
             {
               id: "consulting-duration",
@@ -207,6 +191,13 @@ const ConsultingPage: React.FC = () => {
 
       {/* Footer */}
       <Footer />
+      
+      {/* Booking Popup */}
+      <BookingPopup 
+        isOpen={isOpen} 
+        onClose={closePopup} 
+        onSubmit={handleFormSubmit} 
+      />
     </div>
   );
 };

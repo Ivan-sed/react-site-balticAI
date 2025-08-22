@@ -3,7 +3,11 @@ import { Link } from "react-router-dom";
 import { useHeaderScroll, useDropdown } from "../hooks";
 import { logo } from "../assets";
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  onGetStartedClick?: () => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ onGetStartedClick }) => {
   const isHeaderScrolled = useHeaderScroll();
   const dropdown = useDropdown();
 
@@ -74,7 +78,10 @@ const Header: React.FC = () => {
           </ul>
         </nav>
         <div className="header__actions">
-          <button className="button header__button button--outline header__button--outline">
+          <button 
+            className="button header__button button--outline header__button--outline"
+            onClick={onGetStartedClick}
+          >
             Get started
           </button>
           <button className="button header__button button--filled header__button--filled">

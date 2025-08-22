@@ -3,3 +3,4 @@ export { useHeaderScroll } from "./useHeaderScroll";
 export { useAccordion } from "./useAccordion";
 export { useDropdown } from "./useDropdown";
 export { useProjectCardsHover } from "./useProjectCardsHover";
+export { useBookingPopup } from "./useBookingPopup";

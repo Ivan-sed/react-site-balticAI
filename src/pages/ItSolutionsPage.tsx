@@ -1,4 +1,5 @@
 import React from "react";
+import { useBookingPopup } from "../hooks";
 import {
   Header,
   Footer,
@@ -10,9 +11,12 @@ import {
   ConsultationSection,
   ProjectsSection,
   CompanySection,
+  BookingPopup,
 } from "../components";
 
 const ItSolutionsPage: React.FC = () => {
+  const { isOpen, openPopup, closePopup, handleFormSubmit } = useBookingPopup();
+  
   const itSolutionsData = {
     intro: {
       title: "Boost Efficiency with Modern IT Solutions",
@@ -49,7 +53,7 @@ const ItSolutionsPage: React.FC = () => {
           buttonText: "Book now",
           buttonClassName:
             "it-visualization__rapid-deployment-btn visualization__rapid-deployment-btn",
-          onButtonClick: () => handleGetStarted(),
+          onButtonClick: openPopup,
         },
         {
           id: "intuitive-dashboards",
@@ -59,7 +63,7 @@ const ItSolutionsPage: React.FC = () => {
           buttonText: "Book now",
           buttonClassName:
             "it-visualization__dashboards-btn visualization__dashboards-btn",
-          onButtonClick: () => handleGetStarted(),
+          onButtonClick: openPopup,
         },
         {
           id: "seamless-integration",
@@ -77,7 +81,7 @@ const ItSolutionsPage: React.FC = () => {
           buttonText: "Get started",
           buttonClassName:
             "it-visualization__scalable-architecture-btn visualization__scalable-architecture-btn",
-          onButtonClick: () => handleGetStarted(),
+          onButtonClick: openPopup,
           isLarge: true,
         },
         {
@@ -88,7 +92,7 @@ const ItSolutionsPage: React.FC = () => {
           buttonText: "Get started",
           buttonClassName:
             "it-visualization__second-get-started-btn visualization__second-get-started-btn",
-          onButtonClick: () => handleGetStarted(),
+          onButtonClick: openPopup,
           isLarge: true,
         },
       ],
@@ -223,21 +227,16 @@ const ItSolutionsPage: React.FC = () => {
     },
   };
 
-  const handleGetStarted = () => {
-    const element = document.getElementById("consultation");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
-  const handleFormSubmit = (data: any) => {
+
+  const handleConsultationFormSubmit = (data: any) => {
     console.log("Form submitted:", data);
     alert("Thank you for your request! We'll get back to you soon.");
   };
 
   return (
     <div className="page">
-      <Header />
+      <Header onGetStartedClick={openPopup} />
 
       <main>
         <IntroSection
@@ -245,6 +244,8 @@ const ItSolutionsPage: React.FC = () => {
           description={itSolutionsData.intro.description}
           breadcrumbs={itSolutionsData.intro.breadcrumbs}
           stats={itSolutionsData.intro.stats}
+          onGetStartedClick={openPopup}
+          onConsultationClick={openPopup}
         />
 
         <VisualizationSection
@@ -260,7 +261,7 @@ const ItSolutionsPage: React.FC = () => {
           mainCards={itSolutionsData.processFeatures.mainCards}
           securityCards={itSolutionsData.processFeatures.securityCards}
           className="it-process-features"
-          onButtonClick={handleGetStarted}
+          onButtonClick={openPopup}
         />
 
         <TransformationSection
@@ -268,7 +269,7 @@ const ItSolutionsPage: React.FC = () => {
           description={itSolutionsData.transformation.description}
           steps={itSolutionsData.transformation.steps}
           className="it-transformation"
-          onButtonClick={handleGetStarted}
+          onButtonClick={openPopup}
         />
 
         <ProcessSection
@@ -279,7 +280,8 @@ const ItSolutionsPage: React.FC = () => {
           linkText="Book a demo"
           linkHref="#consultation"
           className="it-process"
-          onPrimaryButtonClick={handleGetStarted}
+          onPrimaryButtonClick={openPopup}
+          onLinkClick={openPopup}
         />
 
         <ConsultationSection
@@ -290,7 +292,8 @@ const ItSolutionsPage: React.FC = () => {
           formSubtitle="No fluff. Just a solution for your business automation."
           submitButtonText="Send request"
           className="it-consultation"
-          onFormSubmit={handleFormSubmit}
+          onButtonClick={openPopup}
+          onFormSubmit={handleConsultationFormSubmit}
         />
 
         <ProjectsSection showViewAllButton={true} className="it-portfolio" />
@@ -303,10 +306,18 @@ const ItSolutionsPage: React.FC = () => {
           aboutText="About us"
           faqItems={itSolutionsData.faq.items}
           className="it-company"
+          onLinkClick={openPopup}
         />
       </main>
 
       <Footer />
+      
+      {/* Booking Popup */}
+      <BookingPopup 
+        isOpen={isOpen} 
+        onClose={closePopup} 
+        onSubmit={handleFormSubmit} 
+      />
     </div>
   );
 };

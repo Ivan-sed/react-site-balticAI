@@ -6,6 +6,8 @@ interface IntroSectionProps {
   description: string;
   breadcrumbs: Array<{ text: string; href?: string; isCurrent?: boolean }>;
   stats: Array<{ number: string; title: string; description: string }>;
+  onGetStartedClick?: () => void;
+  onConsultationClick?: () => void;
 }
 
 const IntroSection: React.FC<IntroSectionProps> = ({
@@ -13,6 +15,8 @@ const IntroSection: React.FC<IntroSectionProps> = ({
   description,
   breadcrumbs,
   stats,
+  onGetStartedClick,
+  onConsultationClick,
 }) => {
   return (
     <section className="intro">
@@ -63,15 +67,18 @@ const IntroSection: React.FC<IntroSectionProps> = ({
             </div>
           </div>
           <div className="intro__actions">
-            <button className="button intro__button button--primary intro__get-started-btn">
+            <button 
+              className="button intro__button button--primary intro__get-started-btn"
+              onClick={onGetStartedClick}
+            >
               Get started
             </button>
-            <a
-              href="#consultation"
-              className="intro__link intro__consultation-link"
-            >
-              Consultation
-            </a>
+                         <button
+               className="intro__link intro__consultation-link"
+               onClick={onConsultationClick}
+             >
+               Consultation
+             </button>
           </div>
         </div>
         <div className="intro__numbers">

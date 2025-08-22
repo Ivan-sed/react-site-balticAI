@@ -1,4 +1,5 @@
 import React from "react";
+import { useBookingPopup } from "../hooks";
 import {
   Header,
   Footer,
@@ -12,9 +13,12 @@ import {
   ProcessFeaturesSection,
   ProjectsSection,
   CompanySection,
+  BookingPopup,
 } from "../components";
 
 const AiSolutionsPage: React.FC = () => {
+  const { isOpen, openPopup, closePopup, handleFormSubmit } = useBookingPopup();
+  
   const breadcrumbs = [
     { text: "Main page", href: "/" },
     { text: "Services", isCurrent: true },
@@ -39,7 +43,7 @@ const AiSolutionsPage: React.FC = () => {
   return (
     <div className="page">
       {/* Header */}
-      <Header />
+      <Header onGetStartedClick={openPopup} />
 
       {/* Intro Section */}
       <IntroSection
@@ -47,6 +51,8 @@ const AiSolutionsPage: React.FC = () => {
         description="Streamline workflows, reduce operational costs by up to 40%, and boost productivity while your team focuses on strategic growth. Our intelligent automation platform delivers measurable results in just 10 days."
         breadcrumbs={breadcrumbs}
         stats={stats}
+        onGetStartedClick={openPopup}
+        onConsultationClick={openPopup}
       />
 
       {/* Offerings Section */}
@@ -90,6 +96,7 @@ const AiSolutionsPage: React.FC = () => {
       <AdvantagesSection
         title="The Hidden Costs Dragging Your Business Down"
         headerButtonText="Get started today"
+        onHeaderButtonClick={openPopup}
         cards={[
           {
             id: "automation",
@@ -123,14 +130,16 @@ These distractions limit focus on growth-driving work. Studies show employees wa
       />
 
       {/* Process Section */}
-      <ProcessSection
-        title="Overcome Operational Challenges with AI"
-        description={`In today's fast-paced business environment, manual processes and repetitive tasks not only eat up valuable time but also hinder innovation and growth.
-
-Our three-step, AI-first methodology pinpoints these inefficiencies, implements intelligent automation to resolve them swiftly, and continuously refines your workflows to ensure sustainable, long-term performance gains.`}
-        primaryButtonText="Get AI MVP"
-        linkText="Book demo"
-        linkHref="#"
+             <ProcessSection
+         title="Overcome Operational Challenges with AI"
+         description={`In today's fast-paced business environment, manual processes and repetitive tasks not only eat up valuable time but also hinder innovation and growth.
+ 
+ Our three-step, AI-first methodology pinpoints these inefficiencies, implements intelligent automation to resolve them swiftly, and continuously refines your workflows to ensure sustainable, long-term performance gains.`}
+         primaryButtonText="Get AI MVP"
+         linkText="Book demo"
+         linkHref="#"
+         onPrimaryButtonClick={openPopup}
+         onLinkClick={openPopup}
         steps={[
           {
             id: "identify",
@@ -161,6 +170,7 @@ Our three-step, AI-first methodology pinpoints these inefficiencies, implements 
         title="Start Upgrading Your IT—No Hassle Required"
         description="From initial assessment to ongoing optimization, we ensure your IT transformation is streamlined and result-driven—clear, fast, and focused on your goals."
         buttonText="Book consultation"
+         onButtonClick={openPopup}
         steps={[
           {
             id: "assess",
@@ -200,6 +210,7 @@ Our three-step, AI-first methodology pinpoints these inefficiencies, implements 
               "See how our AI solutions go live in just 10 days, minimizing downtime and accelerating ROI.",
             buttonText: "Book now",
             buttonClassName: "visualization__rapid-deployment-btn",
+            onButtonClick: openPopup,
           },
           {
             id: "intuitive-dashboards",
@@ -208,6 +219,7 @@ Our three-step, AI-first methodology pinpoints these inefficiencies, implements 
               "Monitor performance in real time with user-friendly dashboards that highlight critical metrics at a glance.",
             buttonText: "Book now",
             buttonClassName: "visualization__dashboards-btn",
+            onButtonClick: openPopup,
           },
           {
             id: "seamless-integration",
@@ -225,6 +237,7 @@ Our three-step, AI-first methodology pinpoints these inefficiencies, implements 
             buttonText: "Get started",
             buttonClassName: "visualization__scalable-architecture-btn",
             isLarge: true,
+            onButtonClick: openPopup,
           },
           {
             id: "continuous-improvement",
@@ -234,6 +247,7 @@ Our three-step, AI-first methodology pinpoints these inefficiencies, implements 
             buttonText: "Get started",
             buttonClassName: "visualization__second-get-started-btn",
             isLarge: true,
+            onButtonClick: openPopup,
           },
         ]}
       />
@@ -248,6 +262,7 @@ During the session, our experts will walk you through a tailored AI roadmap, dem
         formTitle="Book Your Consultation"
         formSubtitle="No fluff. Just a solution for your business automation."
         submitButtonText="Send request"
+        onButtonClick={openPopup}
         onFormSubmit={(data) => {
           console.log("Form submitted:", data);
           // Здесь можно добавить обработку отправки формы
@@ -259,6 +274,7 @@ During the session, our experts will walk you through a tailored AI roadmap, dem
         title="Explore the Details. Start Your AI Journey."
         description="Get a transparent look at the modules powering your transformation. Each block addresses real business needs—security, integration, customization, and performance—so you know exactly what drives your results."
         buttonText="Get Started"
+         onButtonClick={openPopup}
         mainCards={[
           {
             id: "features-integrations",
@@ -293,12 +309,13 @@ During the session, our experts will walk you through a tailored AI roadmap, dem
       <ProjectsSection showViewAllButton={true} className="portfolio" />
 
       {/* Company Section (FAQ) */}
-      <CompanySection
-        title="Frequently Asked Questions"
-        subtitle="Find quick answers to common questions about our AI solutions, implementation process, and ongoing support."
-        linkText="Book free consultation"
-        linkHref="#consultation"
-        aboutText="About us"
+             <CompanySection
+         title="Frequently Asked Questions"
+         subtitle="Find quick answers to common questions about our AI solutions, implementation process, and ongoing support."
+         linkText="Book free consultation"
+         linkHref="#consultation"
+         aboutText="About us"
+         onLinkClick={openPopup}
         faqItems={[
           {
             id: "setup-speed",
@@ -329,6 +346,13 @@ During the session, our experts will walk you through a tailored AI roadmap, dem
 
       {/* Footer */}
       <Footer />
+      
+      {/* Booking Popup */}
+      <BookingPopup 
+        isOpen={isOpen} 
+        onClose={closePopup} 
+        onSubmit={handleFormSubmit} 
+      />
     </div>
   );
 };

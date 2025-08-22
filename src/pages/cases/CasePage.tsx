@@ -1,11 +1,13 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import { useBookingPopup } from "../../hooks";
 import {
   Header,
   BreadcrumbsSection,
   CaseDetailsSection,
   ConsultationSection,
   Footer,
+  BookingPopup,
 } from "../../components";
 
 // Импорты изображений
@@ -16,6 +18,7 @@ import casesImgThird from "../../assets/images/cases-img-third.png";
 
 const CasePage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
+  const { isOpen, openPopup, closePopup, handleFormSubmit } = useBookingPopup();
 
   // Данные для breadcrumbs
   const breadcrumbsData = [
@@ -59,13 +62,20 @@ const CasePage: React.FC = () => {
 
   return (
     <div className="page">
-      <Header />
+      <Header onGetStartedClick={openPopup} />
       <main>
         <BreadcrumbsSection breadcrumbs={breadcrumbsData} />
         <CaseDetailsSection {...caseData} />
-        <ConsultationSection />
+        <ConsultationSection onButtonClick={openPopup} />
       </main>
       <Footer />
+      
+      {/* Booking Popup */}
+      <BookingPopup 
+        isOpen={isOpen} 
+        onClose={closePopup} 
+        onSubmit={handleFormSubmit} 
+      />
     </div>
   );
 };

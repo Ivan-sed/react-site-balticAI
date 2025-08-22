@@ -16,6 +16,7 @@ interface ProcessSectionProps {
   steps: ProcessStep[];
   className?: string;
   onPrimaryButtonClick?: () => void;
+  onLinkClick?: () => void;
 }
 
 const ProcessSection: React.FC<ProcessSectionProps> = ({
@@ -29,6 +30,7 @@ Our three-step, AI-first methodology pinpoints these inefficiencies, implements 
   steps,
   className = "",
   onPrimaryButtonClick,
+  onLinkClick,
 }) => {
   return (
     <section className={`process ${className}`} id="process">
@@ -55,12 +57,12 @@ Our three-step, AI-first methodology pinpoints these inefficiencies, implements 
             >
               {primaryButtonText}
             </button>
-            <a
-              href={linkHref}
+            <button
               className="process__link process__book-demo-link"
+              onClick={onLinkClick}
             >
               {linkText}
-            </a>
+            </button>
           </div>
         </div>
         <div className="process__steps">

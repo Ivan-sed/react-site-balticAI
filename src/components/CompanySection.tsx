@@ -16,6 +16,7 @@ interface CompanySectionProps {
   aboutText?: string;
   faqItems: FAQItem[];
   className?: string;
+  onLinkClick?: () => void;
 }
 
 const CompanySection: React.FC<CompanySectionProps> = ({
@@ -26,6 +27,7 @@ const CompanySection: React.FC<CompanySectionProps> = ({
   aboutText = "About us",
   faqItems,
   className = "",
+  onLinkClick,
 }) => {
   const { toggleItem, isActive } = useAccordion(-1); // Start with all items closed
   return (
@@ -34,9 +36,9 @@ const CompanySection: React.FC<CompanySectionProps> = ({
         <div className="company__visual">
           <h2 className="company__visual-title">{title}</h2>
           <p className="company__visual-subtitle">{subtitle}</p>
-          <a href={linkHref} className="company__visual-link">
+          <button className="company__visual-link" onClick={onLinkClick}>
             {linkText}
-          </a>
+          </button>
         </div>
 
         <div className="company__content">

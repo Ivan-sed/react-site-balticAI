@@ -1,13 +1,17 @@
 import React from "react";
+import { useBookingPopup } from "../hooks";
 import {
   Header,
   BreadcrumbsSection,
   CasesSection,
   Footer,
+  BookingPopup,
 } from "../components";
 import projectLogo from "../assets/images/project-logo.png";
 
 const CasesPage: React.FC = () => {
+  const { isOpen, openPopup, closePopup, handleFormSubmit } = useBookingPopup();
+  
   // Данные для breadcrumbs
   const breadcrumbsData = [
     { text: "Main page", href: "/" },
@@ -62,12 +66,19 @@ const CasesPage: React.FC = () => {
 
   return (
     <div className="page">
-      <Header />
+      <Header onGetStartedClick={openPopup} />
       <main>
         <BreadcrumbsSection breadcrumbs={breadcrumbsData} />
         <CasesSection cases={casesData} />
       </main>
       <Footer />
+      
+      {/* Booking Popup */}
+      <BookingPopup 
+        isOpen={isOpen} 
+        onClose={closePopup} 
+        onSubmit={handleFormSubmit} 
+      />
     </div>
   );
 };
