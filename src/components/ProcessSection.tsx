@@ -26,7 +26,7 @@ const ProcessSection: React.FC<ProcessSectionProps> = ({
 Our three-step, AI-first methodology pinpoints these inefficiencies, implements intelligent automation to resolve them swiftly, and continuously refines your workflows to ensure sustainable, long-term performance gains.`,
   primaryButtonText = "Get AI MVP",
   linkText = "Book demo",
-  linkHref = "#",
+  linkHref: _linkHref = "#",
   steps,
   className = "",
   onPrimaryButtonClick,

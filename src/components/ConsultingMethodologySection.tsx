@@ -27,7 +27,7 @@ const ConsultingMethodologySection: React.FC<
 With our end-to-end guidance, you'll move from uncertainty to clear, measurable results—faster and with less risk.`,
   primaryButtonText = "Start Your Consultation",
   linkText = "Talk to an Expert",
-  linkHref = "#",
+  linkHref: _linkHref = "#",
   steps,
   onPrimaryButtonClick,
   onLinkClick,

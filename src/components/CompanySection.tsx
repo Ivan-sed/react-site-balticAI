@@ -23,7 +23,7 @@ const CompanySection: React.FC<CompanySectionProps> = ({
   title = "Frequently Asked Questions",
   subtitle = "Find quick answers to common questions about our AI solutions, implementation process, and ongoing support.",
   linkText = "Book free consultation",
-  linkHref = "#consultation",
+  linkHref: _linkHref = "#consultation",
   aboutText = "About us",
   faqItems,
   className = "",

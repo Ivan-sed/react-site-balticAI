@@ -20,7 +20,7 @@ const ConsultingIntroSection: React.FC<ConsultingIntroSectionProps> = ({
   stats,
   primaryButtonText = "Book Consultation",
   linkText = "See client stories",
-  linkHref = "#consulting-booking",
+  linkHref: _linkHref = "#consulting-booking",
   onPrimaryButtonClick,
   onLinkClick,
 }) => {
