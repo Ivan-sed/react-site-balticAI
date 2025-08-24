@@ -60,11 +60,14 @@ const SolutionsSection: React.FC<SolutionsSectionProps> = ({
                       </button>
                     ) : (
                       <Link
-                        to={solution.linkTo || (
-                          solution.type === "featured" ? "/ai-solutions" :
-                          solution.type === "it-solutions" ? "/it-solutions" : 
-                          "/consulting"
-                        )}
+                        to={
+                          solution.linkTo ||
+                          (solution.type === "featured"
+                            ? "/ai-solutions"
+                            : solution.type === "it-solutions"
+                            ? "/it-solutions"
+                            : "/consulting")
+                        }
                         className="button solutions__card-button button--primary solutions__card-button--primary"
                       >
                         {solution.buttonText}

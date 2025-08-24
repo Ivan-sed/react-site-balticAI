@@ -14,7 +14,7 @@ import {
 const ServicesPage: React.FC = () => {
   const navigate = useNavigate();
   const { isOpen, openPopup, closePopup, handleFormSubmit } = useBookingPopup();
-  
+
   // Данные для breadcrumbs
   const breadcrumbsData = [
     { text: "Main page", href: "/" },
@@ -74,12 +74,12 @@ const ServicesPage: React.FC = () => {
         <TestimonialsSection />
       </main>
       <Footer />
-      
+
       {/* Booking Popup */}
-      <BookingPopup 
-        isOpen={isOpen} 
-        onClose={closePopup} 
-        onSubmit={handleFormSubmit} 
+      <BookingPopup
+        isOpen={isOpen}
+        onClose={closePopup}
+        onSubmit={handleFormSubmit}
       />
     </div>
   );
