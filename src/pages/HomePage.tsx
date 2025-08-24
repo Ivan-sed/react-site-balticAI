@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useAccordion, useBookingPopup } from "../hooks";
 import {
   Header,
@@ -25,12 +26,13 @@ import {
 
 const HomePage: React.FC = () => {
   // Инициализация всех хуков
+  const navigate = useNavigate();
   const accordion = useAccordion(0);
   const { isOpen, openPopup, closePopup, handleFormSubmit } = useBookingPopup();
   return (
     <div className="page">
       {/* Header */}
-      <Header onGetStartedClick={openPopup} />
+      <Header />
 
       {/* Hero Section */}
       <section className="hero">
@@ -60,12 +62,9 @@ const HomePage: React.FC = () => {
               >
                 Get started
               </button>
-              <button 
-                className="hero__link hero__consultation-btn"
-                onClick={openPopup}
-              >
+              <a href="#consultation" className="hero__link">
                 Consultation
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -145,7 +144,14 @@ const HomePage: React.FC = () => {
                         for integrating.
                       </p>
                     </div>
-                    <button className="button service-card__button button--primary service-card__button--primary">
+                    <button 
+                      className="button service-card__button button--primary service-card__button--primary"
+                      onClick={() => {
+                        console.log('AI Solutions button clicked');
+                        navigate('/ai-solutions');
+                        setTimeout(() => window.scrollTo(0, 0), 100);
+                      }}
+                    >
                       View more
                     </button>
                   </div>
@@ -164,13 +170,20 @@ const HomePage: React.FC = () => {
                       Automate and optimize your business processes with AI.
                     </p>
                   </div>
-                  <button className="button service-card__button button--primary service-card__button--primary">
+                  <button 
+                    className="button service-card__button button--primary service-card__button--primary"
+                    onClick={() => {
+                      console.log('IT Solutions button clicked');
+                      navigate('/it-solutions');
+                      setTimeout(() => window.scrollTo(0, 0), 100);
+                    }}
+                  >
                     View more
                   </button>
                 </div>
               </article>
 
-              {/* AI Consultation Card */}
+              {/* Consulting Card */}
               <article className="service-card service-card--consultation">
                 <div className="service-card__header"></div>
                 <div className="service-card__content">
@@ -181,7 +194,14 @@ const HomePage: React.FC = () => {
                       initiatives tailored to your business.
                     </p>
                   </div>
-                  <button className="button service-card__button button--primary service-card__button--primary">
+                  <button 
+                    className="button service-card__button button--primary service-card__button--primary"
+                    onClick={() => {
+                      console.log('AI Consultation button clicked');
+                      navigate('/consulting');
+                      setTimeout(() => window.scrollTo(0, 0), 100);
+                    }}
+                  >
                     View more
                   </button>
                 </div>
@@ -287,7 +307,7 @@ const HomePage: React.FC = () => {
                     contracts, or request a demo.
                   </p>
                 </div>
-                                <button 
+                <button 
                   className="button contact-card__button button--primary contact-card__button--primary"
                   onClick={openPopup}
                 >
@@ -352,12 +372,16 @@ const HomePage: React.FC = () => {
                   >
                     Get started
                   </button>
-                                    <button 
-                    className="industry-card__link industry-card__consultation-btn"
-                    onClick={openPopup}
+                  <a 
+                    href="#" 
+                    className="industry-card__link" 
+                    onClick={(e) => {
+                      e.preventDefault();
+                      openPopup();
+                    }}
                   >
                     Consultation
-                  </button>
+                  </a>
                 </div>
               </div>
             </article>
@@ -387,12 +411,16 @@ const HomePage: React.FC = () => {
                   >
                     Get started
                   </button>
-                                    <button 
-                    className="industry-card__link industry-card__consultation-btn"
-                    onClick={openPopup}
+                  <a 
+                    href="#" 
+                    className="industry-card__link" 
+                    onClick={(e) => {
+                      e.preventDefault();
+                      openPopup();
+                    }}
                   >
                     Consultation
-                  </button>
+                  </a>
                 </div>
               </div>
             </article>
@@ -422,12 +450,16 @@ const HomePage: React.FC = () => {
                   >
                     Get started
                   </button>
-                                    <button 
-                    className="industry-card__link industry-card__consultation-btn"
-                    onClick={openPopup}
+                  <a 
+                    href="#" 
+                    className="industry-card__link" 
+                    onClick={(e) => {
+                      e.preventDefault();
+                      openPopup();
+                    }}
                   >
                     Consultation
-                  </button>
+                  </a>
                 </div>
               </div>
             </article>
@@ -457,12 +489,16 @@ const HomePage: React.FC = () => {
                   >
                     Get started
                   </button>
-                                    <button 
-                    className="industry-card__link industry-card__consultation-btn"
-                    onClick={openPopup}
+                  <a 
+                    href="#" 
+                    className="industry-card__link" 
+                    onClick={(e) => {
+                      e.preventDefault();
+                      openPopup();
+                    }}
                   >
                     Consultation
-                  </button>
+                  </a>
                 </div>
               </div>
             </article>
@@ -492,12 +528,16 @@ const HomePage: React.FC = () => {
                   >
                     Get started
                   </button>
-                                    <button 
-                    className="industry-card__link industry-card__consultation-btn"
-                    onClick={openPopup}
+                  <a 
+                    href="#" 
+                    className="industry-card__link" 
+                    onClick={(e) => {
+                      e.preventDefault();
+                      openPopup();
+                    }}
                   >
                     Consultation
-                  </button>
+                  </a>
                 </div>
               </div>
             </article>
@@ -527,12 +567,16 @@ const HomePage: React.FC = () => {
                   >
                     Get started
                   </button>
-                                    <button 
-                    className="industry-card__link industry-card__consultation-btn"
-                    onClick={openPopup}
+                  <a 
+                    href="#" 
+                    className="industry-card__link" 
+                    onClick={(e) => {
+                      e.preventDefault();
+                      openPopup();
+                    }}
                   >
                     Consultation
-                  </button>
+                  </a>
                 </div>
               </div>
             </article>
@@ -658,7 +702,7 @@ const HomePage: React.FC = () => {
 
       {/* Footer */}
       <Footer />
-      
+
       {/* Booking Popup */}
       <BookingPopup 
         isOpen={isOpen} 

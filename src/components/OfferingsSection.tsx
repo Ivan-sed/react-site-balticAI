@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 interface OfferingCard {
   id: string;
@@ -11,7 +10,7 @@ interface OfferingCard {
   badgeText?: string;
   className?: string;
   buttonText?: string;
-  linkTo?: string;
+  onButtonClick?: () => void;
 }
 
 interface OfferingsSectionProps {
@@ -73,12 +72,12 @@ const OfferingsSection: React.FC<OfferingsSectionProps> = ({
                         {featuredOffering.description}
                       </p>
                     </div>
-                    <Link
-                      to={featuredOffering.linkTo || "/ai-solutions"}
+                    <button
                       className="button offerings__card-button button--primary offerings__view-more-btn"
+                      onClick={featuredOffering.onButtonClick}
                     >
                       {featuredOffering.buttonText || "View more"}
-                    </Link>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -103,12 +102,12 @@ const OfferingsSection: React.FC<OfferingsSectionProps> = ({
                         {offering.description}
                       </p>
                     </div>
-                    <Link
-                      to={offering.linkTo || "/ai-solutions"}
+                    <button
                       className="button offerings__card-button button--primary"
+                      onClick={offering.onButtonClick}
                     >
                       {offering.buttonText || "View more"}
-                    </Link>
+                    </button>
                   </div>
                 </article>
               ))}

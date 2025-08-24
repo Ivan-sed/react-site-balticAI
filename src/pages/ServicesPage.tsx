@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useBookingPopup } from "../hooks";
 import {
   Header,
@@ -11,6 +12,7 @@ import {
 } from "../components";
 
 const ServicesPage: React.FC = () => {
+  const navigate = useNavigate();
   const { isOpen, openPopup, closePopup, handleFormSubmit } = useBookingPopup();
   
   // Данные для breadcrumbs
@@ -27,8 +29,12 @@ const ServicesPage: React.FC = () => {
       title: "AI Solutions for Business Growth",
       description:
         "Want to learn more about how artificial intelligence can drive growth and innovation in your company? Visit our detailed page to explore real-world examples, benefits, and practical steps for implementing AI-first strategies.",
-      buttonText: "Book now",
-      onButtonClick: openPopup,
+      buttonText: "View more",
+      onButtonClick: (e: React.MouseEvent) => {
+        e.preventDefault();
+        navigate("/ai-solutions");
+        setTimeout(() => window.scrollTo(0, 0), 100);
+      },
     },
     {
       id: "2",
@@ -36,8 +42,12 @@ const ServicesPage: React.FC = () => {
       title: "IT Solutions for Digital Excellence",
       description:
         "Find out how digital solutions can streamline your processes and open up new opportunities. Head to our in-depth page for insights, case studies, and a step-by-step guide to digital transformation.",
-      buttonText: "Book now",
-      onButtonClick: openPopup,
+      buttonText: "View more",
+      onButtonClick: (e: React.MouseEvent) => {
+        e.preventDefault();
+        navigate("/it-solutions");
+        setTimeout(() => window.scrollTo(0, 0), 100);
+      },
     },
     {
       id: "3",
@@ -45,8 +55,12 @@ const ServicesPage: React.FC = () => {
       title: "Consulting Services for Lasting Impact",
       description:
         "Curious about simplifying your IT and reducing routine work? Visit our dedicated page to discover strategies, tools, and real results that help teams focus on what matters most.",
-      buttonText: "Book now",
-      onButtonClick: openPopup,
+      buttonText: "View more",
+      onButtonClick: (e: React.MouseEvent) => {
+        e.preventDefault();
+        navigate("/consulting");
+        setTimeout(() => window.scrollTo(0, 0), 100);
+      },
     },
   ];
 

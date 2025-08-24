@@ -8,6 +8,7 @@ interface SolutionCard {
   description: string;
   buttonText: string;
   linkTo?: string;
+  onButtonClick?: (e: React.MouseEvent) => void;
 }
 
 interface SolutionsSectionProps {
@@ -50,16 +51,25 @@ const SolutionsSection: React.FC<SolutionsSectionProps> = ({
                         {solution.description}
                       </p>
                     </div>
-                    <Link
-                      to={solution.linkTo || (
-                        solution.type === "featured" ? "/ai-solutions" :
-                        solution.type === "it-solutions" ? "/it-solutions" : 
-                        "/consulting"
-                      )}
-                      className="button solutions__card-button button--primary solutions__card-button--primary"
-                    >
-                      {solution.buttonText}
-                    </Link>
+                    {solution.onButtonClick ? (
+                      <button
+                        className="button solutions__card-button button--primary solutions__card-button--primary"
+                        onClick={solution.onButtonClick}
+                      >
+                        {solution.buttonText}
+                      </button>
+                    ) : (
+                      <Link
+                        to={solution.linkTo || (
+                          solution.type === "featured" ? "/ai-solutions" :
+                          solution.type === "it-solutions" ? "/it-solutions" : 
+                          "/consulting"
+                        )}
+                        className="button solutions__card-button button--primary solutions__card-button--primary"
+                      >
+                        {solution.buttonText}
+                      </Link>
+                    )}
                   </div>
                 </div>
               </div>
