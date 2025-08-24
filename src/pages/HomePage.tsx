@@ -32,7 +32,7 @@ const HomePage: React.FC = () => {
   return (
     <div className="page">
       {/* Header */}
-      <Header />
+      <Header onGetStartedClick={openPopup} />
 
       {/* Hero Section */}
       <section className="hero">
@@ -62,10 +62,7 @@ const HomePage: React.FC = () => {
               >
                 Get started
               </button>
-              <button 
-                className="hero__link"
-                onClick={openPopup}
-              >
+              <button className="hero__link" onClick={openPopup}>
                 Consultation
               </button>
             </div>
