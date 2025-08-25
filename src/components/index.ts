@@ -26,3 +26,4 @@ export { default as CasesSection } from "./CasesSection";
 export { default as CaseDetailsSection } from "./CaseDetailsSection";
 export { default as ContactsSection } from "./ContactsSection";
 export { default as BookingPopup } from "./BookingPopup";
+export { default as ConsultationPopup } from "./ConsultationPopup";

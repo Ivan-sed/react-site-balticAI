@@ -117,3 +117,4 @@ export { default as visualizationCard1 } from "./visualization-card-1.png";
 export { default as visualizationCard2 } from "./visualization-card-2.png";
 export { default as visualizationCard3 } from "./visualization-card-3.png";
 export { default as visualizationCard4 } from "./visualization-card-4.png";
+export { default as freeGif } from "./free.gif";

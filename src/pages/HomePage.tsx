@@ -1,12 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useAccordion, useBookingPopup } from "../hooks";
+import { useAccordion, useBookingPopup, useConsultationPopup } from "../hooks";
 import {
   Header,
   ProjectsSection,
   TestimonialsSection,
   Footer,
   BookingPopup,
+  ConsultationPopup,
 } from "../components";
 import {
   partner1,
@@ -29,6 +30,7 @@ const HomePage: React.FC = () => {
   const navigate = useNavigate();
   const accordion = useAccordion(0);
   const { isOpen, openPopup, closePopup, handleFormSubmit } = useBookingPopup();
+  const { isOpen: isConsultationOpen, openPopup: openConsultationPopup, closePopup: closeConsultationPopup } = useConsultationPopup();
   return (
     <div className="page">
       {/* Header */}
@@ -62,7 +64,7 @@ const HomePage: React.FC = () => {
               >
                 Get started
               </button>
-              <button className="hero__link" onClick={openPopup}>
+              <button className="hero__link" onClick={openConsultationPopup}>
                 Consultation
               </button>
             </div>
@@ -708,6 +710,12 @@ const HomePage: React.FC = () => {
         isOpen={isOpen}
         onClose={closePopup}
         onSubmit={handleFormSubmit}
+      />
+
+      {/* Consultation Popup */}
+      <ConsultationPopup
+        isOpen={isConsultationOpen}
+        onClose={closeConsultationPopup}
       />
     </div>
   );
