@@ -298,7 +298,7 @@ const ItSolutionsPage: React.FC = () => {
 
         <ProjectsSection showViewAllButton={true} className="it-portfolio" />
 
-        <CompanySection
+        {/* <CompanySection
           title={itSolutionsData.faq.title}
           subtitle={itSolutionsData.faq.subtitle}
           linkText="Book free consultation"
@@ -307,7 +307,7 @@ const ItSolutionsPage: React.FC = () => {
           faqItems={itSolutionsData.faq.items}
           className="it-company"
           onLinkClick={openPopup}
-        />
+        /> */}
       </main>
 
       <Footer />

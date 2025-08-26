@@ -309,7 +309,7 @@ During the session, our experts will walk you through a tailored AI roadmap, dem
       <ProjectsSection showViewAllButton={true} className="portfolio" />
 
       {/* Company Section (FAQ) */}
-             <CompanySection
+      {/* <CompanySection
          title="Frequently Asked Questions"
          subtitle="Find quick answers to common questions about our AI solutions, implementation process, and ongoing support."
          linkText="Book free consultation"
@@ -342,7 +342,7 @@ During the session, our experts will walk you through a tailored AI roadmap, dem
               "Absolutely! We provide comprehensive ongoing support to ensure your AI solutions continue to meet your evolving business needs. Our team is always available to assist you with any questions or challenges you may encounter.",
           },
         ]}
-      />
+      /> */}
 
       {/* Footer */}
       <Footer />

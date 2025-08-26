@@ -153,7 +153,7 @@ const ConsultingPage: React.FC = () => {
         />
 
         {/* Company Section (FAQ) */}
-        <CompanySection
+        {/* <CompanySection
           title="Frequently Asked Questions"
           subtitle="Find quick answers to common questions about our AI consulting services, methodology, and support process."
           linkText="Book free consultation"
@@ -186,7 +186,7 @@ const ConsultingPage: React.FC = () => {
                 "Most of our clients see positive ROI within 3-6 months of implementation. Typical benefits include 30-50% reduction in manual processes, 20-40% improvement in decision-making speed, and 15-25% increase in operational efficiency. We help you set realistic expectations and measure progress throughout the engagement.",
             },
           ]}
-        />
+        /> */}
       </main>
 
       {/* Footer */}
