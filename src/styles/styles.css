@@ -213,10 +213,29 @@ img {
   font-size: 20px;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   text-decoration: none;
   line-height: 22px;
   height: 50px;
+  position: relative;
+  overflow: hidden;
+  transform: translateY(0);
+}
+
+/* Универсальные анимации для всех кнопок */
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.button:active {
+  transform: translateY(0);
+  transition: all 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(29, 130, 221, 0.3);
 }
 
 .header__button--primary {
@@ -501,6 +520,11 @@ img {
   pointer-events: none;
 }
 
+.button--gradient:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(103, 193, 179, 0.3);
+}
+
 .header-dark__button--gradient::before {
   border-radius: 10px;
 }
@@ -562,11 +586,22 @@ img {
   font-weight: 600;
   font-size: 20px;
   line-height: 22px;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: translateY(0);
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .hero__link:hover {
   color: #4e9fe8;
+  transform: translateY(-2px);
+  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
+}
+
+.hero__link:active {
+  transform: translateY(0);
+  transition: all 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 /* Feature Card Button Block */
@@ -687,11 +722,20 @@ img {
   font-weight: 600;
   font-size: 20px;
   line-height: 22px;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: translateY(0);
+  display: inline-block;
 }
 
 .industry-card__link:hover {
-  color: #4e9fe8;
+  transform: translateY(-2px);
+  color: #1565c0;
+  text-shadow: 0 2px 8px rgba(29, 130, 221, 0.3);
+}
+
+.industry-card__link:active {
+  transform: translateY(0);
+  transition: all 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 /* Contact Card Button Block */
