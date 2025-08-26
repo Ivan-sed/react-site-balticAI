@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useBookingPopup } from "../hooks";
+import { useBookingPopup, usePartnersRotation } from "../hooks";
 import {
   Header,
   ProjectsSection,
@@ -26,6 +26,25 @@ const HomePage: React.FC = () => {
   // Инициализация всех хуков
   const navigate = useNavigate();
   const { isOpen, openPopup, closePopup, handleFormSubmit } = useBookingPopup();
+  const { currentPartnerSet, isTransitioning } = usePartnersRotation(2, 5000);
+
+  // Наборы партнеров для ротации
+  const partnerSets = [
+    [
+      { src: partner1, alt: "Partner 1" },
+      { src: partner2, alt: "Partner 2" },
+      { src: partner3, alt: "Partner 3" },
+      { src: partner4, alt: "Partner 4" },
+      { src: partner5, alt: "Partner 5" },
+    ],
+    [
+      { src: partner5, alt: "Partner 5" },
+      { src: partner1, alt: "Partner 1" },
+      { src: partner4, alt: "Partner 4" },
+      { src: partner2, alt: "Partner 2" },
+      { src: partner3, alt: "Partner 3" },
+    ],
+  ];
   return (
     <div className="page">
       {/* Header */}
@@ -66,42 +85,16 @@ const HomePage: React.FC = () => {
           </div>
         </div>
         <div className="hero__partners">
-          <div className="hero__partners-list">
-            <div className="hero__partners-item">
-              <img
-                src={partner1}
-                alt="Partner 1"
-                className="hero__partners-logo"
-              />
-            </div>
-            <div className="hero__partners-item">
-              <img
-                src={partner2}
-                alt="Partner 2"
-                className="hero__partners-logo"
-              />
-            </div>
-            <div className="hero__partners-item">
-              <img
-                src={partner3}
-                alt="Partner 3"
-                className="hero__partners-logo"
-              />
-            </div>
-            <div className="hero__partners-item">
-              <img
-                src={partner4}
-                alt="Partner 4"
-                className="hero__partners-logo"
-              />
-            </div>
-            <div className="hero__partners-item">
-              <img
-                src={partner5}
-                alt="Partner 5"
-                className="hero__partners-logo"
-              />
-            </div>
+          <div className={`hero__partners-list ${isTransitioning ? 'transitioning' : ''}`}>
+            {partnerSets[currentPartnerSet].map((partner, index) => (
+              <div key={`${currentPartnerSet}-${index}`} className="hero__partners-item">
+                <img
+                  src={partner.src}
+                  alt={partner.alt}
+                  className="hero__partners-logo"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </section>

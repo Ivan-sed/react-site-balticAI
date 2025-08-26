@@ -18,7 +18,7 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  width: calc(100% * 5 / 3); /* 5 элементов, показываем 3 */
+  width: auto;
   transition: transform 0.3s ease;
 }
 
@@ -27,7 +27,8 @@
   flex-direction: column;
   align-items: center;
   gap: 40px;
-  width: 310px;
+  width: calc((100% - 80px) / 3); /* 3 элемента с учетом gap */
+  min-width: 310px;
   flex-shrink: 0;
   pointer-events: none; /* Предотвращаем конфликт с drag */
 }
@@ -84,7 +85,8 @@
   }
 
   .about-team__member {
-    width: 280px;
+    width: calc((100% - 60px) / 3); /* 3 элемента с gap 30px */
+    min-width: 280px;
   }
 
   .about-team__list {
@@ -98,11 +100,12 @@
   }
 
   .about-team__list {
-    width: calc(100% * 5 / 1); /* Показываем 1 элемент на мобильном */
+    width: auto; /* Автоматическая ширина на мобильном */
   }
 
   .about-team__member {
-    width: 300px;
+    width: 100%; /* 1 элемент на всю ширину на мобильном */
+    min-width: 300px;
   }
 
   .about-team__slider {

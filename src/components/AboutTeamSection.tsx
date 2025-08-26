@@ -22,7 +22,32 @@ const AboutTeamSection: React.FC<AboutTeamSectionProps> = ({
   const startX = useRef(0);
   const scrollLeft = useRef(0);
 
-  const visibleItems = 3;
+  // Определяем количество видимых элементов в зависимости от ширины экрана
+  const [visibleItems, setVisibleItems] = useState(3);
+  
+  useEffect(() => {
+    const updateVisibleItems = () => {
+      if (window.innerWidth <= 768) {
+        setVisibleItems(1);
+      } else {
+        setVisibleItems(3);
+      }
+    };
+
+    // Устанавливаем начальное значение
+    updateVisibleItems();
+
+    // Добавляем слушатель изменения размера окна
+    window.addEventListener('resize', updateVisibleItems);
+    
+    return () => window.removeEventListener('resize', updateVisibleItems);
+  }, []);
+
+  // Сбрасываем currentSlide при изменении visibleItems
+  useEffect(() => {
+    setCurrentSlide(0);
+  }, [visibleItems]);
+
   const maxSlide = Math.max(0, members.length - visibleItems);
 
   const goToPrev = () => {
@@ -74,7 +99,7 @@ const AboutTeamSection: React.FC<AboutTeamSectionProps> = ({
   }, []);
 
   return (
-    <section className="about-team">
+    <section className="about-team" id="team">
       <div className="container">
         <h2 className="about-team__title">{title}</h2>
         <div className="about-team__slider">
@@ -95,9 +120,7 @@ const AboutTeamSection: React.FC<AboutTeamSectionProps> = ({
             <ul
               className="about-team__list"
               style={{
-                transform: `translateX(-${
-                  currentSlide * (100 / visibleItems)
-                }%)`,
+                transform: `translateX(-${currentSlide * 100}%)`,
                 transition: isDragging ? "none" : "transform 0.3s ease",
               }}
             >

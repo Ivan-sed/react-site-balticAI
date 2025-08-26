@@ -14,13 +14,24 @@ import {
 const AboutUsPage: React.FC = () => {
   const { isOpen, openPopup, closePopup, handleFormSubmit } = useBookingPopup();
   
+  // Функция для перехода к секции команды
+  const scrollToTeam = () => {
+    const teamSection = document.getElementById('team');
+    if (teamSection) {
+      teamSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+  
   // Данные для интро секции
   const introData = {
     title: "About Us - Driving Innovation with AI Excellence",
     description:
       "Our diverse experts unite technology and business insight to deliver real results for clients worldwide.",
     buttonText: "Meet Our Team",
-    onButtonClick: openPopup,
+    onButtonClick: scrollToTeam,
     breadcrumbs: [
       { text: "Main page", href: "/" },
       { text: "About Us", href: "/about-us", isCurrent: true },

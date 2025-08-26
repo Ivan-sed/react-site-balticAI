@@ -935,12 +935,45 @@ img {
   align-items: center;
   justify-content: space-between;
   gap: 80px;
+  opacity: 1;
+  transition: opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.hero__partners-list.transitioning {
+  opacity: 0;
 }
 
 .hero__partners-item {
   position: relative;
   transition: all 0.3s ease;
   display: inline-block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero__partners-list.transitioning .hero__partners-item {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.hero__partners-item:nth-child(1) {
+  transition-delay: 0ms;
+}
+
+.hero__partners-item:nth-child(2) {
+  transition-delay: 50ms;
+}
+
+.hero__partners-item:nth-child(3) {
+  transition-delay: 100ms;
+}
+
+.hero__partners-item:nth-child(4) {
+  transition-delay: 150ms;
+}
+
+.hero__partners-item:nth-child(5) {
+  transition-delay: 200ms;
 }
 
 .hero__partners-item::before {
@@ -950,7 +983,6 @@ img {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(180deg, #1a6884 0%, #767676 100%);
   mix-blend-mode: overlay;
   opacity: 0.9;
   transition: opacity 0.3s ease;
@@ -1640,13 +1672,13 @@ img {
 
 .projects__grid .project-card:first-child {
   width: 470px;
-  transition: width 0.4s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  transition: width 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); */
 }
 
 .projects__grid .project-card:not(:first-child) {
   width: 210px;
-  transition: width 0.4s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  transition: width 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
@@ -1672,11 +1704,18 @@ img {
 }
 
 /* Show content when hovering directly on first card */
-.projects__grid .project-card:first-child:hover .project-card__description,
+.projects__grid .project-card:first-child:hover .project-card__description {
+  opacity: 1 !important;
+  visibility: visible !important;
+  max-height: 100px !important;
+  transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s, visibility 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s, max-height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s !important;
+}
+
 .projects__grid .project-card:first-child:hover .project-card__link {
   opacity: 1 !important;
   visibility: visible !important;
   max-height: 100px !important;
+  transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s, visibility 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s, max-height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s !important;
 }
 
 /* Apply original small card styles to first card when shrunk */
@@ -1689,13 +1728,20 @@ img {
   align-items: flex-start !important;
   justify-content: flex-end !important;
   text-align: left !important;
-  transition: all 0.3s ease;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 /* Hide description and link in first card when other cards are hovered */
 .projects__grid.other-card-hovered
   .project-card:first-child
-  .project-card__description,
+  .project-card__description {
+  opacity: 0;
+  visibility: hidden;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), visibility 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), max-height 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
 .projects__grid.other-card-hovered
   .project-card:first-child
   .project-card__link {
@@ -1703,7 +1749,7 @@ img {
   visibility: hidden;
   max-height: 0;
   overflow: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease, max-height 0.3s ease;
+  transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s, visibility 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s, max-height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
 }
 
 .projects__actions {
@@ -1965,14 +2011,22 @@ img {
 }
 
 /* Hide description and link in small cards by default */
-.projects__grid .project-card:not(:first-child) .project-card__description,
+.projects__grid .project-card:not(:first-child) .project-card__description {
+  opacity: 0;
+  visibility: hidden;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), visibility 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    max-height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
 .projects__grid .project-card:not(:first-child) .project-card__link {
   opacity: 0;
   visibility: hidden;
   max-height: 0;
   overflow: hidden;
-  transition: opacity 0.4s ease 0.2s, visibility 0.4s ease 0.2s,
-    max-height 0.4s ease 0.2s;
+  transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s, visibility 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s,
+    max-height 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
 }
 
 /* Show description and link on hover */
@@ -1982,6 +2036,8 @@ img {
   opacity: 1;
   visibility: visible;
   max-height: 100px;
+  transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s, visibility 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s,
+    max-height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s;
 }
 
 .projects__grid .project-card:not(:first-child):hover .project-card__link {
@@ -1992,7 +2048,7 @@ img {
 
 /* Ensure text group has proper spacing */
 .projects__grid .project-card:not(:first-child) .project-card__text-group {
-  transition: gap 0.3s ease 0.1s;
+  transition: gap 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.15s;
 }
 
 .projects__grid
@@ -4628,10 +4684,10 @@ img {
 
 /* Newsletter Block */
 .newsletter {
-  padding: 120px 0;
+  padding-bottom: 120px;
+  padding-top: 40px;
   background: #ffffff;
 }
-
 .newsletter__container {
   max-width: 760px;
   margin: 0 auto;
@@ -7322,7 +7378,7 @@ img {
 
 .about-team__list {
   display: flex;
-  gap: 40px;
+  gap: 27px;
   list-style: none;
   margin: 0;
   padding: 0;
