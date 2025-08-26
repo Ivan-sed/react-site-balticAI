@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useBookingPopup, usePartnersRotation, useIndustryCardsAnimation } from "../hooks";
+import { useBookingPopup, usePartnersRotation } from "../hooks";
 import {
   Header,
   ProjectsSection,
@@ -27,7 +27,6 @@ const HomePage: React.FC = () => {
   const navigate = useNavigate();
   const { isOpen, openPopup, closePopup, handleFormSubmit } = useBookingPopup();
   const { currentPartnerSet, isTransitioning } = usePartnersRotation(2, 5000);
-  const { containerRef, visibleCards } = useIndustryCardsAnimation();
 
   // Наборы партнеров для ротации
   const partnerSets = [
@@ -337,10 +336,8 @@ const HomePage: React.FC = () => {
             AI Solutions for Leading Business Industries
           </h2>
 
-          <div className="industries__grid" ref={containerRef}>
-            <article 
-              className={`industry-card industry-card--index-0 ${visibleCards >= 1 ? 'industry-card--visible' : ''}`}
-            >
+          <div className="industries__grid">
+            <article className="industry-card">
               <div className="industry-card__image">
                 <img
                   src={industryEcommerce}
@@ -379,9 +376,7 @@ const HomePage: React.FC = () => {
               </div>
             </article>
 
-            <article 
-              className={`industry-card industry-card--index-1 ${visibleCards >= 2 ? 'industry-card--visible' : ''}`}
-            >
+            <article className="industry-card">
               <div className="industry-card__image">
                 <img
                   src={industryTravel}
@@ -420,9 +415,7 @@ const HomePage: React.FC = () => {
               </div>
             </article>
 
-            <article 
-              className={`industry-card industry-card--index-2 ${visibleCards >= 3 ? 'industry-card--visible' : ''}`}
-            >
+            <article className="industry-card">
               <div className="industry-card__image">
                 <img
                   src={industryGovernment}
@@ -461,9 +454,7 @@ const HomePage: React.FC = () => {
               </div>
             </article>
 
-            <article 
-              className={`industry-card industry-card--index-3 ${visibleCards >= 4 ? 'industry-card--visible' : ''}`}
-            >
+            <article className="industry-card">
               <div className="industry-card__image">
                 <img
                   src={industryHealthcare}
@@ -502,9 +493,7 @@ const HomePage: React.FC = () => {
               </div>
             </article>
 
-            <article 
-              className={`industry-card industry-card--index-4 ${visibleCards >= 5 ? 'industry-card--visible' : ''}`}
-            >
+            <article className="industry-card">
               <div className="industry-card__image">
                 <img
                   src={industryLogistics}
@@ -543,9 +532,7 @@ const HomePage: React.FC = () => {
               </div>
             </article>
 
-            <article 
-              className={`industry-card industry-card--index-5 ${visibleCards >= 6 ? 'industry-card--visible' : ''}`}
-            >
+            <article className="industry-card">
               <div className="industry-card__image">
                 <img
                   src={industryNgo}
