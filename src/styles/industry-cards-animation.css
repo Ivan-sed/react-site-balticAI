@@ -1,0 +1,97 @@
+/* Stacked Cards Animation for Industries Sectio/* z-index для правильного наслоения - верхняя карточка (самый большой z-index), нижняя карточка (самый маленький z-index) */
+.industry-card:nth-child(1) { z-index: 6; }
+.industry-card:nth-child(2) { z-index: 5; }
+.industry-card:nth-child(3) { z-index: 4; }
+.industry-card:nth-child(4) { z-index: 3; }
+.industry-card:nth-child(5) { z-index: 2; }
+.industry-card:nth-child(6) { z-index: 1; }
+.industries {
+  position: relative;
+  overflow: visible;
+  /* Увеличиваем высоту секции для создания "виртуального" скролла */
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.industries__container {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 100px;
+}
+
+.industries__title {
+  position: relative;
+  z-index: 100;
+  margin-bottom: 70px;
+}
+
+.industries__grid {
+  position: relative;
+  height: 500px; /* Фиксированная высота для стекинга */
+  flex: 1;
+}
+
+/* Position cards in a stack - полное наложение */
+.industry-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center top;
+  will-change: transform;
+}
+
+/* z-index для правильного наслоения - верхняя карточка (больший z-index), нижняя карточка (меньший z-index) */
+.industry-card:nth-child(1) { z-index: 1; }
+.industry-card:nth-child(2) { z-index: 2; }
+.industry-card:nth-child(3) { z-index: 3; }
+.industry-card:nth-child(4) { z-index: 4; }
+.industry-card:nth-child(5) { z-index: 5; }
+.industry-card:nth-child(6) { z-index: 6; }
+
+/* Начальное состояние - все карточки кроме первой смещены вниз */
+.industry-card:nth-child(1) { transform: translateY(0%); }
+.industry-card:nth-child(2) { transform: translateY(100%); }
+.industry-card:nth-child(3) { transform: translateY(100%); }
+.industry-card:nth-child(4) { transform: translateY(100%); }
+.industry-card:nth-child(5) { transform: translateY(100%); }
+.industry-card:nth-child(6) { transform: translateY(100%); }
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .industries {
+    height: 300vh; /* Меньше высоты для мобильных */
+  }
+  
+  .industries__container {
+    padding-top: 50px;
+  }
+  
+  .industries__grid {
+    height: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .industries {
+    height: 250vh;
+  }
+  
+  .industries__container {
+    padding-top: 30px;
+  }
+  
+  .industries__grid {
+    height: 350px;
+  }
+}

@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useBookingPopup, usePartnersRotation } from "../hooks";
+import { useBookingPopup, usePartnersRotation, useStackedCardsAnimation } from "../hooks";
 import {
   Header,
   ProjectsSection,
@@ -27,6 +27,7 @@ const HomePage: React.FC = () => {
   const navigate = useNavigate();
   const { isOpen, openPopup, closePopup, handleFormSubmit } = useBookingPopup();
   const { currentPartnerSet, isTransitioning } = usePartnersRotation(2, 5000);
+  const stackedCardsRef = useStackedCardsAnimation();
 
   // Наборы партнеров для ротации
   const partnerSets = [
@@ -330,7 +331,7 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Industries Section */}
-      <section className="industries">
+      <section className="industries" ref={stackedCardsRef}>
         <div className="industries__container">
           <h2 className="industries__title">
             AI Solutions for Leading Business Industries

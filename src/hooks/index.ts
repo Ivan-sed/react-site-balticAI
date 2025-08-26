@@ -5,3 +5,4 @@ export { useDropdown } from "./useDropdown";
 export { useProjectCardsHover } from "./useProjectCardsHover";
 export { useBookingPopup } from "./useBookingPopup";
 export { usePartnersRotation } from "./usePartnersRotation";
+export { useStackedCardsAnimation } from "./useStackedCardsAnimation";

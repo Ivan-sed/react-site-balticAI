@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import "./styles/styles.css";
 import "./styles/team-slider.css";
+import "./styles/industry-cards-animation.css";
 import {
   HomePage,
   AiSolutionsPage,
