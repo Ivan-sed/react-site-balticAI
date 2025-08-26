@@ -21,7 +21,7 @@ const AiSolutionsPage: React.FC = () => {
   
   const breadcrumbs = [
     { text: "Main page", href: "/" },
-    { text: "Services", isCurrent: true },
+    { text: "Services", href: "/services" },
     { text: "AI Automation Solutions", isCurrent: true },
   ];
 

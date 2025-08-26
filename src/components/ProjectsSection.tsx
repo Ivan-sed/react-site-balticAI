@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useProjectCardsHover } from "../hooks";
 
 interface ProjectsSectionProps {
@@ -12,6 +13,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
   maxProjects,
   className = "",
 }) => {
+  const navigate = useNavigate();
   const projectHover = useProjectCardsHover();
 
   const projects = [
@@ -97,7 +99,13 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
 
         {showViewAllButton && (
           <div className="projects__actions">
-            <button className="button projects__button button--primary projects__button--primary">
+            <button 
+              className="button projects__button button--primary projects__button--primary"
+              onClick={() => {
+                navigate("/cases");
+                setTimeout(() => window.scrollTo(0, 0), 100);
+              }}
+            >
               View all
             </button>
           </div>

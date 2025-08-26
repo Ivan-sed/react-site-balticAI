@@ -34,7 +34,7 @@ const IntroSection: React.FC<IntroSectionProps> = ({
                         : ""
                     }`}
                   >
-                    {breadcrumb.href ? (
+                    {breadcrumb.href && !breadcrumb.isCurrent ? (
                       <Link
                         to={breadcrumb.href}
                         className="intro__breadcrumbs-link"

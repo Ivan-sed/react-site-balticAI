@@ -24,7 +24,7 @@ const ItSolutionsPage: React.FC = () => {
         "Repetitive IT tasks and outdated systems waste your team's valuable hours—holding back innovation and growth. Our proven IT solutions help you automate routine operations, secure your data, and support every department as you scale",
       breadcrumbs: [
         { text: "Main page", href: "/" },
-        { text: "Services", href: "#services" },
+        { text: "Services", href: "/services" },
         { text: "AI Automation Solutions", isCurrent: true },
       ],
       stats: [

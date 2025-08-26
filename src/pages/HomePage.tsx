@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useAccordion, useBookingPopup } from "../hooks";
+import { useBookingPopup } from "../hooks";
 import {
   Header,
   ProjectsSection,
@@ -20,14 +20,11 @@ import {
   industryHealthcare,
   industryLogistics,
   industryNgo,
-  navArrow,
-  newsletterIcon,
 } from "../assets";
 
 const HomePage: React.FC = () => {
   // Инициализация всех хуков
   const navigate = useNavigate();
-  const accordion = useAccordion(0);
   const { isOpen, openPopup, closePopup, handleFormSubmit } = useBookingPopup();
   return (
     <div className="page">
@@ -587,7 +584,7 @@ const HomePage: React.FC = () => {
       {/* Testimonials Section */}
       <TestimonialsSection />
 
-      {/* About Section */}
+      {/* About Section - COMMENTED OUT 
       <section className="about" id="about">
         <div className="about__container">
           <div className="about__visual">
@@ -663,18 +660,12 @@ const HomePage: React.FC = () => {
           </div>
         </div>
       </section>
+      */}
 
       {/* Newsletter Section */}
       <section className="newsletter" id="newsletter">
         <div className="newsletter__container">
           <div className="newsletter__content">
-            <div className="newsletter__icon">
-              <img
-                src={newsletterIcon}
-                alt="Newsletter"
-                className="newsletter__icon-img"
-              />
-            </div>
             <div className="newsletter__text">
               <h2 className="newsletter__title">Leave us your email</h2>
               <p className="newsletter__description">

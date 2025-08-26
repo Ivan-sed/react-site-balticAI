@@ -20,8 +20,8 @@ const ConsultingPage: React.FC = () => {
       description:
         "Unlock strategic growth and operational excellence with expert AI consulting tailored to your unique business needs. Our consultants help you navigate the complexities of artificial intelligence, from strategy and data readiness to implementation and optimization, so you achieve measurable impact faster.",
       breadcrumbs: [
-        { text: "Home", href: "/" },
-        { text: "Services", href: "#services" },
+        { text: "Main page", href: "/" },
+        { text: "Services", href: "/services" },
         { text: "Consulting", isCurrent: true },
       ],
       stats: [
