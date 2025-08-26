@@ -2152,9 +2152,10 @@ img {
   display: flex;
   flex-direction: column;
   gap: 30px;
+  position: relative;
+  padding-bottom: 200px;
 }
 
-/* Industry Card Block */
 .industry-card {
   background: #ffffff;
   border-radius: 15px;
@@ -2162,6 +2163,74 @@ img {
   align-items: center;
   gap: 60px;
   justify-content: space-between;
+  position: relative;
+  opacity: 0;
+  transform: translateY(100px);
+  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 1;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  margin-bottom: 30px;
+}
+
+.industry-card--index-0 {
+  z-index: 6;
+  position: relative;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.industry-card--index-1 {
+  z-index: 5;
+  position: relative;
+}
+
+.industry-card--index-2 {
+  z-index: 4;
+  position: relative;
+}
+
+.industry-card--index-3 {
+  z-index: 3;
+  position: relative;
+}
+
+.industry-card--index-4 {
+  z-index: 2;
+  position: relative;
+}
+
+.industry-card--index-5 {
+  z-index: 1;
+  position: relative;
+}
+
+.industry-card--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.industry-card--index-0 {
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.industry-card--index-1.industry-card--visible {
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.industry-card--index-2.industry-card--visible {
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.industry-card--index-3.industry-card--visible {
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.industry-card--index-4.industry-card--visible {
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.industry-card--index-5.industry-card--visible {
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 }
 
 /* .industry-card__image {
