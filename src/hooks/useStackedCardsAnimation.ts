@@ -62,7 +62,7 @@ export const useStackedCardsAnimation = () => {
 
         // Для каждой карточки рассчитываем момент когда она должна начать подниматься
         const cardDelay = (index - 1) * 0.12; // Меньшая задержка для более быстрой последовательности
-        const cardDuration = 0.15; // Короткая продолжительность для резкой анимации
+        const cardDuration = 0.20; // Короткая продолжительность для резкой анимации
         
         const cardProgress = Math.max(0, Math.min(1, 
           (scrollProgress - cardDelay) / cardDuration
@@ -73,7 +73,7 @@ export const useStackedCardsAnimation = () => {
           const easedProgress = cardProgress * cardProgress * (3 - 2 * cardProgress); // Smoothstep для плавного без прыжков движения
           
           // Карточка поднимается и останавливается с расстоянием 30px между карточками
-          const offsetBetweenCards = 30; // Расстояние 30px между карточками
+          const offsetBetweenCards = 0; // Расстояние 30px между карточками
           const finalPosition = (index - 1) * offsetBetweenCards; // Позиция каждой карточки
 
           
