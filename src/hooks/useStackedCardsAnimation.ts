@@ -72,17 +72,18 @@ export const useStackedCardsAnimation = () => {
           // Применяем простой easing без bounce эффекта
           const easedProgress = cardProgress * cardProgress * (3 - 2 * cardProgress); // Smoothstep для плавного без прыжков движения
           
-          // Карточка поднимается и останавливается с большим отступом между карточками в развернутом виде
-          const offsetBetweenCards = 0; // Большое расстояние между карточками в развернутом состоянии
+          // Карточка поднимается и останавливается с расстоянием 30px между карточками
+          const offsetBetweenCards = 30; // Расстояние 30px между карточками
           const finalPosition = (index - 1) * offsetBetweenCards; // Позиция каждой карточки
+
           
-          // Начинаем с 100% (полностью внизу) и двигаемся к finalPosition
-          const startPosition = 100; // В процентах от высоты viewport
-          const endPositionPercent = (finalPosition / window.innerHeight) * 100;
+          // Начинаем с 100% (полностью внизу) и двигаемся к finalPosition в пикселях
+          const startPositionPx = window.innerHeight; // Начальная позиция в пикселях
+          const endPositionPx = finalPosition; // Конечная позиция в пикселях
           
-          const translateY = startPosition - (easedProgress * (startPosition - endPositionPercent));
+          const translateYPx = startPositionPx - (easedProgress * (startPositionPx - endPositionPx));
           
-          cardElement.style.transform = `translateY(${translateY}%)`;
+          cardElement.style.transform = `translateY(${translateYPx}px)`;
           
           // Убираем тени
           cardElement.style.boxShadow = 'none';
@@ -92,7 +93,7 @@ export const useStackedCardsAnimation = () => {
           
         } else {
           // Карточка в начальном состоянии - полностью внизу
-          cardElement.style.transform = 'translateY(100%)';
+          cardElement.style.transform = `translateY(${window.innerHeight}px)`;
           cardElement.style.boxShadow = 'none';
           cardElement.style.opacity = '1';
         }

@@ -1,14 +1,8 @@
-/* Stacked Cards Animation for Industries Sectio/* z-index для правильного наслоения - верхняя карточка (самый большой z-index), нижняя карточка (самый маленький z-index) */
-.industry-card:nth-child(1) { z-index: 6; }
-.industry-card:nth-child(2) { z-index: 5; }
-.industry-card:nth-child(3) { z-index: 4; }
-.industry-card:nth-child(4) { z-index: 3; }
-.industry-card:nth-child(5) { z-index: 2; }
-.industry-card:nth-child(6) { z-index: 1; }
+/* Stacked Cards Animation for Industries Section */
+
 .industries {
   position: relative;
   overflow: visible;
-  /* Увеличиваем высоту секции для создания "виртуального" скролла */
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -35,44 +29,162 @@
 
 .industries__grid {
   position: relative;
-  height: 500px; /* Фиксированная высота для стекинга */
+  height: 600px;
   flex: 1;
 }
 
-/* Position cards in a stack - полное наложение */
+/* Базовые стили карточек */
 .industry-card {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   width: 100%;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  height: auto;
+  min-height: 200px;
+  transition: top 0.1s ease-out;
   transform-origin: center top;
-  will-change: transform;
+  will-change: top;
 }
 
-/* z-index для правильного наслоения - верхняя карточка (больший z-index), нижняя карточка (меньший z-index) */
-.industry-card:nth-child(1) { z-index: 1; }
-.industry-card:nth-child(2) { z-index: 2; }
-.industry-card:nth-child(3) { z-index: 3; }
-.industry-card:nth-child(4) { z-index: 4; }
-.industry-card:nth-child(5) { z-index: 5; }
-.industry-card:nth-child(6) { z-index: 6; }
+/* Z-index для правильного наслоения (верхние карточки имеют больший z-index) */
+.industry-card:nth-child(1) { z-index: 6; }
+.industry-card:nth-child(2) { z-index: 5; }
+.industry-card:nth-child(3) { z-index: 4; }
+.industry-card:nth-child(4) { z-index: 3; }
+.industry-card:nth-child(5) { z-index: 2; }
+.industry-card:nth-child(6) { z-index: 1; }
 
-/* Начальное состояние - все карточки кроме первой смещены вниз */
-.industry-card:nth-child(1) { transform: translateY(0%); }
-.industry-card:nth-child(2) { transform: translateY(100%); }
-.industry-card:nth-child(3) { transform: translateY(100%); }
-.industry-card:nth-child(4) { transform: translateY(100%); }
-.industry-card:nth-child(5) { transform: translateY(100%); }
-.industry-card:nth-child(6) { transform: translateY(100%); }
+/* Начальное состояние - равномерное распределение карточек с расстоянием 30px */
+.industry-card:nth-child(1) { top: 0px; }
+.industry-card:nth-child(2) { top: 0px; }
+.industry-card:nth-child(3) { top: 0px; }
+.industry-card:nth-child(4) { top: 0px; }
+.industry-card:nth-child(5) { top: 0px; }
+.industry-card:nth-child(6) { top: 0px; }
 
-/* Mobile responsive adjustments */
+/* Состояние когда карточки собираются в стек */
+.industry-card.stacked {
+  top: 0px !important;
+  transition: top 0.3s ease-out;
+}
+
+/* Этапы анимации - движется активная карточка, остальные следуют */
+
+/* Этапы 1-3: 2-я карточка движется к 1-й */
+
+
+.industry-card.step-2:nth-child(1) { top: 0px; }
+.industry-card.step-2:nth-child(2) { top: 45px; }
+.industry-card.step-2:nth-child(3) { top: 105px; }
+.industry-card.step-2:nth-child(4) { top: 165px; }
+.industry-card.step-2:nth-child(5) { top: 225px; }
+.industry-card.step-2:nth-child(6) { top: 285px; }
+
+.industry-card.step-3:nth-child(1) { top: 0px; }
+.industry-card.step-3:nth-child(2) { top: 30px; }
+.industry-card.step-3:nth-child(3) { top: 90px; }
+.industry-card.step-3:nth-child(4) { top: 150px; }
+.industry-card.step-3:nth-child(5) { top: 210px; }
+.industry-card.step-3:nth-child(6) { top: 270px; }
+
+/* Этапы 4-6: 2-я накрыла 1-ю, 3-я движется */
+.industry-card.step-4:nth-child(1) { top: 0px; }
+.industry-card.step-4:nth-child(2) { top: 0px; }
+.industry-card.step-4:nth-child(3) { top: 60px; }
+.industry-card.step-4:nth-child(4) { top: 120px; }
+.industry-card.step-4:nth-child(5) { top: 180px; }
+.industry-card.step-4:nth-child(6) { top: 240px; }
+
+.industry-card.step-5:nth-child(1) { top: 0px; }
+.industry-card.step-5:nth-child(2) { top: 0px; }
+.industry-card.step-5:nth-child(3) { top: 45px; }
+.industry-card.step-5:nth-child(4) { top: 105px; }
+.industry-card.step-5:nth-child(5) { top: 165px; }
+.industry-card.step-5:nth-child(6) { top: 225px; }
+
+.industry-card.step-6:nth-child(1) { top: 0px; }
+.industry-card.step-6:nth-child(2) { top: 0px; }
+.industry-card.step-6:nth-child(3) { top: 30px; }
+.industry-card.step-6:nth-child(4) { top: 90px; }
+.industry-card.step-6:nth-child(5) { top: 150px; }
+.industry-card.step-6:nth-child(6) { top: 210px; }
+
+/* Этапы 7-9: 3-я накрыла стек, 4-я движется */
+.industry-card.step-7:nth-child(1) { top: 0px; }
+.industry-card.step-7:nth-child(2) { top: 0px; }
+.industry-card.step-7:nth-child(3) { top: 0px; }
+.industry-card.step-7:nth-child(4) { top: 60px; }
+.industry-card.step-7:nth-child(5) { top: 120px; }
+.industry-card.step-7:nth-child(6) { top: 180px; }
+
+.industry-card.step-8:nth-child(1) { top: 0px; }
+.industry-card.step-8:nth-child(2) { top: 0px; }
+.industry-card.step-8:nth-child(3) { top: 0px; }
+.industry-card.step-8:nth-child(4) { top: 45px; }
+.industry-card.step-8:nth-child(5) { top: 105px; }
+.industry-card.step-8:nth-child(6) { top: 165px; }
+
+.industry-card.step-9:nth-child(1) { top: 0px; }
+.industry-card.step-9:nth-child(2) { top: 0px; }
+.industry-card.step-9:nth-child(3) { top: 0px; }
+.industry-card.step-9:nth-child(4) { top: 30px; }
+.industry-card.step-9:nth-child(5) { top: 90px; }
+.industry-card.step-9:nth-child(6) { top: 150px; }
+
+/* Этапы 10-12: 4-я накрыла стек, 5-я движется */
+.industry-card.step-10:nth-child(1) { top: 0px; }
+.industry-card.step-10:nth-child(2) { top: 0px; }
+.industry-card.step-10:nth-child(3) { top: 0px; }
+.industry-card.step-10:nth-child(4) { top: 0px; }
+.industry-card.step-10:nth-child(5) { top: 60px; }
+.industry-card.step-10:nth-child(6) { top: 120px; }
+
+.industry-card.step-11:nth-child(1) { top: 0px; }
+.industry-card.step-11:nth-child(2) { top: 0px; }
+.industry-card.step-11:nth-child(3) { top: 0px; }
+.industry-card.step-11:nth-child(4) { top: 0px; }
+.industry-card.step-11:nth-child(5) { top: 45px; }
+.industry-card.step-11:nth-child(6) { top: 105px; }
+
+.industry-card.step-12:nth-child(1) { top: 0px; }
+.industry-card.step-12:nth-child(2) { top: 0px; }
+.industry-card.step-12:nth-child(3) { top: 0px; }
+.industry-card.step-12:nth-child(4) { top: 0px; }
+.industry-card.step-12:nth-child(5) { top: 30px; }
+.industry-card.step-12:nth-child(6) { top: 90px; }
+
+/* Этап 13: 5-я накрыла стек, 6-я движется */
+.industry-card.step-13:nth-child(1) { top: 0px; }
+.industry-card.step-13:nth-child(2) { top: 0px; }
+.industry-card.step-13:nth-child(3) { top: 0px; }
+.industry-card.step-13:nth-child(4) { top: 0px; }
+.industry-card.step-13:nth-child(5) { top: 0px; }
+.industry-card.step-13:nth-child(6) { top: 60px; }
+
+/* Этап 14: Все карточки накрылись */
+.industry-card.step-14:nth-child(1) { top: 0px; }
+.industry-card.step-14:nth-child(2) { top: 0px; }
+.industry-card.step-14:nth-child(3) { top: 0px; }
+.industry-card.step-14:nth-child(4) { top: 0px; }
+.industry-card.step-14:nth-child(5) { top: 0px; }
+.industry-card.step-14:nth-child(6) { top: 0px; }
+
+/* Этап 14: Все карточки собраны */
+.industry-card.step-14:nth-child(1) { top: 0px; }
+.industry-card.step-14:nth-child(2) { top: 0px; }
+.industry-card.step-14:nth-child(3) { top: 0px; }
+.industry-card.step-14:nth-child(4) { top: 0px; }
+.industry-card.step-14:nth-child(5) { top: 0px; }
+.industry-card.step-14:nth-child(6) { top: 0px; }
+
+/* Финальное состояние */
+.industry-card.step-final {
+  top: 0px !important;
+}
+
+/* Адаптивные стили для мобильных устройств */
 @media (max-width: 768px) {
-  .industries {
-    height: 300vh; /* Меньше высоты для мобильных */
-  }
-  
   .industries__container {
     padding-top: 50px;
   }
@@ -80,18 +192,30 @@
   .industries__grid {
     height: 400px;
   }
+  
+  /* Начальные позиции для планшетов */
+  .industry-card:nth-child(1) { top: 0px; }
+  .industry-card:nth-child(2) { top: 40px; }
+  .industry-card:nth-child(3) { top: 80px; }
+  .industry-card:nth-child(4) { top: 120px; }
+  .industry-card:nth-child(5) { top: 160px; }
+  .industry-card:nth-child(6) { top: 200px; }
 }
 
 @media (max-width: 480px) {
-  .industries {
-    height: 250vh;
-  }
-  
   .industries__container {
     padding-top: 30px;
   }
   
   .industries__grid {
-    height: 350px;
+    height: 300px;
   }
+  
+  /* Начальные позиции для мобильных */
+  .industry-card:nth-child(1) { top: 0px; }
+  .industry-card:nth-child(2) { top: 30px; }
+  .industry-card:nth-child(3) { top: 60px; }
+  .industry-card:nth-child(4) { top: 90px; }
+  .industry-card:nth-child(5) { top: 120px; }
+  .industry-card:nth-child(6) { top: 150px; }
 }
