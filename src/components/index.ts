@@ -25,5 +25,8 @@ export { default as SolutionsSection } from "./SolutionsSection";
 export { default as CasesSection } from "./CasesSection";
 export { default as CaseDetailsSection } from "./CaseDetailsSection";
 export { default as ContactsSection } from "./ContactsSection";
+export { default as PrivacyPolicySection } from "./PrivacyPolicySection";
+export { default as TermsOfUseSection } from "./TermsOfUseSection";
+export { default as CookiePolicySection } from "./CookiePolicySection";
 export { default as BookingPopup } from "./BookingPopup";
 export { default as ConsultationPopup } from "./ConsultationPopup";

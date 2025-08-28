@@ -71,14 +71,17 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
           className={`projects__grid ${
             projectHover.isOtherCardHovered ? "other-card-hovered" : ""
           }`}
+          onMouseLeave={projectHover.handleCardLeave}
         >
-          {displayedProjects.map((project) => (
+          {displayedProjects.map((project, index) => (
             <article
               key={project.id}
               className={`project-card ${project.className}`}
               {...(project.hasHover && {
                 onMouseEnter: projectHover.handleCardEnter,
-                onMouseLeave: projectHover.handleCardLeave,
+              })}
+              {...(index === 0 && {
+                onMouseEnter: projectHover.handleFirstCardEnter,
               })}
             >
               <div className="project-card__content">

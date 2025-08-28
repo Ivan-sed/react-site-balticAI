@@ -12,6 +12,9 @@ import {
   ServicesPage,
   CasesPage,
   ContactsPage,
+  PrivacyPolicyPage,
+  TermsOfUsePage,
+  CookiePolicyPage,
   CasePage,
 } from "./pages";
 
@@ -29,6 +32,9 @@ function App() {
           <Route path="/cases" element={<CasesPage />} />
           <Route path="/cases/:id" element={<CasePage />} />
           <Route path="/contacts" element={<ContactsPage />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="/terms-of-use" element={<TermsOfUsePage />} />
+          <Route path="/cookie-policy" element={<CookiePolicyPage />} />
         </Routes>
       </Router>
     </div>

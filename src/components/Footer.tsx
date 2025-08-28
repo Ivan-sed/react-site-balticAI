@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { footerLogo } from "../assets";
 
 interface FooterProps {
@@ -70,15 +71,15 @@ const Footer: React.FC<FooterProps> = ({ className = "" }) => {
         </div>
 
         <div className="footer__legal">
-          <a href="#" className="footer__legal-link">
+          <Link to="/privacy-policy" className="footer__legal-link">
             Privacy Policy
-          </a>
-          <a href="#" className="footer__legal-link">
+          </Link>
+          <Link to="/terms-of-use" className="footer__legal-link">
             Terms of Use
-          </a>
-          <a href="#" className="footer__legal-link">
-            Cookie Privacy
-          </a>
+          </Link>
+          <Link to="/cookie-policy" className="footer__legal-link">
+            Cookie Policy
+          </Link>
         </div>
       </div>
     </footer>

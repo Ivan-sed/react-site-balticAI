@@ -11,9 +11,14 @@ export const useProjectCardsHover = () => {
     setIsOtherCardHovered(false);
   };
 
+  const handleFirstCardEnter = () => {
+    setIsOtherCardHovered(false);
+  };
+
   return {
     isOtherCardHovered,
     handleCardEnter,
     handleCardLeave,
+    handleFirstCardEnter,
   };
 };

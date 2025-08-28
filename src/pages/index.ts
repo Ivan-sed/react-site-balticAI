@@ -6,4 +6,7 @@ export { default as AboutUsPage } from "./AboutUsPage";
 export { default as ServicesPage } from "./ServicesPage";
 export { default as CasesPage } from "./CasesPage";
 export { default as ContactsPage } from "./ContactsPage";
+export { default as PrivacyPolicyPage } from "./PrivacyPolicyPage";
+export { default as TermsOfUsePage } from "./TermsOfUsePage";
+export { default as CookiePolicyPage } from "./CookiePolicyPage";
 export { CasePage } from "./cases";
