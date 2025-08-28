@@ -2180,7 +2180,7 @@ img {
   width: 590px;
   height: 410px;
   object-fit: cover;
-  border-radius: 15px;
+  border-radius: 15px 0px 0px 15px !important;
 }
 
 .industry-card__title {

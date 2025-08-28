@@ -29,19 +29,19 @@ export const useStackedCardsAnimation = () => {
         e.preventDefault();
         
         // Увеличиваем виртуальный прогресс вместо реальной прокрутки
-        const scrollAmount = e.deltaY * 0.001; // Масштабируем скорость
-        virtualScrollProgress = Math.max(0, Math.min(1, virtualScrollProgress + scrollAmount));
+        const scrollAmount = e.deltaY * 0.00025; // Уменьшили в 4 раза для более длинной прокрутки
         
         // Проверяем, завершена ли анимация
         const lastCardIndex = cards.length - 1;
-        const lastCardDelay = (lastCardIndex - 1) * 0.10;
-        const lastCardDuration = 0.20;
-        const lastCardProgress = Math.max(0, Math.min(1, 
-          (virtualScrollProgress - lastCardDelay) / lastCardDuration
-        ));
+        const lastCardDelay = (lastCardIndex - 1) * 0.20; // Увеличили интервал между карточками
+        const lastCardDuration = 0.30; // Увеличили длительность анимации каждой карточки
+        // Добавляем буферное время для полного завершения последней карточки
+        const totalAnimationTime = lastCardDelay + lastCardDuration + 0.25; // Увеличили буферное время
         
-        // Если анимация завершена, разрешаем дальнейшую прокрутку
-        if (lastCardProgress >= 1) {
+        virtualScrollProgress = Math.max(0, Math.min(totalAnimationTime, virtualScrollProgress + scrollAmount));
+        
+        // Если анимация завершена (учитываем общее время), разрешаем дальнейшую прокрутку
+        if (virtualScrollProgress >= totalAnimationTime) {
           shouldPreventScroll = false;
           // Прокручиваем страницу дальше
           window.scrollBy(0, e.deltaY);
@@ -56,8 +56,15 @@ export const useStackedCardsAnimation = () => {
         // Если прокручиваем вверх во время анимации, уменьшаем виртуальный прогресс
         e.preventDefault();
         
-        const scrollAmount = e.deltaY * 0.001; // e.deltaY отрицательный при прокрутке вверх
-        virtualScrollProgress = Math.max(0, Math.min(1, virtualScrollProgress + scrollAmount));
+        const scrollAmount = e.deltaY * 0.00025; // Тот же коэффициент для согласованности
+        
+        // Вычисляем максимальное время анимации
+        const lastCardIndex = cards.length - 1;
+        const lastCardDelay = (lastCardIndex - 1) * 0.20;
+        const lastCardDuration = 0.30;
+        const totalAnimationTime = lastCardDelay + lastCardDuration + 0.25;
+        
+        virtualScrollProgress = Math.max(0, Math.min(totalAnimationTime, virtualScrollProgress + scrollAmount));
         
         // Если достигли начала анимации, снимаем блокировку
         if (virtualScrollProgress <= 0) {
@@ -99,7 +106,12 @@ export const useStackedCardsAnimation = () => {
         shouldPreventScroll = false;
       } else if (sectionPassed && isInAnimationZone) {
         // Секция прошла вниз - анимация завершена
-        virtualScrollProgress = 1;
+        // Устанавливаем прогресс на максимальное значение для завершения всех анимаций
+        const lastCardIndex = cards.length - 1;
+        const lastCardDelay = (lastCardIndex - 1) * 0.20;
+        const lastCardDuration = 0.30;
+        const totalAnimationTime = lastCardDelay + lastCardDuration + 0.25;
+        virtualScrollProgress = totalAnimationTime;
         isInAnimationZone = false;
         shouldPreventScroll = false;
       }
@@ -115,9 +127,9 @@ export const useStackedCardsAnimation = () => {
         // Проверяем, есть ли карточки ниже текущей, которые начали подниматься
         let hasMovingCardsBelow = false;
         for (let i = index + 1; i < cards.length; i++) {
-          const checkDelay = (i - 1) * 0.10;
+          const checkDelay = (i - 1) * 0.20; // Увеличили интервал между карточками
           const checkProgress = Math.max(0, Math.min(1, 
-            (virtualScrollProgress - checkDelay) / 0.15
+            (virtualScrollProgress - checkDelay) / 0.25 // Увеличили длительность проверки
           ));
           if (checkProgress > 0) {
             hasMovingCardsBelow = true;
@@ -141,8 +153,8 @@ export const useStackedCardsAnimation = () => {
         }
 
         // Для каждой карточки рассчитываем момент когда она должна начать подниматься
-        const cardDelay = (index - 1) * 0.10;
-        const cardDuration = 0.20;
+        const cardDelay = (index - 1) * 0.20; // Увеличили интервал между карточками
+        const cardDuration = 0.30; // Увеличили длительность анимации каждой карточки
         
         const cardProgress = Math.max(0, Math.min(1, 
           (virtualScrollProgress - cardDelay) / cardDuration
@@ -154,7 +166,12 @@ export const useStackedCardsAnimation = () => {
           
           // Карточка поднимается и останавливается
           const offsetBetweenCards = 0;
-          const finalPosition = (index - 1) * offsetBetweenCards;
+          let finalPosition = (index - 1) * offsetBetweenCards;
+          
+          // Для карточки с классом industry-card__last устанавливаем финальную позицию 0
+          if (cardElement.classList.contains('industry-card__last')) {
+            finalPosition = 0;
+          }
           
           const startPositionPx = window.innerHeight;
           const endPositionPx = finalPosition;
