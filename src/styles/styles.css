@@ -5015,18 +5015,22 @@ img {
   flex-shrink: 0;
   gap: 15px;
   position: relative;
+  width: 100%;
 }
 
 .process__step:nth-child(1) .process__step-header {
-  width: 266px;
+  width: 100%;
+  gap: 15px;
 }
 
 .process__step:nth-child(3) .process__step-header {
-  width: 276px;
+  width: 100%;
+  gap: 15px;
 }
 
 .process__step:nth-child(5) .process__step-header {
-  width: 291px;
+  width: 100%;
+  gap: 15px;
 }
 
 .process__step-number {
@@ -6478,21 +6482,25 @@ img {
   flex-shrink: 0;
   gap: 15px;
   position: relative;
+  width: 100%;
 }
 
 .consulting-methodology__step:nth-child(1)
   .consulting-methodology__step-header {
-  width: 266px;
+  width: 100%;
+  gap: 15px;
 }
 
 .consulting-methodology__step:nth-child(3)
   .consulting-methodology__step-header {
-  width: 276px;
+  width: 100%;
+  gap: 15px;
 }
 
 .consulting-methodology__step:nth-child(5)
   .consulting-methodology__step-header {
-  width: 291px;
+  width: 100%;
+  gap: 15px;
 }
 
 .consulting-methodology__step-number {
@@ -7475,12 +7483,25 @@ img {
   justify-content: center;
 }
 
+.about-team__list-wrapper {
+  width: 100%;
+  max-width: calc(3 * 310px + 2 * 27px); /* Ширина для точно 3 карточек */
+  overflow: hidden;
+}
+
 .about-team__list {
   display: flex;
   gap: 27px;
   list-style: none;
   margin: 0;
   padding: 0;
+  justify-content: center;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.about-team__list--animating {
+  opacity: 0.7;
+  transform: scale(0.98);
 }
 
 .about-team__member {
@@ -7489,6 +7510,18 @@ img {
   align-items: center;
   gap: 40px;
   width: 310px;
+  animation: slideInUp 0.3s ease forwards;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .about-team__avatar {
@@ -7544,6 +7577,31 @@ img {
 
 .about-team__arrow--next::before {
   background-image: url(../assets/images/team-arrow-next.svg);
+}
+
+.about-team__indicators {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.about-team__indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background: #E0E0E0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.about-team__indicator--active {
+  background: #2460D9;
+}
+
+.about-team__indicator:hover {
+  background: #2460D9;
 }
 
 /* About Achievements Section */
@@ -8558,5 +8616,20 @@ textarea {
   .terms-of-use__section h3,
   .cookie-policy__section h3 {
     font-size: 16px;
+  }
+}
+
+/* About Team Responsive Styles */
+@media (max-width: 768px) {
+  .about-team__list-wrapper {
+    width: 310px; /* Ширина для 1 карточки на мобильных */
+  }
+  
+  .about-team__slider {
+    gap: 20px;
+  }
+  
+  .about-team__member {
+    width: 310px;
   }
 }

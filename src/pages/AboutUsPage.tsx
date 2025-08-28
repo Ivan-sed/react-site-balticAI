@@ -95,6 +95,12 @@ const AboutUsPage: React.FC = () => {
       role: "Product Manager",
       avatar: "",
     },
+    {
+      id: "6",
+      name: "Emily Thompson",
+      role: "UX/UI Designer",
+      avatar: "",
+    },
   ];
 
   // Данные для достижений

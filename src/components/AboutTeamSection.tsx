@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 
 interface TeamMember {
   id: string;
@@ -17,86 +17,57 @@ const AboutTeamSection: React.FC<AboutTeamSectionProps> = ({
   members,
 }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
-  const sliderRef = useRef<HTMLDivElement>(null);
-  const startX = useRef(0);
-  const scrollLeft = useRef(0);
-
-  // Определяем количество видимых элементов в зависимости от ширины экрана
-  const [visibleItems, setVisibleItems] = useState(3);
+  const [isAnimating, setIsAnimating] = useState(false);
+  
+  // Количество карточек на один слайд (адаптивно)
+  const [cardsPerSlide, setCardsPerSlide] = useState(3);
   
   useEffect(() => {
-    const updateVisibleItems = () => {
+    const updateCardsPerSlide = () => {
       if (window.innerWidth <= 768) {
-        setVisibleItems(1);
+        setCardsPerSlide(1);
+      } else if (window.innerWidth <= 1024) {
+        setCardsPerSlide(2);
       } else {
-        setVisibleItems(3);
+        setCardsPerSlide(3);
       }
     };
 
-    // Устанавливаем начальное значение
-    updateVisibleItems();
-
-    // Добавляем слушатель изменения размера окна
-    window.addEventListener('resize', updateVisibleItems);
-    
-    return () => window.removeEventListener('resize', updateVisibleItems);
+    updateCardsPerSlide();
+    window.addEventListener('resize', updateCardsPerSlide);
+    return () => window.removeEventListener('resize', updateCardsPerSlide);
   }, []);
 
-  // Сбрасываем currentSlide при изменении visibleItems
-  useEffect(() => {
-    setCurrentSlide(0);
-  }, [visibleItems]);
+  // Общее количество слайдов
+  const totalSlides = Math.ceil(members.length / cardsPerSlide);
 
-  const maxSlide = Math.max(0, members.length - visibleItems);
+  // Получаем карточки для текущего слайда
+  const getCurrentSlideMembers = () => {
+    const startIndex = currentSlide * cardsPerSlide;
+    const endIndex = startIndex + cardsPerSlide;
+    return members.slice(startIndex, endIndex);
+  };
 
   const goToPrev = () => {
-    setCurrentSlide((prev) => (prev > 0 ? prev - 1 : maxSlide));
+    if (isAnimating) return;
+    setIsAnimating(true);
+    setCurrentSlide((prev) => (prev > 0 ? prev - 1 : totalSlides - 1));
+    setTimeout(() => setIsAnimating(false), 300);
   };
 
   const goToNext = () => {
-    setCurrentSlide((prev) => (prev < maxSlide ? prev + 1 : 0));
+    if (isAnimating) return;
+    setIsAnimating(true);
+    setCurrentSlide((prev) => (prev < totalSlides - 1 ? prev + 1 : 0));
+    setTimeout(() => setIsAnimating(false), 300);
   };
 
   const goToSlide = (index: number) => {
+    if (isAnimating || index === currentSlide) return;
+    setIsAnimating(true);
     setCurrentSlide(index);
+    setTimeout(() => setIsAnimating(false), 300);
   };
-
-  // Touch/Mouse events for drag support
-  const handleMouseDown = (e: React.MouseEvent) => {
-    setIsDragging(true);
-    startX.current = e.pageX - (sliderRef.current?.offsetLeft || 0);
-    scrollLeft.current = currentSlide;
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging) return;
-    e.preventDefault();
-    const x = e.pageX - (sliderRef.current?.offsetLeft || 0);
-    const walk = (x - startX.current) * 2;
-    const newSlide = Math.round(scrollLeft.current - walk / 300);
-    if (newSlide >= 0 && newSlide <= maxSlide) {
-      setCurrentSlide(newSlide);
-    }
-  };
-
-  // Keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "ArrowLeft") {
-        goToPrev();
-      } else if (e.key === "ArrowRight") {
-        goToNext();
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
 
   return (
     <section className="about-team" id="team">
@@ -106,26 +77,17 @@ const AboutTeamSection: React.FC<AboutTeamSectionProps> = ({
           <button
             className="about-team__arrow about-team__arrow--prev"
             type="button"
-            aria-label="Previous team member"
+            aria-label="Previous team members"
             onClick={goToPrev}
           ></button>
-          <div
-            className="about-team__list-wrapper"
-            ref={sliderRef}
-            onMouseDown={handleMouseDown}
-            onMouseUp={handleMouseUp}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseUp}
-          >
-            <ul
-              className="about-team__list"
-              style={{
-                transform: `translateX(-${currentSlide * 100}%)`,
-                transition: isDragging ? "none" : "transform 0.3s ease",
-              }}
-            >
-              {members.map((member) => (
-                <li key={member.id} className="about-team__member">
+          <div className="about-team__list-wrapper">
+            <ul className={`about-team__list ${isAnimating ? 'about-team__list--animating' : ''}`}>
+              {getCurrentSlideMembers().map((member, index) => (
+                <li 
+                  key={member.id} 
+                  className="about-team__member"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
                   <div className="about-team__avatar"></div>
                   <h3 className="about-team__name">{member.name}</h3>
                   <p className="about-team__role">{member.role}</p>
@@ -136,14 +98,14 @@ const AboutTeamSection: React.FC<AboutTeamSectionProps> = ({
           <button
             className="about-team__arrow about-team__arrow--next"
             type="button"
-            aria-label="Next team member"
+            aria-label="Next team members"
             onClick={goToNext}
           ></button>
         </div>
         {/* Индикация слайдов */}
-        {members.length > visibleItems && (
+        {totalSlides > 1 && (
           <div className="about-team__indicators">
-            {Array.from({ length: maxSlide + 1 }, (_, index) => (
+            {Array.from({ length: totalSlides }, (_, index) => (
               <button
                 key={index}
                 className={`about-team__indicator ${
