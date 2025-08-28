@@ -7,3 +7,4 @@ export { useBookingPopup } from "./useBookingPopup";
 export { usePartnersRotation } from "./usePartnersRotation";
 export { useStackedCardsAnimation } from "./useStackedCardsAnimation";
 export { useConsultationPopup } from "./useConsultationPopup";
+export { useBreadcrumbsPage } from "./useBreadcrumbsPage";

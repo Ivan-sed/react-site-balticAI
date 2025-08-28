@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useHeaderScroll, useDropdown } from "../hooks";
-import { logo } from "../assets";
+import { useHeaderScroll, useDropdown, useBreadcrumbsPage } from "../hooks";
+import { logo, logoDark } from "../assets";
 
 interface HeaderProps {
   onGetStartedClick?: () => void;
@@ -9,14 +9,22 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ onGetStartedClick }) => {
   const isHeaderScrolled = useHeaderScroll();
+  const hasBreadcrumbs = useBreadcrumbsPage();
   const dropdown = useDropdown();
+
+  // Определяем, какой логотип использовать
+  const shouldUseDarkLogo = isHeaderScrolled || hasBreadcrumbs;
 
   return (
     <header className={`header ${isHeaderScrolled ? "header--scrolled" : ""}`}>
       <div className="header__container">
         <div className="header__logo">
           <Link to="/" className="header__logo-link">
-            <img src={logo} alt="AI Solutions" className="header__logo-image" />
+            <img 
+              src={shouldUseDarkLogo ? logoDark : logo} 
+              alt="AI Solutions" 
+              className="header__logo-image" 
+            />
           </Link>
         </div>
         <nav className="header__nav">

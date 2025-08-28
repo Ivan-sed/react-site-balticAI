@@ -1,7 +1,7 @@
 // Логотипы и брендинг
-export { default as logo } from "./logo.png";
-export { default as logoDark } from "./logo-dark.png";
-export { default as footerLogo } from "./footer-logo.png";
+export { default as logo } from "./logotype-footer.svg";
+export { default as logoDark } from "./logotype-in-header.svg";
+export { default as footerLogo } from "./logotype-footer.svg";
 
 // Главные изображения страниц
 export { default as aboutImage } from "./about-image.png";

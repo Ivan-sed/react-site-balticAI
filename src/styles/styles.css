@@ -77,8 +77,11 @@ img {
 }
 
 .header__logo-image {
-  height: 50px;
+  height: 75px;
+  width: auto;
   transition: all 0.3s ease;
+  max-width: 300px;
+  margin: -22.5px 0;
 }
 
 .header__logo-link {
@@ -329,6 +332,8 @@ img {
 
 .header-dark__logo-image {
   height: 50px;
+  width: auto;
+  max-width: 200px;
 }
 
 .header-dark__nav {
@@ -2404,6 +2409,7 @@ img {
 .footer__logo-img {
   width: 180px;
   height: 70px;
+  object-fit: contain;
 }
 
 .footer__section-title {
@@ -7774,10 +7780,7 @@ body:has(.breadcrumbs) .header__dropdown-link:hover {
   color: #4e9fe8;
 }
 
-/* Dark logo for services page */
-body:has(.breadcrumbs) .header__logo-image {
-  content: url("../assets/images/logo-dark.png");
-}
+/* Dark logo for services page - handled by React now */
 
 /* Dark buttons for services page */
 body:has(.breadcrumbs) .header__button--outline {
@@ -7827,9 +7830,7 @@ body:has(.breadcrumbs) .header__button--filled:hover {
   color: #4e9fe8;
 }
 
-.header--scrolled .header__logo-image {
-  content: url("../assets/images/logo-dark.png");
-}
+/* Header scroll effect - logo handled by React now */
 
 .header--scrolled .header__button--outline {
   border: 1px solid #333333;
