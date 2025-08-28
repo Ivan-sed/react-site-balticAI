@@ -2259,8 +2259,8 @@ img {
 
 .industry-card__actions {
   display: flex;
-  align-items: center;
-  gap: 70px;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .industry-card__actions .button {
@@ -2763,7 +2763,7 @@ img {
 
   .industry-card__actions {
     flex-direction: column;
-    gap: 20px;
+    align-items: flex-start;
   }
 }
 

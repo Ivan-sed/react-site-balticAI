@@ -359,21 +359,11 @@ const HomePage: React.FC = () => {
                 </div>
                 <div className="industry-card__actions">
                   <button
-                    className="button industry-card__button button--primary industry-card__button--primary"
-                    onClick={openPopup}
-                  >
-                    Get started
-                  </button>
-                  <a
-                    href="#"
-                    className="industry-card__link"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      openPopup();
-                    }}
+                    className="button industry-card__button industry-card__button--primary"
+                    onClick={openConsultationPopup}
                   >
                     Consultation
-                  </a>
+                  </button>
                 </div>
               </div>
             </article>
@@ -398,21 +388,11 @@ const HomePage: React.FC = () => {
                 </div>
                 <div className="industry-card__actions">
                   <button
-                    className="button industry-card__button button--primary industry-card__button--primary"
-                    onClick={openPopup}
-                  >
-                    Get started
-                  </button>
-                  <a
-                    href="#"
-                    className="industry-card__link"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      openPopup();
-                    }}
+                    className="button industry-card__button industry-card__button--primary"
+                    onClick={openConsultationPopup}
                   >
                     Consultation
-                  </a>
+                  </button>
                 </div>
               </div>
             </article>
@@ -437,21 +417,11 @@ const HomePage: React.FC = () => {
                 </div>
                 <div className="industry-card__actions">
                   <button
-                    className="button industry-card__button button--primary industry-card__button--primary"
-                    onClick={openPopup}
-                  >
-                    Get started
-                  </button>
-                  <a
-                    href="#"
-                    className="industry-card__link"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      openPopup();
-                    }}
+                    className="button industry-card__button industry-card__button--primary"
+                    onClick={openConsultationPopup}
                   >
                     Consultation
-                  </a>
+                  </button>
                 </div>
               </div>
             </article>
@@ -476,21 +446,11 @@ const HomePage: React.FC = () => {
                 </div>
                 <div className="industry-card__actions">
                   <button
-                    className="button industry-card__button button--primary industry-card__button--primary"
-                    onClick={openPopup}
-                  >
-                    Get started
-                  </button>
-                  <a
-                    href="#"
-                    className="industry-card__link"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      openPopup();
-                    }}
+                    className="button industry-card__button industry-card__button--primary"
+                    onClick={openConsultationPopup}
                   >
                     Consultation
-                  </a>
+                  </button>
                 </div>
               </div>
             </article>
@@ -515,21 +475,11 @@ const HomePage: React.FC = () => {
                 </div>
                 <div className="industry-card__actions">
                   <button
-                    className="button industry-card__button button--primary industry-card__button--primary"
-                    onClick={openPopup}
-                  >
-                    Get started
-                  </button>
-                  <a
-                    href="#"
-                    className="industry-card__link"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      openPopup();
-                    }}
+                    className="button industry-card__button industry-card__button--primary"
+                    onClick={openConsultationPopup}
                   >
                     Consultation
-                  </a>
+                  </button>
                 </div>
               </div>
             </article>
@@ -554,21 +504,11 @@ const HomePage: React.FC = () => {
                 </div>
                 <div className="industry-card__actions">
                   <button
-                    className="button industry-card__button button--primary industry-card__button--primary"
-                    onClick={openPopup}
-                  >
-                    Get started
-                  </button>
-                  <a
-                    href="#"
-                    className="industry-card__link"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      openPopup();
-                    }}
+                    className="button industry-card__button industry-card__button--primary"
+                    onClick={openConsultationPopup}
                   >
                     Consultation
-                  </a>
+                  </button>
                 </div>
               </div>
             </article>
