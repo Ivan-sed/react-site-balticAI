@@ -245,11 +245,21 @@ img {
   padding: 14px 26px;
 }
 
+.header__button--primary:hover {
+  background: #ffffff;
+  color: #1d82dd;
+}
+
 .button--primary {
   background: #1d82dd;
   color: #ffffff;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
   padding: 14px 26px;
+}
+
+.button--primary:hover {
+  background: #ffffff;
+  color: #1d82dd;
 }
 
 .header__button--outline {
@@ -262,6 +272,11 @@ img {
   line-height: 16.8px;
 }
 
+.header__button--outline:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
 .button--outline {
   background: transparent;
   color: #ffffff;
@@ -272,6 +287,11 @@ img {
   line-height: 16.8px;
 }
 
+.button--outline:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
 .header__button--filled {
   background: #ffffff;
   color: #1e1e1e;
@@ -280,6 +300,11 @@ img {
   height: 38px;
   line-height: 16.8px;
   padding: 9px 33px;
+}
+
+.header__button--filled:hover {
+  background: #1e1e1e;
+  color: #ffffff;
 }
 
 /* Header Dark Block */
@@ -365,6 +390,11 @@ img {
   padding: 14px 26px;
 }
 
+.header-dark__button--primary:hover {
+  background: #ffffff;
+  color: #1d82dd;
+}
+
 .header-dark__button--outline {
   background: transparent;
   color: #ffffff;
@@ -375,6 +405,11 @@ img {
   line-height: 16.8px;
 }
 
+.header-dark__button--outline:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
 .header-dark__button--filled {
   background: #ffffff;
   color: #1e1e1e;
@@ -383,6 +418,11 @@ img {
   height: 38px;
   line-height: 16.8px;
   padding: 9px 33px;
+}
+
+.header-dark__button--filled:hover {
+  background: #1e1e1e;
+  color: #ffffff;
 }
 
 .header-dark__button--gradient {
@@ -477,6 +517,11 @@ img {
   padding: 9px 33px;
 }
 
+.button--filled:hover {
+  background: #1e1e1e;
+  color: #ffffff;
+}
+
 .button--gradient {
   background: transparent;
   color: transparent;
@@ -554,6 +599,11 @@ img {
   padding: 14px 26px;
 }
 
+.service-card__button--primary:hover {
+  background: #ffffff;
+  color: #1d82dd;
+}
+
 /* Hero Button Block */
 .hero__button {
   display: inline-flex;
@@ -577,6 +627,11 @@ img {
   color: #ffffff;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
   padding: 14px 26px;
+}
+
+.hero__button--primary:hover {
+  background: #ffffff;
+  color: #1d82dd;
 }
 
 /* Hero Link Component */
@@ -8411,6 +8466,65 @@ textarea {
   .cookie-policy__contact {
     padding: 16px;
   }
+}
+
+/* ===== UNIVERSAL BUTTON HOVER EFFECTS ===== */
+/* Primary buttons - blue background with white text */
+.service-card__button--primary:hover,
+.hero__button--primary:hover,
+.projects__button--primary:hover,
+.industry-card__button--primary:hover,
+.contact-card__button--primary:hover,
+.newsletter__button--primary:hover,
+.solutions__card-button--primary:hover,
+.showcase__button--primary:hover,
+.intro__button--primary:hover,
+.offerings__card-button--primary:hover,
+.portfolio__button--primary:hover,
+.communication__card-button--primary:hover,
+.sectors__card-button--primary:hover,
+.subscription__button--primary:hover,
+.process__button--primary:hover,
+.consulting-intro__button--primary:hover,
+.consulting-methodology__button--primary:hover {
+  background: #ffffff !important;
+  color: #1d82dd !important;
+}
+
+/* All buttons with --primary class - universal rule */
+[class*="__button--primary"]:hover,
+[class*="__card-button--primary"]:hover {
+  background: #ffffff !important;
+  color: #1d82dd !important;
+}
+
+/* All buttons with --outline class - universal rule */
+[class*="__button--outline"]:hover {
+  background: #ffffff !important;
+  color: #000000 !important;
+}
+
+/* All buttons with --filled class - universal rule */
+[class*="__button--filled"]:hover {
+  background: #1e1e1e !important;
+  color: #ffffff !important;
+}
+
+/* Gradient buttons - special hover effect */
+.feature-card__button--gradient:hover,
+.header-dark__button--gradient:hover,
+[class*="__button--gradient"]:hover {
+  background: linear-gradient(
+    75deg,
+    #67c1b3 5.86%,
+    #77d3d9 22.19%,
+    #4aa3ea 63.2%,
+    #52abfc 82.78%,
+    #3291e7 102.01%
+  ) !important;
+  color: #ffffff !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
 }
 
 @media (max-width: 480px) {
