@@ -39,14 +39,12 @@ const HomePage: React.FC = () => {
       { src: partner2, alt: "Partner 2" },
       { src: partner3, alt: "Partner 3" },
       { src: partner4, alt: "Partner 4" },
-      { src: partner5, alt: "Partner 5" },
     ],
     [
       { src: partner5, alt: "Partner 5" },
       { src: partner1, alt: "Partner 1" },
       { src: partner4, alt: "Partner 4" },
       { src: partner2, alt: "Partner 2" },
-      { src: partner3, alt: "Partner 3" },
     ],
   ];
   return (

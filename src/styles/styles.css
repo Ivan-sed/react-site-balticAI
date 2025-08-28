@@ -118,7 +118,7 @@ img {
 }
 
 .header__nav-link:hover {
-  color: #4e9fe8;
+  color: #2460D9;
 }
 
 .header__nav-arrow {
@@ -179,8 +179,8 @@ img {
 }
 
 .header__dropdown-link:hover {
-  background-color: #f8f9fa;
-  color: #4e9fe8;
+  background-color: #2460D9;
+  color: #ffffff;
 }
 
 /* Button Block */
@@ -246,8 +246,8 @@ img {
 }
 
 .header__button--primary:hover {
-  background: #ffffff;
-  color: #1d82dd;
+  background: #2460D9;
+  color: #fff;
 }
 
 .button--primary {
@@ -258,8 +258,8 @@ img {
 }
 
 .button--primary:hover {
-  background: #ffffff;
-  color: #1d82dd;
+  background: #2460D9;
+  color: #fff;
 }
 
 .header__button--outline {
@@ -391,8 +391,8 @@ img {
 }
 
 .header-dark__button--primary:hover {
-  background: #ffffff;
-  color: #1d82dd;
+  background: #2460D9;
+  color: #fff;
 }
 
 .header-dark__button--outline {
@@ -600,8 +600,8 @@ img {
 }
 
 .service-card__button--primary:hover {
-  background: #ffffff;
-  color: #1d82dd;
+  background: #2460D9;
+  color: #fff;
 }
 
 /* Hero Button Block */
@@ -630,8 +630,8 @@ img {
 }
 
 .hero__button--primary:hover {
-  background: #ffffff;
-  color: #1d82dd;
+  background: #2460D9;
+  color: #ffffff;
 }
 
 /* Hero Link Component */
@@ -1028,12 +1028,12 @@ img {
 
 /* Partners Block */
 .hero__partners-list {
-  max-width: 1566px;
+  max-width: 1160px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 80px;
+  gap: 60px;
   opacity: 1;
   transition: opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
@@ -1069,10 +1069,6 @@ img {
 
 .hero__partners-item:nth-child(4) {
   transition-delay: 150ms;
-}
-
-.hero__partners-item:nth-child(5) {
-  transition-delay: 200ms;
 }
 
 .hero__partners-item::before {
@@ -7799,6 +7795,10 @@ body:has(.breadcrumbs) .header__button--filled:hover {
 }
 
 /* Cases */
+.cases-page {
+  padding: 60px 0;
+}
+
 .cases__item {
   display: flex;
   flex-direction: column;
@@ -7897,6 +7897,18 @@ body:has(.breadcrumbs) .header__button--filled:hover {
   flex-direction: row;
   align-items: center;
   gap: 48px;
+}
+
+.cases__title {
+  font-weight: 600 !important;
+  font-size: 35px !important;
+  color: #000 !important;
+}
+
+.cases-page .cases__title {
+  font-weight: 600 !important;
+  font-size: 35px !important;
+  color: #000 !important;
 }
 
 .cases__title-metric {
@@ -8487,15 +8499,15 @@ textarea {
 .process__button--primary:hover,
 .consulting-intro__button--primary:hover,
 .consulting-methodology__button--primary:hover {
-  background: #ffffff !important;
-  color: #1d82dd !important;
+  background: #2460D9 !important;
+  color: #ffffff !important;
 }
 
 /* All buttons with --primary class - universal rule */
 [class*="__button--primary"]:hover,
 [class*="__card-button--primary"]:hover {
-  background: #ffffff !important;
-  color: #1d82dd !important;
+  background: #2460D9 !important;
+  color: #ffffff !important;
 }
 
 /* All buttons with --outline class - universal rule */
