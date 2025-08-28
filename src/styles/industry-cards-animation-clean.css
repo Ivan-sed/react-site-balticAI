@@ -4,6 +4,8 @@
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  height: 400vh;
+  min-height: 2000px;
 }
 
 .industries__container {
