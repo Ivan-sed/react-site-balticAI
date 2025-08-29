@@ -2983,10 +2983,11 @@ img {
 
 /* Intro Block (renamed from Hero) */
 .intro {
-  background: linear-gradient(180deg, #05202a, #000000);
-  color: #ffffff;
-  padding: 308px 0px 0px;
-  position: relative;
+    background: linear-gradient(180deg, #05202a, #000000);
+    color: #ffffff;
+    padding: 360px 0px 0px;
+    position: relative;
+    margin-bottom: -71px;
 }
 
 .intro__breadcrumbs {
@@ -3077,7 +3078,7 @@ img {
   gap: 138px;
   flex-direction: column;
   align-items: flex-start;
-  padding-bottom: 179px;
+  padding-bottom: 306px;
   position: relative;
   z-index: 2;
 }
@@ -5327,6 +5328,9 @@ img {
   margin-bottom: 119px;
   padding-top: 135px;
   background: #ffffff;
+  position: relative;
+  z-index: 2;
+  border-radius: 60px 60px 0 0;
 }
 
 .visualization__container {
@@ -6228,7 +6232,8 @@ img {
 .consulting-intro {
   background: linear-gradient(180deg, #05202a, #000000);
   color: #ffffff;
-  padding: 308px 0px 0px;
+  padding: 360px 0px 0px;
+  margin-bottom: -71px;
   position: relative;
 }
 
@@ -6320,7 +6325,7 @@ img {
   gap: 138px;
   flex-direction: column;
   align-items: flex-start;
-  padding-bottom: 179px;
+  padding-bottom: 306px;
   position: relative;
   z-index: 2;
 }
