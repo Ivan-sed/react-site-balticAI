@@ -115,10 +115,10 @@ const HomePage: React.FC = () => {
           <div className="services__grid">
             {/* AI Solutions Card */}
             <article className="service-card service-card--featured">
+              {/* Force refresh - badge icon removed */}
               <div className="service-card__header">
                 <div className="service-card__badge">
                   <span className="service-card__badge-item service-card__badge-item--popular">
-                    <span className="service-card__badge-icon"></span>
                     <span className="service-card__badge-text">
                       Most popular
                     </span>
