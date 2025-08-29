@@ -263,6 +263,8 @@ img {
 .button--primary:hover {
   background: #2460D9;
   color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(29, 130, 221, 0.4);
 }
 
 .header__button--outline {
@@ -4935,7 +4937,7 @@ img {
   align-items: center;
   gap: 51px;
   position: relative;
-  width: 351px;
+  width: 100%;
 }
 
 .process__button {
@@ -4984,6 +4986,22 @@ img {
   text-align: center;
   text-decoration: underline;
   white-space: nowrap;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: translateY(0);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.process__link:hover {
+  transform: translateY(-2px);
+  color: #1d82dd;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.process__link:active {
+  transform: translateY(0);
+  transition: all 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .process__steps {
@@ -5173,6 +5191,10 @@ img {
   color: #ffffff;
   font-size: 45px;
   font-weight: 600;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease forwards;
+  animation-delay: 0.05s;
 }
 
 .transformation__description {
@@ -5183,6 +5205,10 @@ img {
   font-weight: 300;
   line-height: 19.04px;
   text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease forwards;
+  animation-delay: 0.1s;
 }
 
 .transformation__steps {
@@ -5196,6 +5222,25 @@ img {
   align-items: center;
   gap: 40px;
   width: 260px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.transformation__step:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.transformation__step:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.transformation__step:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.transformation__step:nth-child(4) {
+  animation-delay: 0.4s;
 }
 
 .transformation__step-icon {
@@ -5264,6 +5309,17 @@ img {
   cursor: pointer;
   width: 300px;
   height: 40px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease forwards;
+  animation-delay: 0.5s;
+  transition: all 0.3s ease;
+}
+
+.transformation__button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  background: #d6eaff;
 }
 
 /* Visualization Section */
@@ -5289,6 +5345,10 @@ img {
   line-height: 50px;
   text-align: center;
   width: 100%;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease forwards;
+  animation-delay: 0.05s;
 }
 
 .visualization__content {
@@ -5316,6 +5376,27 @@ img {
   display: flex;
   flex-direction: column;
   position: relative;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.6s ease forwards;
+  transition: all 0.3s ease;
+}
+
+.visualization__card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.visualization__card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.visualization__card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.visualization__card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 .visualization__card-text {
@@ -5537,6 +5618,23 @@ img {
   display: flex;
   flex-direction: column;
   position: relative;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.6s ease forwards;
+  transition: all 0.3s ease;
+}
+
+.visualization__card--large:first-child {
+  animation-delay: 0.4s;
+}
+
+.visualization__card--large:last-child {
+  animation-delay: 0.5s;
+}
+
+.visualization__card--large:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 .visualization__card--large:first-child::after {
@@ -5611,6 +5709,10 @@ img {
   gap: 51px;
   flex: 1;
   max-width: 561px;
+  opacity: 0;
+  transform: translateX(-30px);
+  animation: fadeInLeft 0.6s ease forwards;
+  animation-delay: 0.1s;
 }
 
 .consultation__title {
@@ -5657,6 +5759,7 @@ img {
   -webkit-text-fill-color: transparent;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
   position: relative;
+  transition: all 0.3s ease;
 }
 
 .consultation__button::before {
@@ -5681,6 +5784,23 @@ img {
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.consultation__button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.consultation__button:hover::before {
+  background: linear-gradient(
+    75deg,
+    #5bb3a5 5.86%,
+    #69c5cb 22.19%,
+    #3c95dc 63.2%,
+    #449dee 82.78%,
+    #2483d9 102.01%
+  );
 }
 
 .consultation__form {
@@ -5692,6 +5812,10 @@ img {
   background: #ffffff;
   border-radius: 15px;
   width: 419px;
+  opacity: 0;
+  transform: translateX(30px);
+  animation: fadeInRight 0.6s ease forwards;
+  animation-delay: 0.2s;
 }
 
 .consultation__form-header {
@@ -5744,6 +5868,14 @@ img {
   font-size: 17px;
   font-weight: 400;
   line-height: 19px;
+  transition: all 0.3s ease;
+}
+
+.consultation__form-input:hover,
+.consultation__form-input:focus {
+  background: #e0e0e0;
+  box-shadow: 0 15px 15px rgba(0, 0, 0, 0.06);
+  outline: none;
 }
 
 .consultation__form-textarea {
@@ -5759,6 +5891,14 @@ img {
   font-weight: 400;
   line-height: 19px;
   resize: vertical;
+  transition: all 0.3s ease;
+}
+
+.consultation__form-textarea:hover,
+.consultation__form-textarea:focus {
+  background: #e0e0e0;
+  box-shadow: 0 15px 15px rgba(0, 0, 0, 0.06);
+  outline: none;
 }
 
 .consultation__form-submit {
@@ -5777,6 +5917,13 @@ img {
   border-radius: 10px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
   cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.consultation__form-submit:hover {
+  background: #1a73c7;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(29, 130, 221, 0.3);
 }
 
 /* Process Features Section */
@@ -5805,6 +5952,10 @@ img {
   gap: 51px;
   max-width: 487px;
   flex-shrink: 0;
+  opacity: 0;
+  transform: translateX(-30px);
+  animation: fadeInLeft 0.6s ease forwards;
+  animation-delay: 0.1s;
 }
 
 .process-features__title {
@@ -5875,6 +6026,23 @@ img {
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.process-features__button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.process-features__button:hover::before {
+  background: linear-gradient(
+    75deg,
+    #5bb3a5 5.86%,
+    #69c5cb 22.19%,
+    #3c95dc 63.2%,
+    #449dee 82.78%,
+    #2483d9 102.01%
+  );
 }
 
 .process-features__cards {
@@ -5899,6 +6067,23 @@ img {
   height: 328px;
   background: #efefef;
   border-radius: 20px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.6s ease forwards;
+  transition: all 0.3s ease;
+}
+
+.process-features__card:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.process-features__card:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.process-features__card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 .process-features__card-inner {
@@ -5957,14 +6142,19 @@ img {
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.6s ease forwards;
 }
 
 .process-features__security-card:first-child {
   width: 244px;
+  animation-delay: 0.4s;
 }
 
 .process-features__security-card:last-child {
   width: 254px;
+  animation-delay: 0.5s;
 }
 
 .process-features__security-card-icon {
@@ -6012,51 +6202,6 @@ img {
 
 /* ===== ДОПОЛНИТЕЛЬНЫЕ КЛАССЫ ДЛЯ КНОПОК И ЭЛЕМЕНТОВ ===== */
 
-/* Header section buttons */
-.header__get-started-btn {
-  /* Additional header get started button styles */
-}
-
-.header__login-btn {
-  /* Additional header login button styles */
-}
-
-/* Intro section buttons and links */
-.intro__get-started-btn {
-  /* Additional intro get started button styles */
-}
-
-.intro__consultation-link {
-  /* Additional intro consultation link styles */
-}
-
-/* Offerings section buttons */
-.offerings__view-more-btn {
-  /* Additional offerings view more button styles */
-}
-
-.offerings__it-solutions-btn {
-  /* Additional offerings IT solutions button styles */
-}
-
-.offerings__consultation-btn {
-  /* Additional offerings consultation button styles */
-}
-
-/* Advantages section buttons */
-.advantages__book-now-btn {
-  /* Additional advantages book now button styles */
-}
-
-/* Process section buttons and links */
-.process__get-ai-mvp-btn {
-  /* Additional process get AI MVP button styles */
-}
-
-.process__book-demo-link {
-  /* Additional process book demo link styles */
-}
-
 /* Transformation section buttons */
 .transformation__book-consultation-btn {
   color: #000;
@@ -6075,33 +6220,6 @@ img {
 
 .visualization__dashboards-btn {
   width: 100%;
-}
-
-.visualization__scalable-architecture-btn {
-  /* Additional visualization scalable architecture button styles */
-}
-
-.visualization__second-get-started-btn {
-  /* Additional visualization second get started button styles */
-}
-
-/* Consultation section buttons */
-.consultation__set-appointment-btn {
-  /* Additional consultation set appointment button styles */
-}
-
-.consultation__send-request-btn {
-  /* Additional consultation send request button styles */
-}
-
-/* Process Features section buttons */
-.process-features__get-started-btn {
-  /* Additional process features get started button styles */
-}
-
-/* Portfolio section buttons */
-.portfolio__view-all-btn {
-  /* Additional portfolio view all button styles */
 }
 
 /* ===== CONSULTING PAGE STYLES ===== */
@@ -6451,6 +6569,22 @@ img {
   text-align: center;
   text-decoration: underline;
   white-space: nowrap;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: translateY(0);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.consulting-methodology__link:hover {
+  transform: translateY(-2px);
+  color: #1d82dd;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.consulting-methodology__link:active {
+  transform: translateY(0);
+  transition: all 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .consulting-methodology__steps {
@@ -6855,6 +6989,7 @@ img {
   -webkit-text-fill-color: transparent;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
   position: relative;
+  transition: all 0.3s ease;
 }
 
 .consulting-booking__button::before {
@@ -6879,6 +7014,23 @@ img {
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.consulting-booking__button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.consulting-booking__button:hover::before {
+  background: linear-gradient(
+    75deg,
+    #5bb3a5 5.86%,
+    #69c5cb 22.19%,
+    #3c95dc 63.2%,
+    #449dee 82.78%,
+    #2483d9 102.01%
+  );
 }
 
 .consulting-booking__form {
@@ -6942,6 +7094,14 @@ img {
   font-size: 17px;
   font-weight: 400;
   line-height: 19px;
+  transition: all 0.3s ease;
+}
+
+.consulting-booking__form-input:hover,
+.consulting-booking__form-input:focus {
+  background: #e0e0e0;
+  box-shadow: 0 15px 15px rgba(0, 0, 0, 0.06);
+  outline: none;
 }
 
 .consulting-booking__form-textarea {
@@ -6957,6 +7117,14 @@ img {
   font-weight: 400;
   line-height: 19px;
   resize: vertical;
+  transition: all 0.3s ease;
+}
+
+.consulting-booking__form-textarea:hover,
+.consulting-booking__form-textarea:focus {
+  background: #e0e0e0;
+  box-shadow: 0 15px 15px rgba(0, 0, 0, 0.06);
+  outline: none;
 }
 
 .consulting-booking__form-submit {
@@ -6975,6 +7143,13 @@ img {
   border-radius: 10px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
   cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.consulting-booking__form-submit:hover {
+  background: #1a73c7;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(29, 130, 221, 0.3);
 }
 
 /* Consulting About Section (based on company) */
@@ -7468,6 +7643,13 @@ img {
   font-size: 20px;
   font-weight: 600;
   cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.about-story__button:hover {
+  background: #1a73c7;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(29, 130, 221, 0.3);
 }
 
 /* About Team Section */
@@ -7541,6 +7723,39 @@ img {
   }
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 .about-team__avatar {
   width: 310px;
   height: 399px;
@@ -7577,6 +7792,12 @@ img {
   flex-shrink: 0;
   position: relative;
   background: transparent;
+  transition: all 0.3s ease;
+}
+
+.about-team__arrow:hover {
+  transform: translateY(-2px);
+  opacity: 0.8;
 }
 
 .about-team__arrow::before {
