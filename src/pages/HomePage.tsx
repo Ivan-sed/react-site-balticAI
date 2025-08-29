@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useAccordion, useBookingPopup, useConsultationPopup, usePartnersRotation, useStackedCardsAnimation } from "../hooks";
+import { useBookingPopup, useConsultationPopup, usePartnersRotation, useStackedCardsAnimation } from "../hooks";
 import {
   Header,
   ProjectsSection,
@@ -26,7 +26,6 @@ import {
 const HomePage: React.FC = () => {
   // Инициализация всех хуков
   const navigate = useNavigate();
-  const accordion = useAccordion(0);
   const { isOpen, openPopup, closePopup, handleFormSubmit } = useBookingPopup();
   const { isOpen: isConsultationOpen, openPopup: openConsultationPopup, closePopup: closeConsultationPopup } = useConsultationPopup();
   const { currentPartnerSet, isTransitioning } = usePartnersRotation(2, 5000);

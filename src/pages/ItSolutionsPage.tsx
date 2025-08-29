@@ -10,7 +10,6 @@ import {
   ProcessSection,
   ConsultationSection,
   ProjectsSection,
-  CompanySection,
   BookingPopup,
 } from "../components";
 

@@ -12,7 +12,6 @@ import {
   ConsultationSection,
   ProcessFeaturesSection,
   ProjectsSection,
-  CompanySection,
   BookingPopup,
 } from "../components";
 

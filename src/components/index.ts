@@ -30,3 +30,4 @@ export { default as TermsOfUseSection } from "./TermsOfUseSection";
 export { default as CookiePolicySection } from "./CookiePolicySection";
 export { default as BookingPopup } from "./BookingPopup";
 export { default as ConsultationPopup } from "./ConsultationPopup";
+export { default as ScrollToTop } from "./ScrollToTop";

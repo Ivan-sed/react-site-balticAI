@@ -7,7 +7,6 @@ import {
   ConsultingMethodologySection,
   ConsultingBenefitsSection,
   ConsultingBookingSection,
-  CompanySection,
   BookingPopup,
 } from "../components";
 

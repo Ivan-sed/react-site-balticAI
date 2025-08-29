@@ -11,7 +11,7 @@ export const usePartnersRotation = (
 ): UsePartnersRotationReturn => {
   const [currentPartnerSet, setCurrentPartnerSet] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const intervalRef = useRef<number | null>(null);
 
   useEffect(() => {
     const rotatePartners = () => {

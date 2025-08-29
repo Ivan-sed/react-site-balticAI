@@ -3,6 +3,7 @@ import "./App.css";
 import "./styles/styles.css";
 import "./styles/team-slider.css";
 import "./styles/industry-cards-animation.css";
+import { ScrollToTop } from "./components";
 import {
   HomePage,
   AiSolutionsPage,
@@ -22,6 +23,7 @@ function App() {
   return (
     <div className="App">
       <Router>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/ai-solutions" element={<AiSolutionsPage />} />
