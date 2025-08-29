@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useHeaderScroll, useDropdown, useBreadcrumbsPage } from "../hooks";
+import { useHeaderScroll, useSpecialSectionsHeaderScroll, useDropdown, useBreadcrumbsPage } from "../hooks";
 import { logo, logoDark } from "../assets";
 
 interface HeaderProps {
@@ -8,11 +8,41 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ onGetStartedClick }) => {
-  const isHeaderScrolled = useHeaderScroll();
+  const [hasSpecialSections, setHasSpecialSections] = useState(false);
+  const defaultHeaderScroll = useHeaderScroll();
+  const specialSectionsHeaderScroll = useSpecialSectionsHeaderScroll();
   const hasBreadcrumbs = useBreadcrumbsPage();
   const dropdown = useDropdown();
 
-  // Определяем, какой логотип использовать
+  useEffect(() => {
+    const checkSpecialSections = () => {
+      const projectsElement = document.getElementById("projects");
+      const transformationElement = document.getElementById("transformation");
+      const aboutAchievementsElement = document.getElementById("about-achievements");
+      setHasSpecialSections(
+        projectsElement !== null || 
+        transformationElement !== null || 
+        aboutAchievementsElement !== null
+      );
+    };
+
+    checkSpecialSections();
+
+    const observer = new MutationObserver(checkSpecialSections);
+    observer.observe(document.body, { 
+      childList: true, 
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['id']
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  const isHeaderScrolled = hasSpecialSections ? specialSectionsHeaderScroll : defaultHeaderScroll;
+
   const shouldUseDarkLogo = isHeaderScrolled || hasBreadcrumbs;
 
   return (
@@ -39,12 +69,10 @@ const Header: React.FC<HeaderProps> = ({ onGetStartedClick }) => {
                 to="/services"
                 className="header__nav-link"
                 onClick={(e) => {
-                  // Если дропдаун открыт, то работаем как дропдаун
                   if (dropdown.isOpen) {
                     e.preventDefault();
                     dropdown.toggleDropdown();
                   }
-                  // Иначе переходим на страницу Services
                 }}
               >
                 <span className="header__nav-text">Services</span>

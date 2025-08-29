@@ -17,7 +17,7 @@ const AboutAchievementsSection: React.FC<AboutAchievementsSectionProps> = ({
   achievements,
 }) => {
   return (
-    <section className="about-achievements">
+    <section className="about-achievements" id="about-achievements">
       <div className="container">
         <h2 className="about-achievements__title">{title}</h2>
         <ul className="about-achievements__list">
