@@ -937,7 +937,7 @@ img {
 .hero {
   background: linear-gradient(180deg, #05202a, #000000);
   color: #ffffff;
-  padding: 360px 0px 0px;
+  padding: 400px 0px 0px;
   margin-bottom: 129px;
   position: relative;
 }
@@ -962,7 +962,7 @@ img {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding-bottom: 306px;
+  padding-bottom: 380px;
   position: relative;
   z-index: 2;
 }
