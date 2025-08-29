@@ -8772,6 +8772,59 @@ textarea {
   }
 }
 
+/* ===== TIMER COMPONENT STYLES ===== */
+.contact__timer {
+  text-align: center;
+  margin-top: 24px;
+}
+
+.timer {
+  display: block;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 8px;
+  transition: all 0.3s ease;
+}
+
+.timer--active {
+  background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: timerGradientFlow 3s ease-in-out infinite;
+}
+
+.timer__label {
+  display: block;
+  font-size: 16px;
+  color: var(--color-text-secondary);
+  text-align: left;
+  transition: all 0.3s ease;
+}
+
+.timer__label--active {
+  background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: timerGradientFlow 3s ease-in-out infinite 0.5s;
+}
+
+@keyframes timerGradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 /* ===== UNIVERSAL BUTTON HOVER EFFECTS ===== */
 /* Primary buttons - blue background with white text */
 .service-card__button--primary:hover,

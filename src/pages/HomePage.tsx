@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useBookingPopup, useConsultationPopup, usePartnersRotation, useStackedCardsAnimation } from "../hooks";
+import { useTimer } from "../hooks/useTimer";
 import {
   Header,
   ProjectsSection,
@@ -30,6 +31,19 @@ const HomePage: React.FC = () => {
   const { isOpen: isConsultationOpen, openPopup: openConsultationPopup, closePopup: closeConsultationPopup } = useConsultationPopup();
   const { currentPartnerSet, isTransitioning } = usePartnersRotation(2, 5000);
   const stackedCardsRef = useStackedCardsAnimation();
+  const { isActive, timeLeft, startTimer, formatTime } = useTimer();
+
+  // Обработчик отправки формы с запуском таймера
+  const handleFormSubmitWithTimer = (formData: any) => {
+    startTimer();
+    handleFormSubmit(formData);
+  };
+
+  // Обработчик newsletter формы
+  const handleNewsletterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    startTimer();
+  };
 
   // Наборы партнеров для ротации
   const partnerSets = [
@@ -280,9 +294,14 @@ const HomePage: React.FC = () => {
               </p>
             </div>
             <div className="contact__timer">
-              <span className="timer">10:00</span>
-              <span className="timer__label">
-                We'll respond before the timer runs out
+              <span className={`timer ${isActive ? 'timer--active' : ''}`}>
+                {formatTime(timeLeft)}
+              </span>
+              <span className={`timer__label ${isActive ? 'timer__label--active' : ''}`}>
+                {isActive 
+                  ? "We're processing your request... please wait"
+                  : "We'll respond before the timer runs out"
+                }
               </span>
             </div>
           </div>
@@ -607,7 +626,7 @@ const HomePage: React.FC = () => {
             </div>
           </div>
 
-          <form className="newsletter__form">
+          <form className="newsletter__form" onSubmit={handleNewsletterSubmit}>
             <input
               type="email"
               placeholder="Enter your Email"
@@ -631,7 +650,7 @@ const HomePage: React.FC = () => {
       <BookingPopup
         isOpen={isOpen}
         onClose={closePopup}
-        onSubmit={handleFormSubmit}
+        onSubmit={handleFormSubmitWithTimer}
       />
 
       {/* Consultation Popup */}

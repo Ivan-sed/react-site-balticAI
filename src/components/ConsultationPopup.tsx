@@ -5,13 +5,18 @@ import { freeGif } from "../assets/images";
 interface ConsultationPopupProps {
   isOpen: boolean;
   onClose: () => void;
+  onBookingClick?: () => void;
 }
 
 const ConsultationPopup: React.FC<ConsultationPopupProps> = ({
   isOpen,
   onClose,
+  onBookingClick,
 }) => {
   const handleBookingClick = () => {
+    if (onBookingClick) {
+      onBookingClick();
+    }
     window.open("https://calendly.com/balticai/30-min-bezmaksas-ai-konsultacija-clone", "_blank");
     onClose();
   };
