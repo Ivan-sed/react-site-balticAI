@@ -2956,11 +2956,11 @@ img {
 
 /* Intro Block (renamed from Hero) */
 .intro {
-  background: linear-gradient(180deg, #05202a, #000000);
-  color: #ffffff;
-  padding: 360px 0px 0px;
-  position: relative;
-  margin-bottom: -71px;
+    background: linear-gradient(180deg, #05202a, #000000);
+    color: #ffffff;
+    padding: 360px 0px 0px;
+    position: relative;
+    margin-bottom: -40px;
 }
 
 .intro__breadcrumbs {
