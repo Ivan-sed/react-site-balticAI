@@ -6675,6 +6675,7 @@ img {
   line-height: 52px;
   text-align: left;
   white-space: nowrap;
+  z-index: 3;
 }
 
 .consulting-methodology__step-title {
