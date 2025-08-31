@@ -71,7 +71,7 @@ Our three-step, AI-first methodology pinpoints these inefficiencies, implements 
               <div className="process__step">
                 <div className="process__step-header">
                   <span className="process__step-number">{step.number}</span>
-                  <h3 className="process__step-title">{step.title}</h3>
+                  <h3 className={`process__step-title ${className === 'it-process' ? 'it-solution__process-title' : ''}`}>{step.title}</h3>
                 </div>
                 <p className="process__step-description">{step.description}</p>
               </div>

@@ -8822,6 +8822,10 @@ textarea {
   animation: timerGradientFlow 3s ease-in-out infinite 0.5s;
 }
 
+.it-solution__process-title {
+  margin-left: -0.8rem !important;
+}
+
 @keyframes timerGradientFlow {
   0% {
     background-position: 0% 50%;
