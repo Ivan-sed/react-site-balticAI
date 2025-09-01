@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useProjectCardsHover } from "../hooks";
 
@@ -15,6 +15,38 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
 }) => {
   const navigate = useNavigate();
   const projectHover = useProjectCardsHover();
+  const [expandedCard, setExpandedCard] = useState<string>("clinic"); // First card expanded by default only for mobile
+  const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
+
+  // Check if mobile or tablet view
+  useEffect(() => {
+    const checkDeviceType = () => {
+      const width = window.innerWidth;
+      setIsMobile(width <= 425);
+      setIsTablet(width > 425 && width <= 1200);
+      
+      // Reset expanded card for tablet to have no default selection
+      if (width > 425 && width <= 1200) {
+        setExpandedCard("");
+      } else if (width <= 425) {
+        // Keep first card expanded for mobile
+        setExpandedCard("clinic");
+      }
+    };
+    
+    checkDeviceType();
+    window.addEventListener('resize', checkDeviceType);
+    
+    return () => window.removeEventListener('resize', checkDeviceType);
+  }, []);
+
+  const handleCardClick = (projectId: string) => {
+    if (isMobile || isTablet) {
+      // For mobile and tablet - just switch to clicked card
+      setExpandedCard(projectId);
+    }
+  };
 
   const projects = [
     {
@@ -76,11 +108,14 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
           {displayedProjects.map((project, index) => (
             <article
               key={project.id}
-              className={`project-card ${project.className}`}
-              {...(project.hasHover && {
+              className={`project-card ${project.className} ${
+                expandedCard === project.id ? "project-card--expanded" : ""
+              }`}
+              onClick={() => handleCardClick(project.id)}
+              {...(project.hasHover && !isMobile && !isTablet && {
                 onMouseEnter: projectHover.handleCardEnter,
               })}
-              {...(index === 0 && {
+              {...(index === 0 && !isMobile && !isTablet && {
                 onMouseEnter: projectHover.handleFirstCardEnter,
               })}
             >

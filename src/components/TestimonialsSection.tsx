@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useTestimonials } from "../hooks";
 import {
   client1,
@@ -24,6 +24,9 @@ const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
     isTransitioning,
     switchTestimonial,
   } = useTestimonials();
+  
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   const leftClients = [
     { id: "client1", src: client1, alt: "Client 1" },
@@ -37,12 +40,47 @@ const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
     { id: "client6", src: client6, alt: "Client 6" },
   ];
 
+  const allClients = [...leftClients, ...rightClients];
+  const currentIndex = allClients.findIndex(client => client.id === activeClient);
+  const currentClient = allClients[currentIndex];
+
+  // Touch handlers for swipe
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      // Swipe left - next testimonial
+      const nextIndex = (currentIndex + 1) % allClients.length;
+      switchTestimonial(allClients[nextIndex].id);
+    }
+
+    if (isRightSwipe) {
+      // Swipe right - previous testimonial
+      const prevIndex = currentIndex === 0 ? allClients.length - 1 : currentIndex - 1;
+      switchTestimonial(allClients[prevIndex].id);
+    }
+  };
+
   return (
     <section className={`testimonials ${className}`}>
       <div className="testimonials__container">
         <h2 className="testimonials__title">{title}</h2>
 
         <div className="testimonials__content">
+          {/* Desktop version - left logos */}
           <div className="testimonials__logos testimonials__logos--left">
             {leftClients.map((client, index) => (
               <React.Fragment key={client.id}>
@@ -66,7 +104,24 @@ const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
             ))}
           </div>
 
-          <div className="testimonials__main">
+          {/* Mobile version - single active logo */}
+          <div className="testimonials__mobile-logo">
+            <div className="client-logo client-logo--active">
+              <img
+                src={currentClient.src}
+                alt={currentClient.alt}
+                className="client-logo__img"
+              />
+            </div>
+          </div>
+
+          {/* Main testimonial content with swipe support */}
+          <div 
+            className="testimonials__main testimonials__swipe-area"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
             <blockquote
               className="testimonial testimonial--featured"
               style={{ opacity: isTransitioning ? 0.5 : 1 }}
@@ -86,6 +141,7 @@ const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
             </blockquote>
           </div>
 
+          {/* Desktop version - right logos */}
           <div className="testimonials__logos testimonials__logos--right">
             {rightClients.map((client, index) => (
               <React.Fragment key={client.id}>
@@ -106,6 +162,19 @@ const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
                   <div className="logo-separator logo-separator--right"></div>
                 )}
               </React.Fragment>
+            ))}
+          </div>
+
+          {/* Mobile version - dots indicator */}
+          <div className="testimonials__dots">
+            {allClients.map((client) => (
+              <div
+                key={client.id}
+                className={`testimonials__dot ${
+                  activeClient === client.id ? "testimonials__dot--active" : ""
+                }`}
+                onClick={() => switchTestimonial(client.id)}
+              />
             ))}
           </div>
         </div>

@@ -53,7 +53,7 @@ const OfferingsSection: React.FC<OfferingsSectionProps> = ({
                 {featuredOffering.showBadge && (
                   <div className="offerings__card-badge">
                     <span className="offerings__card-badge-item offerings__card-badge-item--popular">
-                      <span className="offerings__card-badge-icon"></span>
+
                       <span className="offerings__card-badge-text">
                         {featuredOffering.badgeText || "Most popular"}
                       </span>
