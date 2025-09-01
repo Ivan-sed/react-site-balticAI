@@ -9083,3 +9083,76 @@ textarea {
   animation: autoShimmer 3s ease-in-out infinite;
   animation-delay: 1s;
 }
+
+/* adaptive styles */
+@media (max-width: 1200px) {
+  .hero__title{
+    text-align: left;
+  }
+  .hero__subtitle{
+    text-align: left;
+  }
+  .hero__description{
+    text-align: left;
+  }
+  .hero__container{
+    align-items: flex-start;
+    margin-left: 1.5rem;
+  }
+  .hero::after{
+    height: 100%;
+  }
+  .hero{
+    padding: 250px 0px 0px;
+  }
+  .hero__container{
+    padding-bottom: 120px;
+  }
+  .hero__content{
+    width: 550px;
+  }
+  .hero__partners-list {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .services__container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .header__container{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .features__container{
+    flex-direction: row;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .feature-card--time{
+    height: 436px;
+  }
+  .feature-card--time::after{
+    background-size: cover;
+  }
+  .projects__container{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .contact__container{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    flex-direction: column;
+  }
+  .contact__content{
+    flex: 0;
+  }
+  .contact-card--sales::after{
+    background-size: cover;
+  }
+  .contact-card--enquiry::after{
+    background-size: cover;
+  }
+  .contact{
+    padding: 50px 0;
+  }
+}
