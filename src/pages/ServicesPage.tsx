@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useBookingPopup } from "../hooks";
 import {
   Header,
+  MobileHeader,
   BreadcrumbsSection,
   SolutionsSection,
   ProjectsSection,
@@ -67,6 +68,7 @@ const ServicesPage: React.FC = () => {
   return (
     <div className="page">
       <Header onGetStartedClick={openPopup} />
+      <MobileHeader onGetStartedClick={openPopup} />
       <main>
         <BreadcrumbsSection breadcrumbs={breadcrumbsData} />
         <SolutionsSection solutions={solutionsData} />

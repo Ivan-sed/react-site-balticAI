@@ -4,6 +4,7 @@ import { useBookingPopup, useConsultationPopup, usePartnersRotation, useStackedC
 import { useTimer } from "../hooks/useTimer";
 import {
   Header,
+  MobileHeader,
   ProjectsSection,
   TestimonialsSection,
   Footer,
@@ -64,6 +65,7 @@ const HomePage: React.FC = () => {
     <div className="page">
       {/* Header */}
       <Header onGetStartedClick={openPopup} />
+      <MobileHeader onGetStartedClick={openPopup} />
 
       {/* Hero Section */}
       <section className="hero">

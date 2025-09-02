@@ -2,6 +2,7 @@ import React from "react";
 import { useBookingPopup } from "../hooks";
 import {
   Header,
+  MobileHeader,
   BreadcrumbsSection,
   CasesSection,
   Footer,
@@ -67,6 +68,7 @@ const CasesPage: React.FC = () => {
   return (
     <div className="page">
       <Header onGetStartedClick={openPopup} />
+      <MobileHeader onGetStartedClick={openPopup} />
       <main>
         <BreadcrumbsSection breadcrumbs={breadcrumbsData} />
         <CasesSection cases={casesData} />

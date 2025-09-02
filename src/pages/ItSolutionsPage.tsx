@@ -2,6 +2,7 @@ import React from "react";
 import { useBookingPopup } from "../hooks";
 import {
   Header,
+  MobileHeader,
   Footer,
   IntroSection,
   VisualizationSection,
@@ -236,6 +237,7 @@ const ItSolutionsPage: React.FC = () => {
   return (
     <div className="page">
       <Header onGetStartedClick={openPopup} />
+      <MobileHeader onGetStartedClick={openPopup} />
 
       <main>
         <IntroSection

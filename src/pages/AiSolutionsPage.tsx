@@ -2,6 +2,7 @@ import React from "react";
 import { useBookingPopup } from "../hooks";
 import {
   Header,
+  MobileHeader,
   Footer,
   IntroSection,
   OfferingsSection,
@@ -43,6 +44,7 @@ const AiSolutionsPage: React.FC = () => {
     <div className="page">
       {/* Header */}
       <Header onGetStartedClick={openPopup} />
+      <MobileHeader onGetStartedClick={openPopup} />
 
       {/* Intro Section */}
       <IntroSection
