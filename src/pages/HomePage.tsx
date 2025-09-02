@@ -23,6 +23,9 @@ import {
   industryHealthcare,
   industryLogistics,
   industryNgo,
+  otherMainImg,
+  otherBgElipse1,
+  otherBgElipse2,
 } from "../assets";
 
 const HomePage: React.FC = () => {
@@ -69,6 +72,14 @@ const HomePage: React.FC = () => {
 
       {/* Hero Section */}
       <section className="hero">
+        {/* Background ellipses */}
+        <div className="intro__bg-ellipse intro__bg-ellipse--left">
+          <img src={otherBgElipse1} alt="" className="intro__bg-ellipse-image" />
+        </div>
+        <div className="intro__bg-ellipse intro__bg-ellipse--right">
+          <img src={otherBgElipse2} alt="" className="intro__bg-ellipse-image" />
+        </div>
+
         <div className="hero__container">
           <div className="hero__content">
             <div className="hero__text-group">
@@ -113,6 +124,11 @@ const HomePage: React.FC = () => {
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Adaptive image for tablets and mobile */}
+        <div className="intro__adaptive-image">
+          <img src={otherMainImg} alt="Main Page" className="intro__adaptive-image-img" />
         </div>
       </section>
 

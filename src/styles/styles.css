@@ -1072,15 +1072,39 @@ img {
 }
 
 .mobile-header__nav-arrow {
-  width: 12px;
-  height: 7px;
+  width: 16px;
+  height: 10px;
   background: url("../assets/images/nav-arrow.png") no-repeat center;
   background-size: contain;
   transition: transform 0.3s ease;
+  opacity: 0.7; /* Добавляем немного прозрачности */
+  margin-left: 8px; /* Добавляем отступ слева */
+  position: relative;
+}
+
+/* Fallback CSS стрелочка если изображение не загрузится */
+.mobile-header__nav-arrow::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 6px solid #333333;
+  opacity: 0; /* Скрыто по умолчанию */
+}
+
+/* Показываем CSS стрелочку только если фоновое изображение не загрузилось */
+.mobile-header__nav-arrow:not([style*="background-image"])::after {
+  opacity: 1;
 }
 
 .mobile-header__nav-arrow--open {
   transform: rotate(180deg);
+  opacity: 1; /* Полная непрозрачность когда открыто */
 }
 
 /* Подменю */
@@ -1095,6 +1119,7 @@ img {
               padding 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
               opacity 0.3s ease;
   opacity: 0;
+  border-radius: 15px;
 }
 
 .mobile-header__submenu--open {
@@ -1460,6 +1485,157 @@ body:has(.breadcrumbs) .mobile-header__burger-line {
 @media (max-width: 768px) {
   .hero__partners-list {
     gap: 40px;
+  }
+}
+
+/* Intro Background Ellipses */
+.intro__bg-ellipse {
+  position: absolute;
+  z-index: -1; /* Позади основного контента */
+  pointer-events: none;
+  filter: blur(50px); /* Добавляем размытие */
+}
+
+.intro__bg-ellipse--left {
+  bottom: 0;
+  left: 0;
+}
+
+.intro__bg-ellipse--right {
+  bottom: 0;
+  right: 0;
+  z-index: -2; /* Еще глубже, чтобы левый эллипс мог наслаиваться */
+}
+
+.intro__bg-ellipse-image {
+  width: auto;
+  height: auto;
+  display: block;
+}
+
+/* Intro Adaptive Image */
+.intro__adaptive-image {
+  display: none;
+  width: 100%;
+  margin-top: 20px; /* Уменьшаем отступ */
+}
+
+.intro__adaptive-image-img {
+  width: 100%;
+  height: 300px; /* Фиксированная небольшая высота */
+  max-width: 500px; /* Ограничиваем ширину */
+  margin: 0 auto;
+  display: block;
+  object-fit: cover; /* Сохраняем пропорции */
+}
+
+/* Show adaptive image and hide background on tablets and mobile */
+@media (max-width: 1000px) {
+  .intro {
+    background: linear-gradient(180deg, #05202a, #000000);
+    /* Remove background image */
+  }
+  
+  .intro::after {
+    display: none;
+  }
+  
+  .intro__adaptive-image {
+    display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  .intro__bg-ellipse--left,
+  .intro__bg-ellipse--right {
+    bottom: -30px; /* Чуть ниже, чтобы частично скрывались */
+  }
+  
+  .intro__bg-ellipse-image {
+    max-width: 200px;
+  }
+  
+  .intro__adaptive-image {
+    margin-top: 15px;
+  }
+  
+  .intro__adaptive-image-img {
+    height: 250px; /* Меньше на средних экранах */
+  }
+}
+
+@media (max-width: 425px) {
+  .intro__bg-ellipse-image {
+    max-width: 150px;
+  }
+  
+  .intro__adaptive-image {
+    margin-top: 10px;
+  }
+  
+  .intro__adaptive-image-img {
+    height: 200px; /* Еще меньше на маленьких экранах */
+  }
+}
+
+/* Hero Section Responsive Styles */
+.hero {
+  overflow: hidden; /* Добавляем для правильного отображения эллипсов */
+}
+
+/* Hero Adaptive Image */
+.hero .intro__adaptive-image {
+  display: none;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.hero .intro__adaptive-image-img {
+  width: 100%;
+  height: 300px;
+  max-width: 500px;
+  margin: 0 auto;
+  display: block;
+  object-fit: cover;
+}
+
+@media (max-width: 1000px) {
+  .hero {
+    background: linear-gradient(180deg, #05202a, #000000);
+    /* Remove background image on tablets and mobile */
+  }
+  
+  .hero::after {
+    display: none; /* Скрываем старое фоновое изображение */
+  }
+  
+  .hero .intro__adaptive-image {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 3; /* Поверх всего контента */
+    max-width: 50%;
+    height: auto;
+  }
+  
+  .hero .intro__adaptive-image-img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero .intro__adaptive-image {
+    max-width: 45%;
+  }
+}
+
+@media (max-width: 425px) {
+  .hero .intro__adaptive-image {
+    max-width: 40%;
+    bottom: 20px;
   }
 }
 
@@ -3854,8 +4030,6 @@ body:has(.breadcrumbs) .mobile-header__burger-line {
   line-height: 24px;
   color: #666666;
 }
-
-.advantages__header-button {}
 
 .advantages__header-button:hover {
   transform: translateY(-2px);
@@ -6566,6 +6740,7 @@ body:has(.breadcrumbs) .mobile-header__burger-line {
   padding: 360px 0px 0px;
   margin-bottom: -71px;
   position: relative;
+  overflow: hidden; /* Добавляем для правильного отображения эллипсов */
 }
 
 .consulting-intro__breadcrumbs {
@@ -6800,6 +6975,63 @@ body:has(.breadcrumbs) .mobile-header__burger-line {
 
 .consulting-intro__link:hover {
   color: #4e9fe8;
+}
+
+/* Consulting Intro Adaptive Image */
+.consulting-intro .intro__adaptive-image {
+  display: none;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.consulting-intro .intro__adaptive-image-img {
+  width: 100%;
+  height: 300px;
+  max-width: 500px;
+  margin: 0 auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Consulting Intro Responsive Styles */
+@media (max-width: 1000px) {
+  .consulting-intro {
+    background: linear-gradient(180deg, #05202a, #000000);
+    /* Remove background image on tablets and mobile */
+  }
+  
+  .consulting-intro::after {
+    display: none; /* Скрываем старое фоновое изображение */
+  }
+  
+  .consulting-intro .intro__adaptive-image {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 3; /* Поверх всего контента */
+    max-width: 50%;
+    height: auto;
+  }
+  
+  .consulting-intro .intro__adaptive-image-img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+}
+
+@media (max-width: 768px) {
+  .consulting-intro .intro__adaptive-image {
+    max-width: 45%;
+  }
+}
+
+@media (max-width: 425px) {
+  .consulting-intro .intro__adaptive-image {
+    max-width: 40%;
+    bottom: 20px;
+  }
 }
 
 /* Consulting Methodology Section (copied from process) */
@@ -10260,7 +10492,7 @@ textarea {
     display: none;
   }
   .intro__container{
-    padding-bottom: 550px;
+    padding-bottom: 0;
   }
   .offerings__header-content{
     flex-direction: column;
@@ -10368,7 +10600,7 @@ textarea {
     display: none;
   }
   .consulting-intro__container{
-    padding-bottom: 300px;
+    padding-bottom: 600px;
   }
   .consulting-methodology__container{
     flex-direction: column;
@@ -10442,6 +10674,29 @@ textarea {
   }
   .process__actions{
     justify-content: center;
+  }
+  .intro__adaptive-image-img{
+    height: auto;
+  }
+  .intro__bg-ellipse{
+    position: absolute;
+    z-index: 0;
+  }
+  .intro__bg-ellipse-image{
+    max-width: fit-content;
+  }
+  .intro__adaptive-image {
+    position: relative;
+    z-index: 15;
+  }
+  .consulting-intro .intro__adaptive-image{
+    max-width: 100%;
+  }
+  .hero .intro__adaptive-image {
+    max-width: 100%;
+  }
+  .hero .intro__adaptive-image {
+    bottom: 265px;
   }
 }
 

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { otherConsultingImg, otherBgElipse1, otherBgElipse2 } from "../assets";
 
 interface ConsultingIntroSectionProps {
   title: string;
@@ -26,6 +27,14 @@ const ConsultingIntroSection: React.FC<ConsultingIntroSectionProps> = ({
 }) => {
   return (
     <section className="consulting-intro">
+      {/* Background ellipses */}
+      <div className="intro__bg-ellipse intro__bg-ellipse--left">
+        <img src={otherBgElipse1} alt="" className="intro__bg-ellipse-image" />
+      </div>
+      <div className="intro__bg-ellipse intro__bg-ellipse--right">
+        <img src={otherBgElipse2} alt="" className="intro__bg-ellipse-image" />
+      </div>
+
       {/* Breadcrumbs inside consulting-intro */}
       <div className="consulting-intro__breadcrumbs">
         <div className="consulting-intro__breadcrumbs-container">
@@ -104,6 +113,11 @@ const ConsultingIntroSection: React.FC<ConsultingIntroSectionProps> = ({
             </div>
           ))}
         </div>
+      </div>
+
+      {/* Adaptive image for tablets and mobile */}
+      <div className="intro__adaptive-image">
+        <img src={otherConsultingImg} alt="Consulting" className="intro__adaptive-image-img" />
       </div>
     </section>
   );

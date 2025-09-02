@@ -247,6 +247,7 @@ const ItSolutionsPage: React.FC = () => {
           stats={itSolutionsData.intro.stats}
           onGetStartedClick={openPopup}
           onConsultationClick={openPopup}
+          pageType="it"
         />
 
         <VisualizationSection

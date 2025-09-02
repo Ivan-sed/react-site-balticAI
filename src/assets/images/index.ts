@@ -118,3 +118,17 @@ export { default as visualizationCard2 } from "./visualization-card-2.png";
 export { default as visualizationCard3 } from "./visualization-card-3.png";
 export { default as visualizationCard4 } from "./visualization-card-4.png";
 export { default as freeGif } from "./free.gif";
+
+// AI Solutions адаптивные изображения
+export { default as otherAiImg } from "./other-ai-img.png";
+export { default as otherBgElipse1 } from "./other-bg-elipse-1.png";
+export { default as otherBgElipse2 } from "./other-bg-elipse-2.png";
+
+// Consulting адаптивные изображения  
+export { default as otherConsultingImg } from "./other-consulting-img.png";
+
+// IT Solutions адаптивные изображения
+export { default as otherItImg } from "./other-it-img.png";
+
+// Main page адаптивные изображения
+export { default as otherMainImg } from "./other-main-img.png";

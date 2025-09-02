@@ -14,7 +14,7 @@ const MobileHeader: React.FC<MobileHeaderProps> = ({ onGetStartedClick }) => {
   const hasBreadcrumbs = useBreadcrumbsPage();
 
   // Определяем, какой логотип использовать
-  const shouldUseDarkLogo = isHeaderScrolled || hasBreadcrumbs;
+  const shouldUseDarkLogo = isHeaderScrolled || hasBreadcrumbs || isMobileMenuOpen;
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);

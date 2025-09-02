@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { otherAiImg, otherItImg, otherBgElipse1, otherBgElipse2 } from "../assets";
 
 interface IntroSectionProps {
   title: string;
@@ -8,6 +9,7 @@ interface IntroSectionProps {
   stats: Array<{ number: string; title: string; description: string }>;
   onGetStartedClick?: () => void;
   onConsultationClick?: () => void;
+  pageType?: "ai" | "it"; // Новый проп для выбора изображения
 }
 
 const IntroSection: React.FC<IntroSectionProps> = ({
@@ -17,9 +19,30 @@ const IntroSection: React.FC<IntroSectionProps> = ({
   stats,
   onGetStartedClick,
   onConsultationClick,
+  pageType = "ai", // По умолчанию AI изображение
 }) => {
+  // Выбираем изображение в зависимости от типа страницы
+  const getAdaptiveImage = () => {
+    switch (pageType) {
+      case "it":
+        return { src: otherItImg, alt: "IT Solutions" };
+      case "ai":
+      default:
+        return { src: otherAiImg, alt: "AI Solutions" };
+    }
+  };
+
+  const adaptiveImage = getAdaptiveImage();
   return (
     <section className="intro">
+      {/* Background ellipses */}
+      <div className="intro__bg-ellipse intro__bg-ellipse--left">
+        <img src={otherBgElipse1} alt="" className="intro__bg-ellipse-image" />
+      </div>
+      <div className="intro__bg-ellipse intro__bg-ellipse--right">
+        <img src={otherBgElipse2} alt="" className="intro__bg-ellipse-image" />
+      </div>
+
       {/* Breadcrumbs inside intro */}
       <div className="intro__breadcrumbs">
         <div className="intro__breadcrumbs-container">
@@ -94,6 +117,11 @@ const IntroSection: React.FC<IntroSectionProps> = ({
             </div>
           ))}
         </div>
+      </div>
+
+      {/* Adaptive image for tablets and mobile */}
+      <div className="intro__adaptive-image">
+        <img src={adaptiveImage.src} alt={adaptiveImage.alt} className="intro__adaptive-image-img" />
       </div>
     </section>
   );
