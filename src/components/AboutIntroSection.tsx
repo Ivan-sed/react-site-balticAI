@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { otherAboutImg, otherBgElipse1, otherBgElipse2 } from "../assets";
 
 interface AboutIntroSectionProps {
   title: string;
@@ -18,6 +19,14 @@ const AboutIntroSection: React.FC<AboutIntroSectionProps> = ({
 }) => {
   return (
     <section className="about-intro">
+      {/* Background ellipses */}
+      <div className="intro__bg-ellipse intro__bg-ellipse--left">
+        <img src={otherBgElipse1} alt="" className="intro__bg-ellipse-image" />
+      </div>
+      <div className="intro__bg-ellipse intro__bg-ellipse--right">
+        <img src={otherBgElipse2} alt="" className="intro__bg-ellipse-image" />
+      </div>
+
       {/* Breadcrumbs inside consulting-intro */}
       <div className="consulting-intro__breadcrumbs">
         <div className="consulting-intro__breadcrumbs-container">
@@ -56,7 +65,7 @@ const AboutIntroSection: React.FC<AboutIntroSectionProps> = ({
           </nav>
         </div>
       </div>
-      <div className="consulting-intro__container">
+      <div className="consulting-intro__container about-intro__container">
         <div className="consulting-intro__content">
           <div className="consulting-intro__text-group">
             <h1 className="consulting-intro__title">
@@ -75,6 +84,11 @@ const AboutIntroSection: React.FC<AboutIntroSectionProps> = ({
             </button>
           </div>
         </div>
+      </div>
+
+      {/* Adaptive image for tablets and mobile */}
+      <div className="intro__adaptive-image">
+        <img src={otherAboutImg} alt="About Us" className="intro__adaptive-image-img" />
       </div>
     </section>
   );

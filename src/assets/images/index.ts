@@ -132,3 +132,6 @@ export { default as otherItImg } from "./other-it-img.png";
 
 // Main page адаптивные изображения
 export { default as otherMainImg } from "./other-main-img.png";
+
+// About Us адаптивные изображения
+export { default as otherAboutImg } from "./other-about-img.png";
