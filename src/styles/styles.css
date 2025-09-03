@@ -11165,7 +11165,7 @@ textarea {
   }
   
   .footer__legal-link {
-    font-size: 18px;
+    font-size: 16px;
     color: #ffffff;
     text-decoration: underline;
     opacity: 0.8;
@@ -11175,13 +11175,16 @@ textarea {
     opacity: 1;
   }
   .footer__phone, .footer__email{
-    font-size: 18px;
+    font-size: 16px;
   }
   .footer__text{
-    font-size: 18px;
+    font-size: 16px;
   }
   .footer__section-title{
-    font-size: 18px;
+    font-size: 16px;
+  }
+  .footer__logo-img{
+    width: 165px;
   }
   .intro__breadcrumbs{
     display: none;
@@ -11435,5 +11438,286 @@ textarea {
   }
   .process-features__intro{
     max-width: fit-content;
+  }
+  .consulting-intro__breadcrumbs{
+    display: none;
+  }
+  .consulting-intro__numbers{
+    display: none;
+  }
+  .consulting-intro__content{
+    width: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .consulting-intro__description{
+    width: auto;
+  }
+  .consulting-intro__actions{
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .consulting-intro .intro__adaptive-image{
+    max-width: 85%;
+  }
+  .consulting-methodology{
+    padding: 30px 0;
+  }
+  .consulting-methodology__container{
+    flex-direction: column;
+  }
+  .consulting-methodology__content{
+    width: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .consulting-methodology__title{
+    width: auto;
+    font-size: 25px;
+  }
+  .consulting-methodology__description{
+    width: auto;
+    height: auto;
+  }
+  .consulting-methodology__actions{
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .consulting-methodology__step{
+    width: auto;
+  }
+  
+  /* Мобильные стили для блоков методологии */
+  .consulting-methodology__steps {
+    display: flex !important;
+    flex-direction: column;
+    gap: 20px;
+    width: 100% !important;
+    height: auto !important;
+    position: static !important;
+    padding: 0 1.5rem;
+  }
+  
+  .consulting-methodology__step {
+    position: relative !important; /* Важно! Каждый блок должен быть относительным */
+    width: 100% !important;
+    height: auto !important;
+    margin: 0;
+    padding: 20px 15px;
+    top: auto !important;
+    left: auto !important;
+  }
+  
+  .consulting-methodology__step:nth-child(1),
+  .consulting-methodology__step:nth-child(3),
+  .consulting-methodology__step:nth-child(5) {
+    position: relative !important; /* Каждый блок относительный */
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+  
+  /* Адаптируем фоновые изображения для мобильных */
+  .consulting-methodology__step:nth-child(1)::after,
+  .consulting-methodology__step:nth-child(3)::after,
+  .consulting-methodology__step:nth-child(5)::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    border-radius: 15px;
+  }
+  
+  /* Убеждаемся, что контент поверх фона */
+  .consulting-methodology__step-header,
+  .consulting-methodology__step-content {
+    position: relative;
+    z-index: 2;
+  }
+  
+  /* Прячем стрелочки на мобильном */
+  .consulting-methodology__arrow {
+    display: none !important;
+  }
+  .consulting-methodology__step:nth-child(1)::after{
+    background-size: cover;
+  }
+  .consulting-methodology__step:nth-child(3)::after{
+    background-size: cover;
+  }
+  .consulting-methodology__step:nth-child(5)::after{
+    background-size: cover;
+  }
+  .consulting-benefits__cards{
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  .consulting-benefits{
+    padding: 0;
+  }
+  .consulting-benefits__title{
+    font-size: 25px;
+  }
+  .consulting-benefits__card--time{
+    width: auto;
+  }
+  .consulting-benefits__card--time::after{
+    background-size: cover;
+  }
+  .consulting-benefits__card--automation{
+    width: auto;
+    border-radius: 15px;
+  }
+  .consulting-benefits__card--testimonial{
+    width: auto;
+    border-radius: 15px;
+  }
+  .consulting-benefits__container{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .consulting-benefits__title{
+    width: auto;
+  }
+  .consulting-benefits__header-button{
+    display: none;
+  }
+  .consulting-benefits__card--testimonial::after{
+    width: 35%;
+    height: 35%;
+    bottom: 0;
+  }
+  .consulting-booking{
+    padding: 50px 0;
+    margin-top: 50px;
+  }
+  .consulting-booking__container{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .consulting-booking__text{
+    display: none;
+  }
+  .visualization{
+    padding-top: 35px;
+  }
+  .it-process-features{
+    margin-bottom: 0;
+  }
+  .consulting-intro__title{
+    font-size: 30px;
+  }
+  .about-intro .intro__adaptive-image {
+    max-width: 100%;
+    bottom: 40px;
+  }
+  .about-intro{
+    padding: 110px 0;
+  }
+  .consulting-intro__content{
+    gap: 40px ;
+  }
+  .consulting-intro__actions .button{
+    font-size: 15px;
+  }
+  
+  /* Специальный класс для картинки About Us на мобильном */
+  .intro__adaptive-image-img--about-mobile {
+    padding-left: 0 !important;
+  }
+  .about-principles{
+    padding: 35px 0;
+  }
+  .about-principles .container{
+    width: auto;
+  }
+  .about-principles__title{
+    font-size: 25px;
+  }
+  .about-principles__list{
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  .about-story{
+    padding: 0;
+  }
+  .about-story .container{
+    border-radius: 0;
+  }
+  .about-story__gallery{
+    border-radius: 0 ;
+  }
+  .about-team{
+    padding: 50px 0;
+  }
+  .about-team .container{
+    width: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    gap: 25px;
+  }
+  .about-team__avatar{
+    width: 100%;
+  }
+  .about-team__title{
+    font-size: 25px;
+  }
+  .about-team__member{
+    gap: 15px;
+    min-width: fit-content;
+  }
+  .about-achievements{
+    padding: 50px 0;
+  }
+  .about-achievements .container{
+    width: auto;
+  }
+  .about-achievements__list{
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  .about-achievements__description{
+    text-align: center;
+  }
+  .breadcrumbs{
+    display: none;
+  }
+  .contacts__container{
+    padding-top: 8rem;
+    flex-direction: column;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    gap: 5rem;
+  }
+  .contacts__left-section{
+    width: auto;
+  }
+  .contacts__row-section{
+    flex-direction: column;
+    gap: 2rem;
+    align-items: flex-start;
+  }
+  .contacts__title{
+    display: none;
+  }
+  .contacts__text{
+    display: none;
+  }
+  .contacts__line{
+    display: none;
+  }
+  .consultation__form{
+    width: auto;
+    padding: 1.5rem;
+  }
+  .contacts__right-section{
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 }

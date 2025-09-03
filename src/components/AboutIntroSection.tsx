@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { otherAboutImg, otherBgElipse1, otherBgElipse2 } from "../assets";
 
@@ -17,6 +17,66 @@ const AboutIntroSection: React.FC<AboutIntroSectionProps> = ({
   buttonText,
   onButtonClick,
 }) => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth <= 435);
+    };
+
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
+
+  // Рендерим мобильную версию
+  if (isMobile) {
+    return (
+      <section className="intro intro--mobile">
+        {/* Background ellipses */}
+        <div className="intro__bg-ellipse intro__bg-ellipse--left">
+          <img src={otherBgElipse1} alt="" className="intro__bg-ellipse-image" />
+        </div>
+        <div className="intro__bg-ellipse intro__bg-ellipse--right">
+          <img src={otherBgElipse2} alt="" className="intro__bg-ellipse-image" />
+        </div>
+
+        <div className="intro__container">
+          <div className="intro__content">
+            {/* 1. Заголовок */}
+            <div className="intro__text-group">
+              <h1 className="intro__title">
+                <span className="intro__title-text">{title}</span>
+              </h1>
+            </div>
+            
+            {/* 2. Текст */}
+            <div className="intro__subtitle-group">
+              <p className="intro__description">{description}</p>
+            </div>
+            
+            {/* 3. Изображение */}
+            <div className="intro__adaptive-image">
+              <img src={otherAboutImg} alt="About Us" className="intro__adaptive-image-img intro__adaptive-image-img--about-mobile" />
+            </div>
+            
+            {/* 4. Кнопка */}
+            <div className="intro__actions">
+              <button
+                className="button intro__button button--primary intro__get-started-btn"
+                onClick={onButtonClick}
+              >
+                {buttonText}
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // Рендерим десктопную версию
   return (
     <section className="about-intro">
       {/* Background ellipses */}
