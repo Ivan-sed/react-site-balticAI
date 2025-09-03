@@ -49,7 +49,7 @@ const AiSolutionsPage: React.FC = () => {
       {/* Intro Section */}
       <IntroSection
         title="Transform Your Business Operations with AI-Powered Automation Solutions"
-        description="Streamline workflows, reduce operational costs by up to 40%, and boost productivity while your team focuses on strategic growth. Our intelligent automation platform delivers measurable results in just 10 days."
+        description="Streamline workflows, reduce operational costs by up to 40%, and boost productivity while your team focuses on strategic growth."
         breadcrumbs={breadcrumbs}
         stats={stats}
         onGetStartedClick={openPopup}

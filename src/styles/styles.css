@@ -10772,7 +10772,7 @@ textarea {
 }
 
 /* Mobile phones responsive styles */
-@media (max-width: 425px) {
+@media (max-width: 435px) {
   /* Projects mobile accordion-style layout */
   .projects {
     padding: 80px 0;
@@ -10891,4 +10891,549 @@ textarea {
     transform: scale(0.98);
   }
 
+
+
+  .hero{
+    padding: 150px 0px 0px;
+  }
+  .hero__container{
+    padding-bottom: 350px;
+  }
+  .hero__content{
+    width: auto;
+    gap: 30px;
+  }
+  .hero__title{
+    font-size: 30px;
+  }
+  .hero__subtitle{
+    font-size: 14px;
+  }
+  .hero__description{
+    display: none;
+  }
+  .hero__link{
+    display: none;
+  }
+  .hero__actions .button{
+    font-size: 15px;
+  }
+  .intro__bg-ellipse{
+    bottom: 165px;
+    z-index: 0;
+  }
+  .hero .intro__adaptive-image{
+    max-width: 100%;
+    bottom: 135px;
+  }
+  
+  /* Partners mobile swipe animation */
+  .hero__partners {
+    padding: 30px 0px;
+  }
+  
+  .hero__partners-list {
+    display: flex;
+    gap: 30px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 0 20px;
+    margin: 0;
+    max-width: none;
+    justify-content: flex-start;
+    
+    /* Скрыть скроллбар */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE и Edge */
+  }
+  
+  .hero__partners-list::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+  
+  .hero__partners-item {
+    flex-shrink: 0;
+    width: 50vw; /* ~1.5 логотипа на экране */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Убираем overlay эффекты на мобильных */
+  .hero__partners-item::before {
+    display: none; /* Отключаем overlay эффект */
+  }
+  
+  .hero__partners-logo {
+    max-width: 100%;
+    height: auto;
+    opacity: 1; /* Полная непрозрачность */
+    filter: none; /* Убираем все фильтры */
+    transition: none; /* Убираем transition эффекты */
+  }
+  
+  /* Убираем автоматическую ротацию на мобильных */
+  .hero__partners-list.transitioning {
+    opacity: 1; /* Отключаем fade анимацию */
+  }
+
+  .services__container{
+    margin-top: -7rem;
+  }
+  .services__subtitle{
+    display: none;
+  }
+  .service-card__content{
+    padding: 0;
+  }
+  .service-card__text-group{
+    width: auto;
+  }
+  .service-card__info{
+    padding-bottom: 15rem;
+  }
+  .service-card__button{
+    font-size: 15px;
+  }
+  .service-card--featured::after {
+    top: 150px;
+    right: 35px;
+    width: 325px;
+  }
+  .services__row{
+    flex-direction: column;
+  }
+  .service-card--it-solutions::after{
+    width: 80%;
+  }
+  .service-card--consultation::after{
+    width: 80%;
+  }
+  .service-card__title{
+    font-size: 21px;
+  }
+  .features__container{
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .feature-card--automation{
+    width: auto;
+    background: #fff;
+  }
+  .feature-card--automation .feature-card__title{
+    font-size: 21px;
+  }
+  .feature-card--time{
+    width: auto;
+  }
+  .feature-card--testimonial{
+    width: auto;
+    display: none;
+  }
+  .features{
+    padding: 0;
+  }
+  .contact__title{
+    font-size: 21px;
+  }
+  .contact__text-group{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .contact__timer{
+    display: none;
+  }
+  .contact-card__content{
+    padding-bottom: 13rem;
+  }
+  .contact-card__text-group{
+    margin-bottom: 40px;
+  }
+  .industry-card__img{
+    border-radius: 0 !important;
+    height: 150px;
+  }
+  .industry-card__description{
+    font-size: 14px;
+  }
+  .industry-card__actions{
+    align-items: flex-end;
+  }
+  .newsletter__container{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    gap: 40px;
+  }
+  .newsletter__title{
+    font-size: 25px;
+  }
+  .newsletter__description{
+    font-size: 14px;
+  }
+  .newsletter__input{
+    padding: 20px 20px;
+  }
+  .footer__info{
+    flex-direction: column;
+  }
+  
+  /* Footer mobile structure */
+  .footer {
+    padding: 40px 0;
+  }
+  
+  .footer__container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 30px;
+    padding: 0 20px;
+    max-width: none;
+  }
+  
+  /* 1. Логотип */
+  .footer__logo {
+    order: 1;
+  }
+  
+  .footer__logo-img {
+    width: 200px;
+    height: auto;
+  }
+  
+  /* 2. Социальные сети (отдельно от контактов) */
+  .footer__social {
+    order: 2;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  /* 3. Контакты (только телефон и email) */
+  .footer__contact-info {
+    order: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+  
+  /* Контейнер контактов без особого порядка */
+  .footer__contact {
+    display: contents; /* Убираем обертку, чтобы дочерние элементы участвовали в flexbox родителя */
+  }
+  
+  .footer__phone,
+  .footer__email {
+    font-size: 16px;
+  }
+  
+  /* 4. Адрес */
+  .footer__info {
+    order: 4;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* Скрываем блок информации о компании */
+  .footer__section:first-child {
+    display: none;
+  }
+  
+  /* Показываем только адрес */
+  .footer__section:last-child {
+    display: block;
+  }
+  
+  .footer__section-title {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .footer__text {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  /* 5. Правовая информация */
+  .footer__legal {
+    order: 5;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+  
+  .footer__legal-link {
+    font-size: 18px;
+    color: #ffffff;
+    text-decoration: underline;
+    opacity: 0.8;
+  }
+  
+  .footer__legal-link:hover {
+    opacity: 1;
+  }
+  .footer__phone, .footer__email{
+    font-size: 18px;
+  }
+  .footer__text{
+    font-size: 18px;
+  }
+  .footer__section-title{
+    font-size: 18px;
+  }
+  .intro__breadcrumbs{
+    display: none;
+  }
+  .intro{
+    padding: 80px 0px 0px;
+  }
+  .intro__content{
+    width: auto;
+  }
+  .intro__description{
+    width: auto;
+  }
+  .intro__title{
+    font-size: 30px;
+  }
+  .intro__numbers{
+    display: none;
+  }
+  .intro__adaptive-image-img{
+    height: auto;
+  }
+  .intro__container{
+    padding-bottom: 0;
+  }
+  .intro__actions{
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .intro__actions .button{
+    width: 300px;
+  }
+  .intro__description {
+    color: #fff;
+    font-size: 16px;
+  }
+  .intro__adaptive-image {
+    position: relative;
+    z-index: 2;
+  }
+  .intro__adaptive-image-img{
+    width: unset;
+  }
+  
+  /* AI Solutions page mobile structure - новая версия */
+  .intro--mobile {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .intro--mobile .intro__container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .intro--mobile .intro__adaptive-image {
+    display: block !important;
+    position: static !important;
+    margin: 0;
+    align-self: center;
+    max-width: 100%;
+  }
+  
+  .intro--mobile .intro__adaptive-image-img {
+    width: 100%;
+    height: 455px;
+    object-fit: contain;
+    padding-left: 2.5rem;
+
+  }
+  
+  /* Убираем старые стили order для мобильной версии */
+  .intro--mobile .intro__title,
+  .intro--mobile .intro__subtitle-group,
+  .intro--mobile .intro__actions,
+  .intro--mobile .intro__numbers,
+  .intro--mobile .intro__content {
+    order: unset;
+  }
+  
+  .intro--mobile .intro__content {
+    display: block;
+  }
+  
+  /* Специальные стили для кнопок в мобильной версии */
+  .intro--mobile .intro__actions {
+    display: flex !important;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    justify-content: center; /* Центрируем по горизонтали */
+    margin: 20px auto; /* Центрируем блок */
+    position: relative;
+    z-index: 10; /* Поверх других элементов */
+    bottom: 8rem;
+    width: 100%; /* Полная ширина для центрирования */
+  }
+  
+  .intro--mobile .intro__actions .button {
+    display: block !important;
+    width: 100%;
+    max-width: 300px;
+    padding: 15px 20px;
+    font-size: 16px;
+    text-align: center;
+    z-index: 11;
+  }
+  
+  /* Кнопка консультации как подчеркнутая ссылка */
+  .intro--mobile .intro__link {
+    display: block !important;
+    width: auto; /* Автоматическая ширина для ссылки */
+    max-width: none;
+    padding: 10px 0; /* Только вертикальные отступы */
+    text-align: center;
+    background: transparent;
+    border: none; /* Убираем рамку */
+    color: #ffffff;
+    text-decoration: underline; /* Подчеркивание */
+    border-radius: 0;
+    z-index: 11;
+    font-size: 16px;
+    font-weight: normal;
+  }
+  
+  .intro--mobile .intro__link:hover {
+    color: #4e9fe8; /* Цвет при наведении */
+    text-decoration: underline;
+  }
+  .intro__text-group{
+    gap: 15px;
+  }
+  .mobile-header__logo-image{
+    height: 65px;
+  }
+  .offerings__container{
+    padding-top: 25px;
+  }
+  .offerings__title{
+    display: none;
+  }
+  .offerings__subtitle{
+    display: none;
+  }
+  .offerings__header{
+    margin-bottom: 0;
+  }
+  .offerings__card-title{
+    font-size: 21px;
+  }
+  .offerings__card-description{
+    font-size: 15px;
+  }
+  .offerings__card-content{
+    padding: 0;
+  }
+  .offerings__card--featured .offerings__card-main{
+    padding-bottom: 180px;
+  }
+  .offerings__card--featured::after {
+    top: 135px;
+    right: 25px;
+    width: 350px;
+  }
+  .offerings__card-button{
+    font-size: 15px;
+  }
+  .offerings__row{
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .offerings__card--it-solutions::after{
+    width: 80%;
+  }
+  .offerings__card--consultation::after{
+    width: 80%;
+  }
+  .advantages__header{
+    flex-direction: column;
+  }
+  .advantages__title{
+    width: auto;
+  }
+  .advantages__header-button{
+    display: none;
+  }
+  .advantages__cards{
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  .advantages__card--automation{
+    width: auto;
+    height: auto;
+    padding: 25px;
+  }
+  .advantages__card--time{
+    width: auto;
+  }
+  .advantages__card--time::after{
+    background-size: cover;
+  }
+  .advantages__card--testimonial{
+    width: auto;
+    height: auto;
+    background: #fff;
+    padding: 0;
+  }
+  .advantages__card--testimonial::after{
+    display: none;
+  }
+  .process{
+    display: none;
+  }
+  .advantages {
+    padding: 85px 0;
+  }
+  .transformation__container{
+    width: auto;
+  }
+  .transformation__title{
+    font-size: 25px;
+    text-align: center;
+  }
+  .transformation__steps{
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .transformation__description{
+    width: auto;
+    text-align: center;
+  }
+  .transformation__step{
+    width: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .visualization__title{
+    font-size: 25px;
+  }
+  .visualization__content{
+    display: none;
+  }
+  .consultation__text{
+    display: none;
+  }
+  .process-features__container{
+    width: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .process-features__intro{
+    max-width: fit-content;
+  }
 }
