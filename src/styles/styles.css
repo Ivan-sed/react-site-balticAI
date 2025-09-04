@@ -856,18 +856,22 @@ img {
   background: #1d82dd;
   color: #ffffff;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-  padding: 14px 26px;
+  padding: 9px 26px; /* Используем тот же вертикальный padding что и в базовом классе */
   z-index: 2;
 }
 
-/* Contact Card Link Block */
 .contact-card__link {
-  color: #1d82dd;
+  color: #fff;
   text-decoration: underline;
   font-weight: 600;
   font-size: 20px;
   line-height: 22px;
   transition: all 0.3s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 2;
 }
 
 .contact-card__link:hover {
@@ -12150,6 +12154,7 @@ textarea {
   .industries--slider {
     display: block !important;
   }
+  /* Убираем проблемный стиль - height уже задана в базовом классе */
 }
 
 @media (max-width: 375px) {

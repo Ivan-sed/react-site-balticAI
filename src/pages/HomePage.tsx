@@ -388,7 +388,7 @@ const HomePage: React.FC = () => {
                   </p>
                 </div>
                 <button
-                  className="button contact-card__button button--primary contact-card__button--primary"
+                  className="contact-card__link"
                   onClick={openPopup}
                 >
                   Talk to sales
