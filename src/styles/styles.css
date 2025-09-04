@@ -4073,7 +4073,7 @@ body:has(.breadcrumbs) .mobile-header__burger-line {
 }
 
 .advantages__title {
-  font-size: 35px;
+  font-size: 25px;
   font-weight: 600;
   line-height: 50px;
   color: #000000;
@@ -10912,12 +10912,12 @@ textarea {
   }
   
   .projects__title {
-    font-size: 28px;
+    font-size: 25px;
     line-height: 32px;
   }
   
   .projects__subtitle {
-    font-size: 18px;
+    font-size: 17px;
     line-height: 20px;
   }
   
@@ -11022,10 +11022,10 @@ textarea {
     gap: 30px;
   }
   .hero__title{
-    font-size: 30px;
+    font-size: 35px;
   }
   .hero__subtitle{
-    font-size: 14px;
+    font-size: 17px;
   }
   .hero__description{
     display: none;
@@ -11137,6 +11137,7 @@ textarea {
   .feature-card--automation{
     width: auto;
     background: #fff;
+    margin-top: 2rem;
   }
   .feature-card--automation .feature-card__title{
     font-size: 21px;
@@ -11522,6 +11523,8 @@ textarea {
   }
   .transformation__container{
     width: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
   .transformation__title{
     font-size: 25px;
@@ -11907,7 +11910,7 @@ textarea {
   }
   
   .about-mobile__title {
-    font-size: 32px;
+    font-size: 25px;
     font-weight: 700;
     text-align: center;
     margin-bottom: 40px;
@@ -11917,7 +11920,7 @@ textarea {
   .about-mobile__cards {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 35px;
     align-items: center;
   }
   
@@ -12030,8 +12033,28 @@ textarea {
   .visualization-mobile__button:active {
     transform: translateY(0);
   }
-  
-  
+
+  .services__title, .solutions__title, .offerings__title {
+    font-size: 25px;
+  }
+  .consultation__form-submit{
+    font-size: 18px;
+  }
+  .projects__button{
+    font-size: 18px;
+  }
+  .consulting-booking__form-title{
+    font-size: 20px;
+  }
+  .consultation__form-title{
+    font-size: 20px;
+  }
+  .consulting-booking__form-submit{
+    font-size: 18px;
+  }
+  .it-consultation{
+    margin-top: 0;
+  }
 }
 
 @media (max-width: 375px) {
