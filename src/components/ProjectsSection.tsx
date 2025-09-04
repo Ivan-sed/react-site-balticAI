@@ -16,6 +16,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
   const navigate = useNavigate();
   const projectHover = useProjectCardsHover();
   const [expandedCard, setExpandedCard] = useState<string>(""); // No default expanded card
+  const [showContent, setShowContent] = useState<string>(""); // For controlling content visibility
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
 
@@ -40,11 +41,19 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
 
   const handleCardClick = (projectId: string) => {
     if (isMobile || isTablet) {
-      // For mobile and tablet - toggle clicked card
       if (expandedCard === projectId) {
-        setExpandedCard(""); // Collapse if already expanded
+        // Закрываем: сначала скрываем контент, потом сжимаем блок
+        setShowContent("");
+        setTimeout(() => setExpandedCard(""), 200);
       } else {
-        setExpandedCard(projectId); // Expand if not expanded
+        // Открываем: сначала скрываем старый контент, расширяем блок, потом показываем новый контент
+        setShowContent(""); // Скрываем любой видимый контент
+        setExpandedCard(projectId); // Сразу начинаем растягивать блок
+        
+        // Показываем контент только после завершения растягивания (800ms transition + небольшой буфер)
+        setTimeout(() => {
+          setShowContent(projectId);
+        }, 900);
       }
     }
   };
@@ -111,6 +120,8 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
               key={project.id}
               className={`project-card ${project.className} ${
                 expandedCard === project.id ? "project-card--expanded" : ""
+              } ${
+                showContent === project.id ? "project-card--content-visible" : ""
               }`}
               onClick={() => handleCardClick(project.id)}
               {...(project.hasHover && !isMobile && !isTablet && {

@@ -10313,45 +10313,14 @@ textarea {
     width: 100% !important; /* Full width of grid cell */
   }
   
-  .projects__grid .project-card:not(:first-child) {
-    width: 100% !important; /* Full width of grid cell */
-  }
-  
   .projects__grid .project-card:not(:first-child):hover {
     width: 100% !important; /* Prevent width changes */
     transform: none !important; /* Prevent scaling */
     z-index: 1;
   }
   
-  /* Content visibility based on active state */
-  .projects__grid .project-card .project-card__description,
-  .projects__grid .project-card .project-card__link {
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition: opacity 0.3s ease, max-height 0.3s ease;
-  }
+  /* Content visibility based on active state - УДАЛЕНО, используем унифицированные стили выше */
   
-  .projects__grid .project-card.project-card--expanded .project-card__description,
-  .projects__grid .project-card.project-card--expanded .project-card__link {
-    opacity: 1;
-    max-height: 200px;
-  }
-  
-  /* First card should not be active by default on tablets */
-  .projects__grid .project-card:first-child .project-card__description,
-  .projects__grid .project-card:first-child .project-card__link {
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition: opacity 0.3s ease, max-height 0.3s ease;
-  }
-  
-  .projects__grid .project-card:first-child.project-card--expanded .project-card__description,
-  .projects__grid .project-card:first-child.project-card--expanded .project-card__link {
-    opacity: 1;
-    max-height: 200px;
-  }
   .solutions__container{
     padding-left: 1.5rem;
     padding-right: 1.5rem;
@@ -10999,45 +10968,62 @@ textarea {
     margin-bottom: 40px;
   }
   
+  /* УНИФИЦИРОВАННЫЕ стили для ВСЕХ карточек */
   .projects__grid .project-card {
     width: 100% !important;
     height: 180px;
-    transition: height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: height 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
     cursor: pointer;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background-size: cover;
+    background-position: center;
   }
   
+  /* Первая карточка - только начальная высота другая */
   .projects__grid .project-card:first-child {
-    width: 100% !important;
-    height: 200px; /* Collapsed state by default */
-    transition: height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important; /* Only height transition for first card */
+    height: 200px;
+    /* ВСЕ остальные свойства наследуются от .project-card */
   }
   
-  /* Prevent first card from changing width when clicked */
-  .projects__grid .project-card:first-child.project-card--expanded {
-    width: 100% !important;
-    height: 400px !important; /* Expanded height only when expanded class is present */
-    transform: none !important;
-  }
-  
+  /* ВСЕ остальные карточки */
   .projects__grid .project-card:not(:first-child) {
-    width: 100% !important;
+    height: 180px;
+    /* ВСЕ остальные свойства наследуются от .project-card */
   }
   
-  /* Expanded state */
+  /* ВСЕ expanded карточки ведут себя АБСОЛЮТНО одинаково */
   .projects__grid .project-card--expanded {
     height: 400px !important;
   }
   
-  /* Card content adjustments */
+  /* УНИФИЦИРОВАННЫЙ контент для ВСЕХ карточек */
   .projects__grid .project-card .project-card__content {
     padding: 20px;
-    backdrop-filter: none;
     justify-content: flex-end;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
   
-  /* Default collapsed state - no background for all cards */
-  .projects__grid .project-card:not(.project-card--expanded) .project-card__content {
-    background: transparent;
+  /* Контент появляется одинаково для ВСЕХ карточек */
+  .projects__grid .project-card--expanded.project-card--content-visible .project-card__content {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* УНИФИЦИРОВАННЫЕ элементы внутри контента */
+  .projects__grid .project-card .project-card__title,
+  .projects__grid .project-card .project-card__description,
+  .projects__grid .project-card .project-card__link {
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  }
+  
+  .projects__grid .project-card .project-card__title {
+    font-size: 20px;
+    margin-bottom: 15px;
   }
   
   /* Expanded state - clinic card (first) gets dark background */
@@ -11047,6 +11033,7 @@ textarea {
     padding: 30px 20px;
     background: rgba(27, 68, 105, 0.4);
     backdrop-filter: blur(7.5px);
+    transition: background 0.3s ease 0.3s, backdrop-filter 0.3s ease 0.3s, padding 0.3s ease 0.3s; /* Увеличена задержка до 0.3s */
   }
   
   /* Expanded state - other cards get their specific backgrounds */
@@ -11058,35 +11045,39 @@ textarea {
     padding: 30px 20px;
     background: rgba(27, 68, 105, 0.4);
     backdrop-filter: blur(7.5px);
+    transition: background 0.3s ease 0.3s, backdrop-filter 0.3s ease 0.3s, padding 0.3s ease 0.3s; /* Увеличена задержка до 0.3s */
   }
   
-  /* Text visibility in collapsed state */
+  /* Контент карточек - новая анимация */
   .projects__grid .project-card .project-card__description,
   .projects__grid .project-card .project-card__link {
     opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition: opacity 0.3s ease, max-height 0.3s ease;
+    transform: translateY(30px) scale(0.95);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    pointer-events: none;
   }
   
-  .projects__grid .project-card--expanded .project-card__description,
-  .projects__grid .project-card--expanded .project-card__link {
+  /* Контент появляется с плавной анимацией только когда карточка полностью расширена */
+  .projects__grid .project-card--expanded.project-card--content-visible .project-card__description,
+  .projects__grid .project-card--expanded.project-card--content-visible .project-card__link {
     opacity: 1;
-    max-height: 200px;
+    transform: translateY(0) scale(1);
+    transition: opacity 0.6s ease 0.1s, transform 0.6s ease 0.1s;
+    pointer-events: auto;
   }
   
-  /* Title visibility */
+  /* Заголовок также участвует в анимации */
   .projects__grid .project-card .project-card__title {
     font-size: 20px;
-    margin-bottom: 0;
+    margin-bottom: 15px;
     color: #ffffff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Better visibility on image */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    transition: margin-bottom 0.5s ease, font-size 0.5s ease;
   }
   
   .projects__grid .project-card--expanded .project-card__title {
-    font-size: 24px;
-    margin-bottom: 15px;
-    text-shadow: none; /* Remove shadow when background is present */
+    font-size: 22px;
+    margin-bottom: 20px;
   }
   
   /* Mobile-specific interaction states */
