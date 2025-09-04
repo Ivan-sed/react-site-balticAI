@@ -1188,6 +1188,62 @@ img {
   border-color: #155a99;
 }
 
+/* Иконки соцсетей в мобильном меню */
+.mobile-header__social {
+  display: flex;
+  gap: 20px;
+  justify-content: flex-end;
+  padding: 30px 20px 20px 20px;
+  border-top: 1px solid #f0f0f0;
+  margin-top: 20px;
+}
+
+.mobile-header__social-link {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  /* Увеличенная область нажатия для touch */
+  min-width: 44px;
+  min-height: 44px;
+  position: relative;
+}
+
+.mobile-header__social-link::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: all 0.3s ease;
+}
+
+.mobile-header__social-link--linkedin::before {
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="%231D82DD" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>');
+}
+
+.mobile-header__social-link--facebook::before {
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="%231D82DD" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>');
+}
+
+.mobile-header__social-link--instagram::before {
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="%231D82DD" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>');
+}
+
+.mobile-header__social-link:hover::before {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.mobile-header__social-link:active::before {
+  transform: translate(-50%, -50%) scale(0.95);
+}
+
 /* Оверлей */
 .mobile-header__overlay {
   position: fixed;
@@ -8491,21 +8547,24 @@ body:has(.breadcrumbs) .mobile-header__burger-line {
 }
 
 .about-team__indicator {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  border: none;
-  background: #E0E0E0;
+  border: 2px solid #2460D9;
+  background: transparent;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  transform: scale(1);
 }
 
 .about-team__indicator--active {
   background: #2460D9;
+  transform: scale(1.1);
 }
 
 .about-team__indicator:hover {
   background: #2460D9;
+  transform: scale(1.05);
 }
 
 /* About Achievements Section */
@@ -9595,6 +9654,13 @@ textarea {
   .about-team__list-wrapper {
     width: 310px;
     /* Ширина для 1 карточки на мобильных */
+    touch-action: pan-y pinch-zoom;
+    /* Позволяет только вертикальную прокрутку и pinch-zoom */
+    cursor: grab;
+  }
+
+  .about-team__list-wrapper:active {
+    cursor: grabbing;
   }
 
   .about-team__slider {
@@ -9603,6 +9669,49 @@ textarea {
 
   .about-team__member {
     width: 310px;
+    user-select: none;
+    /* Отключаем выделение текста при свайпе */
+  }
+
+  /* Улучшенные индикаторы для мобильных */
+  .about-team__indicators {
+    margin-top: 40px;
+    gap: 15px;
+  }
+
+  .about-team__indicator {
+    width: 10px;
+    height: 10px;
+    /* Touch-friendly область нажатия */
+    min-width: 44px;
+    min-height: 44px;
+    position: relative;
+    border: 2px solid #2460D9;
+    background: transparent;
+  }
+
+  .about-team__indicator::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid #1D82DD;
+    background: transparent;
+    transition: all 0.3s ease;
+  }
+
+  .about-team__indicator--active::before {
+    background: #1D82DD;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  .about-team__indicator:hover::before {
+    background: #1D82DD;
+    transform: translate(-50%, -50%) scale(1.05);
   }
 }
 

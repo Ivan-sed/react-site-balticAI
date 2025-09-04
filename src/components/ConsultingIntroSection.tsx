@@ -15,15 +15,15 @@ interface ConsultingIntroSectionProps {
 }
 
 // Функции для мобильных текстов
-const getMobileTitle = (title: string): string => {
+const getMobileTitle = (_title: string): string => {
   return "Expert AI Consulting for Real Results";
 };
 
-const getMobileDescription = (description: string): string => {
+const getMobileDescription = (_description: string): string => {
   return "Transform your business with strategic AI consulting. From planning to implementation, we help you achieve measurable results faster.";
 };
 
-const getMobileStats = (stats: Array<{ number: string; title: string; description: string }>): Array<{ number: string; title: string; description: string }> => {
+const getMobileStats = (_stats: Array<{ number: string; title: string; description: string }>): Array<{ number: string; title: string; description: string }> => {
   return [
     {
       number: "01",

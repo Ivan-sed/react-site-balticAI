@@ -18,13 +18,21 @@ const AboutTeamSection: React.FC<AboutTeamSectionProps> = ({
 }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  
+  // Touch события для свайпа
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
   
   // Количество карточек на один слайд (адаптивно)
   const [cardsPerSlide, setCardsPerSlide] = useState(3);
   
   useEffect(() => {
     const updateCardsPerSlide = () => {
-      if (window.innerWidth <= 768) {
+      const mobile = window.innerWidth <= 768;
+      setIsMobile(mobile);
+      
+      if (mobile) {
         setCardsPerSlide(1);
       } else if (window.innerWidth <= 1024) {
         setCardsPerSlide(2);
@@ -37,6 +45,33 @@ const AboutTeamSection: React.FC<AboutTeamSectionProps> = ({
     window.addEventListener('resize', updateCardsPerSlide);
     return () => window.removeEventListener('resize', updateCardsPerSlide);
   }, []);
+
+  // Минимальное расстояние для распознавания свайпа
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe && currentSlide < totalSlides - 1) {
+      goToNext();
+    }
+    if (isRightSwipe && currentSlide > 0) {
+      goToPrev();
+    }
+  };
 
   // Общее количество слайдов
   const totalSlides = Math.ceil(members.length / cardsPerSlide);
@@ -74,13 +109,20 @@ const AboutTeamSection: React.FC<AboutTeamSectionProps> = ({
       <div className="container">
         <h2 className="about-team__title">{title}</h2>
         <div className="about-team__slider">
-          <button
-            className="about-team__arrow about-team__arrow--prev"
-            type="button"
-            aria-label="Previous team members"
-            onClick={goToPrev}
-          ></button>
-          <div className="about-team__list-wrapper">
+          {!isMobile && (
+            <button
+              className="about-team__arrow about-team__arrow--prev"
+              type="button"
+              aria-label="Previous team members"
+              onClick={goToPrev}
+            ></button>
+          )}
+          <div 
+            className="about-team__list-wrapper"
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
+          >
             <ul className={`about-team__list ${isAnimating ? 'about-team__list--animating' : ''}`}>
               {getCurrentSlideMembers().map((member, index) => (
                 <li 
@@ -95,12 +137,14 @@ const AboutTeamSection: React.FC<AboutTeamSectionProps> = ({
               ))}
             </ul>
           </div>
-          <button
-            className="about-team__arrow about-team__arrow--next"
-            type="button"
-            aria-label="Next team members"
-            onClick={goToNext}
-          ></button>
+          {!isMobile && (
+            <button
+              className="about-team__arrow about-team__arrow--next"
+              type="button"
+              aria-label="Next team members"
+              onClick={goToNext}
+            ></button>
+          )}
         </div>
         {/* Индикация слайдов */}
         {totalSlides > 1 && (

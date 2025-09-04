@@ -151,6 +151,31 @@ const MobileHeader: React.FC<MobileHeaderProps> = ({ onGetStartedClick }) => {
               Login
             </button>
           </div>
+
+          {/* Иконки соцсетей */}
+          <div className="mobile-header__social">
+            <a 
+              href="https://linkedin.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="mobile-header__social-link mobile-header__social-link--linkedin"
+              aria-label="LinkedIn"
+            ></a>
+            <a 
+              href="https://facebook.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="mobile-header__social-link mobile-header__social-link--facebook"
+              aria-label="Facebook"
+            ></a>
+            <a 
+              href="https://instagram.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="mobile-header__social-link mobile-header__social-link--instagram"
+              aria-label="Instagram"
+            ></a>
+          </div>
         </nav>
       </div>
 
