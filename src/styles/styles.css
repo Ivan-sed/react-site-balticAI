@@ -10931,6 +10931,19 @@ textarea {
   .industries--slider {
     display: block !important;
   }
+  .privacy-policy__content{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .terms-of-use__content{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .cookie-policy__content{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
 }
 
 /* Mobile phones responsive styles */
@@ -12154,7 +12167,42 @@ textarea {
   .industries--slider {
     display: block !important;
   }
-  /* Убираем проблемный стиль - height уже задана в базовом классе */
+  .privacy-policy__content{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .terms-of-use__content{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .cookie-policy__content{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .cookie-policy__title {
+    text-align: center;
+    margin-top: 5rem;
+    font-size: 25px;
+  }
+  .terms-of-use__title{
+    text-align: center;
+    margin-top: 5rem;
+    font-size: 25px;
+  }
+  .privacy-policy__title{
+    text-align: center;
+    margin-top: 5rem;
+    font-size: 25px;
+  }
+  .privacy-policy .container{
+    width: auto;
+  }
+  .terms-of-use .container{
+    width: auto;
+  }
+  .cookie-policy .container{
+    width: auto;
+  }
 }
 
 @media (max-width: 375px) {
