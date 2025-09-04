@@ -12081,3 +12081,50 @@ textarea {
         width: 300px;
     }
 }
+
+/* === Industries Sections Visibility Control === */
+
+/* Animated version - hidden on mobile phones */
+.industries--animated {
+  display: block;
+}
+
+.industries--static {
+  display: none;
+}
+
+/* Static version styles for mobile */
+.industries--static .industries__container {
+  position: static;
+  height: auto;
+  padding: 60px 20px;
+}
+
+.industries--static .industries__grid--static {
+  position: static;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.industries--static .industry-card--static {
+  position: static;
+  width: 100%;
+  height: auto;
+  transition: none;
+  transform: none;
+  will-change: auto;
+  z-index: auto;
+}
+
+/* Mobile breakpoint - show static version, hide animated */
+@media (max-width: 768px) {
+  .industries--animated {
+    display: none !important;
+  }
+  
+  .industries--static {
+    display: block;
+  }
+}

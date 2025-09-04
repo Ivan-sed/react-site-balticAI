@@ -371,8 +371,8 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Industries Section */}
-      <section className="industries" ref={stackedCardsRef}>
+      {/* Industries Section - Animated version (hidden on mobile) */}
+      <section className="industries industries--animated" ref={stackedCardsRef}>
         <div className="industries__container">
           <h2 className="industries__title">
             AI Solutions for Leading Business Industries
@@ -525,6 +525,191 @@ const HomePage: React.FC = () => {
             </article>
 
             <article className="industry-card">
+              <div className="industry-card__image">
+                <img
+                  src={industryNgo}
+                  alt="NGO"
+                  className="industry-card__img"
+                />
+              </div>
+              <div className="industry-card__content">
+                <div className="industry-card__text">
+                  <h3 className="industry-card__title">NGO</h3>
+                  <p className="industry-card__description">
+                    We specialize in delivering tailored AI solutions across
+                    diverse sectors. Our expertise helps businesses in each
+                    industry optimize processes, reduce costs, and enhance
+                    customer experiences.
+                  </p>
+                </div>
+                <div className="industry-card__actions">
+                  <button
+                    className="button industry-card__button industry-card__button--primary"
+                    onClick={openConsultationPopup}
+                  >
+                    Consultation
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      {/* Industries Section - Static version (visible only on mobile) */}
+      <section className="industries industries--static">
+        <div className="industries__container">
+          <h2 className="industries__title">
+            AI Solutions for Leading Business Industries
+          </h2>
+
+          <div className="industries__grid industries__grid--static">
+            <article className="industry-card industry-card--static">
+              <div className="industry-card__image">
+                <img
+                  src={industryEcommerce}
+                  alt="E-commerce"
+                  className="industry-card__img"
+                />
+              </div>
+              <div className="industry-card__content">
+                <div className="industry-card__text">
+                  <h3 className="industry-card__title">E-commerce</h3>
+                  <p className="industry-card__description">
+                    We specialize in delivering tailored AI solutions across
+                    diverse sectors. Our expertise helps businesses in each
+                    industry optimize processes, reduce costs, and enhance
+                    customer experiences.
+                  </p>
+                </div>
+                <div className="industry-card__actions">
+                  <button
+                    className="button industry-card__button industry-card__button--primary"
+                    onClick={openConsultationPopup}
+                  >
+                    Consultation
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article className="industry-card industry-card--static">
+              <div className="industry-card__image">
+                <img
+                  src={industryTravel}
+                  alt="Travel"
+                  className="industry-card__img"
+                />
+              </div>
+              <div className="industry-card__content">
+                <div className="industry-card__text">
+                  <h3 className="industry-card__title">Travel</h3>
+                  <p className="industry-card__description">
+                    We specialize in delivering tailored AI solutions across
+                    diverse sectors. Our expertise helps businesses in each
+                    industry optimize processes, reduce costs, and enhance
+                    customer experiences.
+                  </p>
+                </div>
+                <div className="industry-card__actions">
+                  <button
+                    className="button industry-card__button industry-card__button--primary"
+                    onClick={openConsultationPopup}
+                  >
+                    Consultation
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article className="industry-card industry-card--static">
+              <div className="industry-card__image">
+                <img
+                  src={industryGovernment}
+                  alt="Government"
+                  className="industry-card__img"
+                />
+              </div>
+              <div className="industry-card__content">
+                <div className="industry-card__text">
+                  <h3 className="industry-card__title">Government</h3>
+                  <p className="industry-card__description">
+                    We specialize in delivering tailored AI solutions across
+                    diverse sectors. Our expertise helps businesses in each
+                    industry optimize processes, reduce costs, and enhance
+                    customer experiences.
+                  </p>
+                </div>
+                <div className="industry-card__actions">
+                  <button
+                    className="button industry-card__button industry-card__button--primary"
+                    onClick={openConsultationPopup}
+                  >
+                    Consultation
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article className="industry-card industry-card--static">
+              <div className="industry-card__image">
+                <img
+                  src={industryHealthcare}
+                  alt="Healthcare"
+                  className="industry-card__img"
+                />
+              </div>
+              <div className="industry-card__content">
+                <div className="industry-card__text">
+                  <h3 className="industry-card__title">Healthcare</h3>
+                  <p className="industry-card__description">
+                    We specialize in delivering tailored AI solutions across
+                    diverse sectors. Our expertise helps businesses in each
+                    industry optimize processes, reduce costs, and enhance
+                    customer experiences.
+                  </p>
+                </div>
+                <div className="industry-card__actions">
+                  <button
+                    className="button industry-card__button industry-card__button--primary"
+                    onClick={openConsultationPopup}
+                  >
+                    Consultation
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article className="industry-card industry-card--static">
+              <div className="industry-card__image">
+                <img
+                  src={industryLogistics}
+                  alt="Logistics"
+                  className="industry-card__img"
+                />
+              </div>
+              <div className="industry-card__content">
+                <div className="industry-card__text">
+                  <h3 className="industry-card__title">Logistics</h3>
+                  <p className="industry-card__description">
+                    We specialize in delivering tailored AI solutions across
+                    diverse sectors. Our expertise helps businesses in each
+                    industry optimize processes, reduce costs, and enhance
+                    customer experiences.
+                  </p>
+                </div>
+                <div className="industry-card__actions">
+                  <button
+                    className="button industry-card__button industry-card__button--primary"
+                    onClick={openConsultationPopup}
+                  >
+                    Consultation
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article className="industry-card industry-card--static">
               <div className="industry-card__image">
                 <img
                   src={industryNgo}
