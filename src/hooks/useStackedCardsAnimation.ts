@@ -15,6 +15,16 @@ export const useStackedCardsAnimation = () => {
     let isInAnimationZone = false;
     let shouldPreventScroll = false;
 
+    // Touch события для мобильных устройств
+    let touchStartY = 0;
+    let touchEndY = 0;
+    let isTouching = false;
+
+    // Определяем устройство
+    const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
+                          ('ontouchstart' in window) || 
+                          (navigator.maxTouchPoints > 0);
+
     // Устанавливаем z-index один раз при инициализации
     cards.forEach((card, index) => {
       const cardElement = card as HTMLElement;
@@ -83,6 +93,59 @@ export const useStackedCardsAnimation = () => {
       // Если прокрутка вверх и нет блокировки, то событие не блокируется и прокрутка работает нормально
     };
 
+    // Touch-обработчики для мобильных устройств
+    const handleTouchStart = (e: TouchEvent) => {
+      if (!isInAnimationZone) return;
+      
+      touchStartY = e.touches[0].clientY;
+      isTouching = true;
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (!isTouching || !isInAnimationZone || !shouldPreventScroll) return;
+      
+      e.preventDefault(); // Предотвращаем обычную прокрутку
+      
+      touchEndY = e.touches[0].clientY;
+      const deltaY = touchStartY - touchEndY;
+      
+      // Конвертируем touch движение в аналог wheel события
+      const scrollAmount = deltaY * 0.001; // Коэффициент для чувствительности
+      
+      // Проверяем, завершена ли анимация
+      const lastCardIndex = cards.length - 1;
+      const lastCardDelay = (lastCardIndex - 1) * 0.20;
+      const lastCardDuration = 0.30;
+      const totalAnimationTime = lastCardDelay + lastCardDuration + 0.25;
+      
+      virtualScrollProgress = Math.max(0, Math.min(totalAnimationTime, virtualScrollProgress + scrollAmount));
+      
+      // Если анимация завершена, разрешаем дальнейшую прокрутку
+      if (virtualScrollProgress >= totalAnimationTime && deltaY > 0) {
+        shouldPreventScroll = false;
+        isTouching = false;
+      }
+      
+      // Если достигли начала анимации при прокрутке вверх
+      if (virtualScrollProgress <= 0 && deltaY < 0) {
+        shouldPreventScroll = false;
+        isInAnimationZone = false;
+        isTouching = false;
+      }
+      
+      // Обновляем анимацию
+      if (!ticking) {
+        requestAnimationFrame(updateCardsAnimation);
+        ticking = true;
+      }
+      
+      touchStartY = touchEndY; // Обновляем стартовую позицию для плавности
+    };
+
+    const handleTouchEnd = () => {
+      isTouching = false;
+    };
+
     const updateCardsAnimation = () => {
       const containerRect = container.getBoundingClientRect();
       const windowHeight = window.innerHeight;
@@ -116,9 +179,19 @@ export const useStackedCardsAnimation = () => {
         shouldPreventScroll = false;
       }
       
-      if (shouldPreventScroll && isInAnimationZone) {
-        // Используем виртуальный прогресс вместо реального положения
-        // Ничего не делаем с реальным скроллом здесь
+      // Для мобильных устройств используем позицию scroll вместо виртуального прогресса при обычной прокрутке
+      let currentProgress = virtualScrollProgress;
+      
+      if (isMobileDevice && isInAnimationZone && !isTouching) {
+        // На мобильных устройствах используем scroll position для анимации
+        const scrollProgress = Math.max(0, Math.min(1, -containerRect.top / windowHeight));
+        
+        const lastCardIndex = cards.length - 1;
+        const lastCardDelay = (lastCardIndex - 1) * 0.20;
+        const lastCardDuration = 0.30;
+        const totalAnimationTime = lastCardDelay + lastCardDuration + 0.25;
+        
+        currentProgress = scrollProgress * totalAnimationTime;
       }
 
       cards.forEach((card, index) => {
@@ -129,7 +202,7 @@ export const useStackedCardsAnimation = () => {
         for (let i = index + 1; i < cards.length; i++) {
           const checkDelay = (i - 1) * 0.20; // Увеличили интервал между карточками
           const checkProgress = Math.max(0, Math.min(1, 
-            (virtualScrollProgress - checkDelay) / 0.25 // Увеличили длительность проверки
+            (currentProgress - checkDelay) / 0.25 // Увеличили длительность проверки
           ));
           if (checkProgress > 0) {
             hasMovingCardsBelow = true;
@@ -157,7 +230,7 @@ export const useStackedCardsAnimation = () => {
         const cardDuration = 0.30; // Увеличили длительность анимации каждой карточки
         
         const cardProgress = Math.max(0, Math.min(1, 
-          (virtualScrollProgress - cardDelay) / cardDuration
+          (currentProgress - cardDelay) / cardDuration
         ));
 
         if (cardProgress > 0) {
@@ -203,7 +276,18 @@ export const useStackedCardsAnimation = () => {
     // Добавляем обработчики событий
     window.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('resize', updateCardsAnimation, { passive: true });
-    window.addEventListener('wheel', handleWheel, { passive: false });
+    
+    // Для десктопа используем wheel события
+    if (!isMobileDevice) {
+      window.addEventListener('wheel', handleWheel, { passive: false });
+    }
+    
+    // Для мобильных устройств используем touch события
+    if (isMobileDevice) {
+      window.addEventListener('touchstart', handleTouchStart, { passive: true });
+      window.addEventListener('touchmove', handleTouchMove, { passive: false });
+      window.addEventListener('touchend', handleTouchEnd, { passive: true });
+    }
     
     // Начальный расчёт
     updateCardsAnimation();
@@ -212,7 +296,16 @@ export const useStackedCardsAnimation = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', updateCardsAnimation);
-      window.removeEventListener('wheel', handleWheel);
+      
+      if (!isMobileDevice) {
+        window.removeEventListener('wheel', handleWheel);
+      }
+      
+      if (isMobileDevice) {
+        window.removeEventListener('touchstart', handleTouchStart);
+        window.removeEventListener('touchmove', handleTouchMove);
+        window.removeEventListener('touchend', handleTouchEnd);
+      }
     };
   }, []);
 
