@@ -11031,17 +11031,33 @@ textarea {
   /* Card content adjustments */
   .projects__grid .project-card .project-card__content {
     padding: 20px;
-    background: transparent !important; /* Remove background for collapsed cards */
     backdrop-filter: none;
     justify-content: flex-end;
   }
   
-  .projects__grid .project-card--expanded .project-card__content {
+  /* Default collapsed state - no background for all cards */
+  .projects__grid .project-card:not(.project-card--expanded) .project-card__content {
+    background: transparent;
+  }
+  
+  /* Expanded state - clinic card (first) gets dark background */
+  .projects__grid .project-card--clinic.project-card--expanded .project-card__content {
     justify-content: flex-start;
     gap: 20px;
     padding: 30px 20px;
-    background: rgba(0, 0, 0, 0.6) !important; /* Show background only for expanded */
-    backdrop-filter: blur(10px);
+    background: rgba(27, 68, 105, 0.4);
+    backdrop-filter: blur(7.5px);
+  }
+  
+  /* Expanded state - other cards get their specific backgrounds */
+  .projects__grid .project-card--cosmetology.project-card--expanded .project-card__content,
+  .projects__grid .project-card--calculator.project-card--expanded .project-card__content,
+  .projects__grid .project-card--travel.project-card--expanded .project-card__content {
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 30px 20px;
+    background: rgba(27, 68, 105, 0.4);
+    backdrop-filter: blur(7.5px);
   }
   
   /* Text visibility in collapsed state */
@@ -12161,5 +12177,83 @@ textarea {
         right: -25px;
         width: 300px;
     }
+}
+
+/* Disable hover effects on mobile devices */
+@media (max-width: 425px) {
+  /* Disable all project card hover effects */
+  .projects__grid .project-card:not(:first-child):hover {
+    width: inherit !important;
+    transform: none !important;
+    z-index: inherit !important;
+    box-shadow: inherit !important;
+  }
+
+  .projects__grid .project-card:first-child:hover {
+    width: inherit !important;
+    transform: none !important;
+    z-index: inherit !important;
+    box-shadow: inherit !important;
+  }
+
+  .projects__grid .project-card:first-child:hover .project-card__description {
+    opacity: inherit !important;
+    visibility: inherit !important;
+    max-height: inherit !important;
+    transition: none !important;
+  }
+
+  .projects__grid .project-card:first-child:hover .project-card__link {
+    opacity: inherit !important;
+    visibility: inherit !important;
+    max-height: inherit !important;
+    transition: none !important;
+  }
+
+
+  .projects__grid .project-card:not(:first-child):hover .project-card__description {
+    opacity: inherit !important;
+    visibility: inherit !important;
+    max-height: inherit !important;
+    transition: none !important;
+  }
+
+  .projects__grid .project-card:not(:first-child):hover .project-card__link {
+    opacity: inherit !important;
+    visibility: inherit !important;
+    max-height: inherit !important;
+    transition: none !important;
+  }
+
+  .projects__grid .project-card:not(:first-child):hover .project-card__text-group {
+    gap: inherit !important;
+  }
+
+  /* Disable other-card-hovered effects */
+  .projects__grid.other-card-hovered .project-card:first-child {
+    width: inherit !important;
+    transition: none !important;
+    transform: none !important;
+  }
+
+  .projects__grid.other-card-hovered .project-card:first-child .project-card__content {
+    background: inherit !important;
+    backdrop-filter: inherit !important;
+    padding: inherit !important;
+  }
+
+  .projects__grid.other-card-hovered .project-card:first-child .project-card__description {
+    opacity: inherit !important;
+    visibility: inherit !important;
+    max-height: inherit !important;
+    transition: none !important;
+  }
+
+  .projects__grid.other-card-hovered .project-card:first-child .project-card__link {
+    opacity: inherit !important;
+    visibility: inherit !important;
+    max-height: inherit !important;
+    transition: none !important;
+  }
 }
 
