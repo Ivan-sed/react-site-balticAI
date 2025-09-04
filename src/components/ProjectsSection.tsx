@@ -15,7 +15,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
 }) => {
   const navigate = useNavigate();
   const projectHover = useProjectCardsHover();
-  const [expandedCard, setExpandedCard] = useState<string>("clinic"); // First card expanded by default only for mobile
+  const [expandedCard, setExpandedCard] = useState<string>(""); // No default expanded card
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
 
@@ -26,12 +26,9 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
       setIsMobile(width <= 425);
       setIsTablet(width > 425 && width <= 1200);
       
-      // Reset expanded card for tablet to have no default selection
-      if (width > 425 && width <= 1200) {
+      // Reset expanded card for all device types - no default selection
+      if (width > 425) {
         setExpandedCard("");
-      } else if (width <= 425) {
-        // Keep first card expanded for mobile
-        setExpandedCard("clinic");
       }
     };
     
@@ -43,8 +40,12 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
 
   const handleCardClick = (projectId: string) => {
     if (isMobile || isTablet) {
-      // For mobile and tablet - just switch to clicked card
-      setExpandedCard(projectId);
+      // For mobile and tablet - toggle clicked card
+      if (expandedCard === projectId) {
+        setExpandedCard(""); // Collapse if already expanded
+      } else {
+        setExpandedCard(projectId); // Expand if not expanded
+      }
     }
   };
 

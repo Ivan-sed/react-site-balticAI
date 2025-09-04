@@ -11008,12 +11008,14 @@ textarea {
   
   .projects__grid .project-card:first-child {
     width: 100% !important;
-    height: 400px; /* First card expanded by default */
+    height: 200px; /* Collapsed state by default */
+    transition: height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important; /* Only height transition for first card */
   }
   
   /* Prevent first card from changing width when clicked */
   .projects__grid .project-card:first-child.project-card--expanded {
     width: 100% !important;
+    height: 400px !important; /* Expanded height only when expanded class is present */
     transform: none !important;
   }
   
@@ -11034,7 +11036,6 @@ textarea {
     justify-content: flex-end;
   }
   
-  .projects__grid .project-card:first-child .project-card__content,
   .projects__grid .project-card--expanded .project-card__content {
     justify-content: flex-start;
     gap: 20px;
@@ -11052,8 +11053,6 @@ textarea {
     transition: opacity 0.3s ease, max-height 0.3s ease;
   }
   
-  .projects__grid .project-card:first-child .project-card__description,
-  .projects__grid .project-card:first-child .project-card__link,
   .projects__grid .project-card--expanded .project-card__description,
   .projects__grid .project-card--expanded .project-card__link {
     opacity: 1;
@@ -11068,7 +11067,6 @@ textarea {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Better visibility on image */
   }
   
-  .projects__grid .project-card:first-child .project-card__title,
   .projects__grid .project-card--expanded .project-card__title {
     font-size: 24px;
     margin-bottom: 15px;
@@ -11078,6 +11076,11 @@ textarea {
   /* Mobile-specific interaction states */
   .projects__grid .project-card:active {
     transform: scale(0.98);
+  }
+
+  /* Disable transform animation for first card on mobile */
+  .projects__grid .project-card:first-child:active {
+    transform: none !important;
   }
 
 
