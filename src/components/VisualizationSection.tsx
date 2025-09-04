@@ -1,5 +1,11 @@
 import React from "react";
 
+// Импорт изображений для мобильной секции
+import rapidDeploymentImg from "../assets/images/Rapid-Deployment-img.png";
+import intuitiveDashboardsImg from "../assets/images/Intuitive-Dashboardst-img.png";
+import scalableArchitectureImg from "../assets/images/Scalable-Architecture-img.png";
+import continuousImprovementImg from "../assets/images/Continuous-Improvement-img.png";
+
 interface VisualizationCard {
   id: string;
   title: string;
@@ -15,6 +21,7 @@ interface VisualizationSectionProps {
   topRowCards: VisualizationCard[];
   bottomRowCards: VisualizationCard[];
   className?: string;
+  onBookingClick?: () => void;
 }
 
 const VisualizationSection: React.FC<VisualizationSectionProps> = ({
@@ -22,6 +29,7 @@ const VisualizationSection: React.FC<VisualizationSectionProps> = ({
   topRowCards,
   bottomRowCards,
   className = "",
+  onBookingClick,
 }) => {
   return (
     <section className={`visualization ${className}`} id="visualization">
@@ -86,6 +94,39 @@ const VisualizationSection: React.FC<VisualizationSectionProps> = ({
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+
+        <div className="visualization-mobile">
+          <div className="visualization-mobile__content">
+
+            <div className="visualization-mobile__section-row">
+              <img className="visualization-mobile__image" src={rapidDeploymentImg} alt="Rapid Deployment" />
+              <p className="visualization-mobile__text">Rapid Deployment</p>
+            </div>
+
+            <div className="visualization-mobile__section-row">
+              <img className="visualization-mobile__image" src={intuitiveDashboardsImg} alt="Intuitive Dashboards" />
+              <p className="visualization-mobile__text">Intuitive Dashboards</p>
+            </div>
+
+            <div className="visualization-mobile__section-row">
+              <img className="visualization-mobile__image" src={scalableArchitectureImg} alt="Scalable Architecture" />
+              <p className="visualization-mobile__text">Scalable Architecture</p>
+            </div>
+
+            <div className="visualization-mobile__section-row">
+              <img className="visualization-mobile__image" src={continuousImprovementImg} alt="Continuous Improvement" />
+              <p className="visualization-mobile__text">Continuous Improvement</p>
+            </div>
+
+            <button 
+              className="visualization-mobile__button"
+              onClick={onBookingClick}
+            >
+              Book now
+            </button>
+
           </div>
         </div>
       </div>

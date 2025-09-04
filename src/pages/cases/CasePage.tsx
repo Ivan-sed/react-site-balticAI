@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useBookingPopup } from "../../hooks";
 import {
   Header,
+  MobileHeader,
   BreadcrumbsSection,
   CaseDetailsSection,
   ConsultationSection,
@@ -63,6 +64,7 @@ const CasePage: React.FC = () => {
   return (
     <div className="page">
       <Header onGetStartedClick={openPopup} />
+      <MobileHeader onGetStartedClick={openPopup} />
       <main>
         <BreadcrumbsSection breadcrumbs={breadcrumbsData} />
         <CaseDetailsSection {...caseData} />

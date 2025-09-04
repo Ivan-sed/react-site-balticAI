@@ -9854,6 +9854,12 @@ textarea {
 .transformation__book-consultation-btn:hover::before {
   left: 100%;
 }
+.about-mobile{
+  display: none;
+}
+.visualization-mobile{
+  display: none;
+}
 
 /* adaptive styles */
 @media (max-width: 1200px) {
@@ -10768,6 +10774,9 @@ textarea {
   }
   .about-intro__container {
     padding-bottom: 400px;
+  }
+  .cases__second-section{
+    flex-direction: column;
   }
 }
 
@@ -11720,4 +11729,223 @@ textarea {
     display: flex;
     justify-content: center;
   }
+  .newsletter__form .button {
+    height: 50px;
+    padding: 18px 51px;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 22px;
+  }
+  .cases__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .cases-page{
+    padding: 130px 0;
+  }
+  .cases__case-title{
+    font-size: 25px;
+  }
+  .cases-page .cases__title{
+    font-size: 25px !important;
+  }
+  .cases__left-side{
+    width: auto;
+  }
+  .cases__container{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    margin-bottom: 0;
+  }
+  .cases__first-section{
+    flex-direction: column;
+    margin-bottom: 0;
+    gap: 2.5rem;
+  }
+  .cases__second-section{
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  .cases__third-section {
+    margin-top: -4.5rem;
+  }
+  .cases__five-section{
+    flex-direction: column;
+  }
+  .cases__last-img{
+    width: auto;
+    height: 480px;
+    background-size: cover;
+  }
+  .consultation {
+    display: flex;
+    background: #efefef;
+    padding: 135px 0;
+    margin-top: 17rem;
+  }
+  
+  /* Стили для секции about-mobile */
+  .about-mobile {
+    display: block;
+    padding: 60px 0;
+  }
+  
+  .about-mobile__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .about-mobile__title {
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #1a1a1a;
+  }
+  
+  .about-mobile__cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+  
+  .about-mobile__item-card {
+    background: #F0F0F0;
+    border-radius: 15px;
+    padding: 30px 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .about-mobile__card-image {
+    width: 170px;
+    height: 170px;
+    margin: 0 auto 20px;
+    display: block;
+  }
+  
+  .about-mobile__card-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #1a1a1a;
+    text-align: left;
+  }
+  
+  .about-mobile__card-description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #666666;
+    margin: 0;
+    text-align: left;
+  }
+  .about-mobile__button{
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.1), 0 11px 11px 0 rgba(0, 0, 0, 0.09), 0 43px 17px 0 rgba(0, 0, 0, 0.01), 0 66px 19px 0 rgba(0, 0, 0, 0);
+    border-radius: 8px;
+    padding: 9px 17px;
+    width: 235px;
+    height: 40px;
+    background: #1D82DD;
+    font-size: 15px;
+    color: #ffffff;
+  }
+  
+  /* Стили для мобильной секции visualization */
+  .visualization{
+    margin-bottom: -5rem;
+  }
+  .visualization-mobile {
+    display: block;
+    padding: 40px 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 15px;
+  }
+  
+  .visualization-mobile__content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+  }
+  
+  .visualization-mobile__section-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  
+  .visualization-mobile__image {
+    width: 70px;
+    height: 70px;
+    flex-shrink: 0;
+    object-fit: contain;
+  }
+  
+  .visualization-mobile__text {
+    flex: 1;
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 600;
+    color: #333333;
+    margin: 0;
+  }
+  
+  .visualization-mobile__button {
+    align-self: center;
+    background: #1D82DD;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+  }
+  
+  .visualization-mobile__button:hover {
+    background: linear-gradient(135deg, #266d87 0%, #1a4a5c 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(78, 159, 232, 0.3);
+  }
+  
+  .visualization-mobile__button:active {
+    transform: translateY(0);
+  }
+  
+  
+}
+
+@media (max-width: 375px) {
+  .about-team__avatar{
+    height: 325px;
+  }
+  .consultation__form-fields{
+    max-width: unset;
+    width: 100%;
+  }
+  .consultation__form-header{
+    width: auto;
+  }
+  .consultation__form{
+    width: 100%;
+  }
+  
+}
+
+@media (max-width: 345px) {
+    .service-card--featured::after {
+        top: 150px;
+        right: -25px;
+        width: 300px;
+    }
 }

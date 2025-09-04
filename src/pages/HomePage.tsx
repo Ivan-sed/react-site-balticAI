@@ -28,6 +28,11 @@ import {
   otherBgElipse2,
 } from "../assets";
 
+// Импорт изображений для about-mobile секции
+import aboutMobileFirst from "../assets/images/about-mobile-first.png";
+import aboutMobileSecond from "../assets/images/about-mobile-second.png";
+import aboutMobileThird from "../assets/images/about-mobile-third.png";
+
 const HomePage: React.FC = () => {
   // Инициализация всех хуков
   const navigate = useNavigate();
@@ -658,6 +663,52 @@ const HomePage: React.FC = () => {
               Submit
             </button>
           </form>
+        </div>
+      </section>
+
+      <section className="about-mobile">
+        <div className="about-mobile__container">
+          <h2 className="about-mobile__title">Innovators in Business Automation</h2>
+            <div className="about-mobile__cards">
+
+              <div className="about-mobile__item-card">
+                <img className="about-mobile__card-image" src={aboutMobileFirst} alt="Great expertise"/>
+                <h4 className="about-mobile__card-title">Great expertise</h4>
+                <p className="about-mobile__card-description">
+                  Our top priority is the sustainable growth of your company! We empower you to gain full control of your IT. 
+                </p>
+              </div>
+
+              <div className="about-mobile__item-card">
+                <img className="about-mobile__card-image" src={aboutMobileSecond} alt="Innovation"/>
+                <h4 className="about-mobile__card-title">Innovation</h4>
+                <p className="about-mobile__card-description">
+                  We drive innovation through cutting-edge AI solutions that transform your business operations and unlock new possibilities.
+                </p>
+              </div>
+
+
+              <div className="about-mobile__item-card">
+                <img className="about-mobile__card-image" src={aboutMobileThird} alt="Reliable Support"/>
+                <h4 className="about-mobile__card-title">Reliable Support</h4>
+                <p className="about-mobile__card-description">
+                  Our dedicated team provides continuous support and maintenance to ensure your AI solutions perform at their best.
+                </p>
+              </div>
+
+              <button
+                    className="button about-mobile__button about-mobile__button--primary"
+                    onClick={() => {
+                      navigate("/about-us");
+                      setTimeout(() => window.scrollTo(0, 0), 100);
+                    }}
+                  >
+                    Learn about us
+              </button>
+
+
+
+            </div>
         </div>
       </section>
 
