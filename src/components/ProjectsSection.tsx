@@ -27,9 +27,13 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
       setIsMobile(width <= 425);
       setIsTablet(width > 425 && width <= 1200);
       
-      // Reset expanded card for all device types - no default selection
-      if (width > 425) {
-        setExpandedCard("");
+      // На мобильных - первая карточка открыта по умолчанию, на остальных - сброс
+      if (width <= 425) {
+        setExpandedCard("clinic"); // Первая карточка открыта
+        setShowContent("clinic");  // Контент показан
+      } else {
+        setExpandedCard(""); // На десктопе/планшете сброс
+        setShowContent("");
       }
     };
     
@@ -50,7 +54,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
         setShowContent(""); // Скрываем любой видимый контент
         setExpandedCard(projectId); // Сразу начинаем растягивать блок
         
-        // Показываем контент только после завершения растягивания (800ms transition + небольшой буфер)
+        // Показываем контент только после завершения растягивания
         setTimeout(() => {
           setShowContent(projectId);
         }, 900);

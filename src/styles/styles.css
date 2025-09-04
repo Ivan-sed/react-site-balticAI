@@ -11007,23 +11007,27 @@ textarea {
     transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
   
+  /* Заголовки всегда видны на мобильных */
+  .projects__grid .project-card .project-card__title {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  
   /* Контент появляется одинаково для ВСЕХ карточек */
   .projects__grid .project-card--expanded.project-card--content-visible .project-card__content {
     opacity: 1;
     transform: translateY(0);
   }
   
-  /* УНИФИЦИРОВАННЫЕ элементы внутри контента */
-  .projects__grid .project-card .project-card__title,
+  /* Описание и ссылка скрыты по умолчанию */
   .projects__grid .project-card .project-card__description,
   .projects__grid .project-card .project-card__link {
     color: #ffffff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-  }
-  
-  .projects__grid .project-card .project-card__title {
-    font-size: 20px;
-    margin-bottom: 15px;
   }
   
   /* Expanded state - clinic card (first) gets dark background */
