@@ -9,3 +9,4 @@ export { usePartnersRotation } from "./usePartnersRotation";
 export { useStackedCardsAnimation } from "./useStackedCardsAnimation";
 export { useConsultationPopup } from "./useConsultationPopup";
 export { useBreadcrumbsPage } from "./useBreadcrumbsPage";
+export { useIndustriesSlider } from "./useIndustriesSlider";

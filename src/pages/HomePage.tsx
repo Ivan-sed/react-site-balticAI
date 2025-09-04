@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useBookingPopup, useConsultationPopup, usePartnersRotation, useStackedCardsAnimation } from "../hooks";
+import { useBookingPopup, useConsultationPopup, usePartnersRotation, useStackedCardsAnimation, useIndustriesSlider } from "../hooks";
 import { useTimer } from "../hooks/useTimer";
 import {
   Header,
@@ -41,6 +41,54 @@ const HomePage: React.FC = () => {
   const { currentPartnerSet, isTransitioning } = usePartnersRotation(2, 5000);
   const stackedCardsRef = useStackedCardsAnimation();
   const { isActive, timeLeft, startTimer, formatTime } = useTimer();
+  const {
+    activeIndustryIndex,
+    currentIndustry,
+    isTransitioning: isIndustryTransitioning,
+    switchIndustry,
+    nextIndustry,
+    prevIndustry,
+    industriesData
+  } = useIndustriesSlider();
+
+  // Маппинг изображений для индустрий
+  const industryImages: Record<string, string> = {
+    industryEcommerce,
+    industryTravel,
+    industryGovernment,
+    industryHealthcare,
+    industryLogistics,
+    industryNgo,
+  };
+
+  // Touch handlers для слайдера индустрий
+  const [touchStart, setTouchStart] = React.useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = React.useState<number | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      nextIndustry();
+    }
+
+    if (isRightSwipe) {
+      prevIndustry();
+    }
+  };
 
   // Обработчик отправки формы с запуском таймера
   const handleFormSubmitWithTimer = (formData: any) => {
@@ -556,30 +604,36 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Industries Section - Static version (visible only on mobile) */}
-      <section className="industries industries--static">
+      {/* Industries Section - Slider version (visible only on mobile) */}
+      <section className="industries industries--slider">
         <div className="industries__container">
           <h2 className="industries__title">
             AI Solutions for Leading Business Industries
           </h2>
 
-          <div className="industries__grid industries__grid--static">
-            <article className="industry-card industry-card--static">
+          {/* Mobile version - single active industry card with swipe support */}
+          <div 
+            className="industries__slider-area"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
+            <article 
+              className="industry-card industry-card--slider"
+              style={{ opacity: isIndustryTransitioning ? 0.5 : 1 }}
+            >
               <div className="industry-card__image">
                 <img
-                  src={industryEcommerce}
-                  alt="E-commerce"
+                  src={industryImages[currentIndustry.image]}
+                  alt={currentIndustry.alt}
                   className="industry-card__img"
                 />
               </div>
               <div className="industry-card__content">
                 <div className="industry-card__text">
-                  <h3 className="industry-card__title">E-commerce</h3>
+                  <h3 className="industry-card__title">{currentIndustry.title}</h3>
                   <p className="industry-card__description">
-                    We specialize in delivering tailored AI solutions across
-                    diverse sectors. Our expertise helps businesses in each
-                    industry optimize processes, reduce costs, and enhance
-                    customer experiences.
+                    {currentIndustry.description}
                   </p>
                 </div>
                 <div className="industry-card__actions">
@@ -592,151 +646,19 @@ const HomePage: React.FC = () => {
                 </div>
               </div>
             </article>
+          </div>
 
-            <article className="industry-card industry-card--static">
-              <div className="industry-card__image">
-                <img
-                  src={industryTravel}
-                  alt="Travel"
-                  className="industry-card__img"
-                />
-              </div>
-              <div className="industry-card__content">
-                <div className="industry-card__text">
-                  <h3 className="industry-card__title">Travel</h3>
-                  <p className="industry-card__description">
-                    We specialize in delivering tailored AI solutions across
-                    diverse sectors. Our expertise helps businesses in each
-                    industry optimize processes, reduce costs, and enhance
-                    customer experiences.
-                  </p>
-                </div>
-                <div className="industry-card__actions">
-                  <button
-                    className="button industry-card__button industry-card__button--primary"
-                    onClick={openConsultationPopup}
-                  >
-                    Consultation
-                  </button>
-                </div>
-              </div>
-            </article>
-
-            <article className="industry-card industry-card--static">
-              <div className="industry-card__image">
-                <img
-                  src={industryGovernment}
-                  alt="Government"
-                  className="industry-card__img"
-                />
-              </div>
-              <div className="industry-card__content">
-                <div className="industry-card__text">
-                  <h3 className="industry-card__title">Government</h3>
-                  <p className="industry-card__description">
-                    We specialize in delivering tailored AI solutions across
-                    diverse sectors. Our expertise helps businesses in each
-                    industry optimize processes, reduce costs, and enhance
-                    customer experiences.
-                  </p>
-                </div>
-                <div className="industry-card__actions">
-                  <button
-                    className="button industry-card__button industry-card__button--primary"
-                    onClick={openConsultationPopup}
-                  >
-                    Consultation
-                  </button>
-                </div>
-              </div>
-            </article>
-
-            <article className="industry-card industry-card--static">
-              <div className="industry-card__image">
-                <img
-                  src={industryHealthcare}
-                  alt="Healthcare"
-                  className="industry-card__img"
-                />
-              </div>
-              <div className="industry-card__content">
-                <div className="industry-card__text">
-                  <h3 className="industry-card__title">Healthcare</h3>
-                  <p className="industry-card__description">
-                    We specialize in delivering tailored AI solutions across
-                    diverse sectors. Our expertise helps businesses in each
-                    industry optimize processes, reduce costs, and enhance
-                    customer experiences.
-                  </p>
-                </div>
-                <div className="industry-card__actions">
-                  <button
-                    className="button industry-card__button industry-card__button--primary"
-                    onClick={openConsultationPopup}
-                  >
-                    Consultation
-                  </button>
-                </div>
-              </div>
-            </article>
-
-            <article className="industry-card industry-card--static">
-              <div className="industry-card__image">
-                <img
-                  src={industryLogistics}
-                  alt="Logistics"
-                  className="industry-card__img"
-                />
-              </div>
-              <div className="industry-card__content">
-                <div className="industry-card__text">
-                  <h3 className="industry-card__title">Logistics</h3>
-                  <p className="industry-card__description">
-                    We specialize in delivering tailored AI solutions across
-                    diverse sectors. Our expertise helps businesses in each
-                    industry optimize processes, reduce costs, and enhance
-                    customer experiences.
-                  </p>
-                </div>
-                <div className="industry-card__actions">
-                  <button
-                    className="button industry-card__button industry-card__button--primary"
-                    onClick={openConsultationPopup}
-                  >
-                    Consultation
-                  </button>
-                </div>
-              </div>
-            </article>
-
-            <article className="industry-card industry-card--static">
-              <div className="industry-card__image">
-                <img
-                  src={industryNgo}
-                  alt="NGO"
-                  className="industry-card__img"
-                />
-              </div>
-              <div className="industry-card__content">
-                <div className="industry-card__text">
-                  <h3 className="industry-card__title">NGO</h3>
-                  <p className="industry-card__description">
-                    We specialize in delivering tailored AI solutions across
-                    diverse sectors. Our expertise helps businesses in each
-                    industry optimize processes, reduce costs, and enhance
-                    customer experiences.
-                  </p>
-                </div>
-                <div className="industry-card__actions">
-                  <button
-                    className="button industry-card__button industry-card__button--primary"
-                    onClick={openConsultationPopup}
-                  >
-                    Consultation
-                  </button>
-                </div>
-              </div>
-            </article>
+          {/* Mobile version - dots indicator */}
+          <div className="industries__dots">
+            {industriesData.map((industry, index) => (
+              <div
+                key={industry.id}
+                className={`industries__dot ${
+                  activeIndustryIndex === index ? "industries__dot--active" : ""
+                }`}
+                onClick={() => switchIndustry(index)}
+              />
+            ))}
           </div>
         </div>
       </section>

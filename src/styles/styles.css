@@ -12089,42 +12089,67 @@ textarea {
   display: block;
 }
 
-.industries--static {
+.industries--slider {
   display: none;
 }
 
-/* Static version styles for mobile */
-.industries--static .industries__container {
+/* Slider version styles for mobile */
+.industries--slider .industries__container {
   position: static;
   height: auto;
   padding: 60px 20px;
 }
 
-.industries--static .industries__grid--static {
-  position: static;
+.industries__slider-area {
+  position: relative;
+  width: 100%;
   height: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
+  touch-action: pan-y;
+  user-select: none;
 }
 
-.industries--static .industry-card--static {
+.industries--slider .industry-card--slider {
   position: static;
   width: 100%;
   height: auto;
-  transition: none;
+  transition: opacity 0.3s ease;
   transform: none;
   will-change: auto;
   z-index: auto;
 }
 
-/* Mobile breakpoint - show static version, hide animated */
+/* Industries dots indicator */
+.industries__dots {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 40px;
+}
+
+.industries__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.industries__dot:hover {
+  transform: scale(1.1);
+}
+
+.industries__dot--active {
+  background-color: #1d82dd;
+}
+
+/* Mobile breakpoint - show slider version, hide animated */
 @media (max-width: 768px) {
   .industries--animated {
     display: none !important;
   }
   
-  .industries--static {
+  .industries--slider {
     display: block;
   }
 }
