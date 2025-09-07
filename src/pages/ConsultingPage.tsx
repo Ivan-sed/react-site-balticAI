@@ -118,9 +118,9 @@ const ConsultingPage: React.FC = () => {
           breadcrumbs={consultingData.intro.breadcrumbs}
           stats={consultingData.intro.stats}
           primaryButtonText="Book Consultation"
+          primaryButtonHref="https://calendly.com/balticai/30-min-bezmaksas-ai-konsultacija-clone"
           linkText="See client stories"
           linkHref="#client-stories"
-          onPrimaryButtonClick={openPopup}
           onLinkClick={openPopup}
         />
 
@@ -130,9 +130,8 @@ const ConsultingPage: React.FC = () => {
           steps={consultingData.methodology.steps}
           primaryButtonText="Start Your Consultation"
           linkText="Talk to an Expert"
-          linkHref="#expert-consultation"
+          linkHref="https://calendly.com/balticai/30-min-bezmaksas-ai-konsultacija-clone"
           onPrimaryButtonClick={openPopup}
-          onLinkClick={openPopup}
         />
 
         <ConsultingBenefitsSection
@@ -146,10 +145,10 @@ const ConsultingPage: React.FC = () => {
           title={consultingData.booking.title}
           description={consultingData.booking.description}
           buttonText="Book My Strategy Session"
+          buttonHref="https://calendly.com/balticai/30-min-bezmaksas-ai-konsultacija-clone"
           formTitle="Book Your Consultation"
           formSubtitle="No fluff. Just a solution for your business automation."
           submitButtonText="Send request"
-          onButtonClick={openPopup}
           onFormSubmit={handleConsultingFormSubmit}
         />
 

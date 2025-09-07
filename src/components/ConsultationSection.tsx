@@ -10,6 +10,7 @@ interface ConsultationSectionProps {
   title?: string;
   description?: string;
   buttonText?: string;
+  buttonHref?: string;
   formTitle?: string;
   formSubtitle?: string;
   submitButtonText?: string;
@@ -24,6 +25,7 @@ const ConsultationSection: React.FC<ConsultationSectionProps> = ({
 
 During the session, our experts will walk you through a tailored AI roadmap, demonstrate real-world case studies, and answer any questions about implementation timelines, ROI expectations, and ongoing support. You'll leave with clear next steps and confidence in your business's digital future.`,
   buttonText = "Let's Set Your Appointment",
+  buttonHref,
   formTitle = "Book Your Consultation",
   formSubtitle = "No fluff. Just a solution for your business automation.",
   submitButtonText = "Send request",
@@ -73,12 +75,23 @@ During the session, our experts will walk you through a tailored AI roadmap, dem
                 </React.Fragment>
               ))}
             </p>
-            <button
-              className="consultation__button consultation__set-appointment-btn"
-              onClick={onButtonClick}
-            >
-              {buttonText}
-            </button>
+            {onButtonClick ? (
+              <button
+                className="consultation__button consultation__set-appointment-btn"
+                onClick={onButtonClick}
+              >
+                {buttonText}
+              </button>
+            ) : (
+              <a
+                href={buttonHref}
+                className="consultation__button consultation__set-appointment-btn"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {buttonText}
+              </a>
+            )}
           </div>
           <div className="consultation__form">
             <div className="consultation__form-header">

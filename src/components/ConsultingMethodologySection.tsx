@@ -57,12 +57,23 @@ With our end-to-end guidance, you'll move from uncertainty to clear, measurable 
             >
               {primaryButtonText}
             </button>
-            <button
-              className="consulting-methodology__link consulting-methodology__book-demo-link"
-              onClick={onLinkClick}
-            >
-              {linkText}
-            </button>
+            {onLinkClick ? (
+              <button
+                className="consulting-methodology__link consulting-methodology__book-demo-link"
+                onClick={onLinkClick}
+              >
+                {linkText}
+              </button>
+            ) : (
+              <a
+                href={_linkHref}
+                className="consulting-methodology__link consulting-methodology__book-demo-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {linkText}
+              </a>
+            )}
           </div>
         </div>
         <div className="consulting-methodology__steps">

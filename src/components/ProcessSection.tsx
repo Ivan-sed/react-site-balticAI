@@ -57,12 +57,23 @@ Our three-step, AI-first methodology pinpoints these inefficiencies, implements 
             >
               {primaryButtonText}
             </button>
-            <button
-              className="process__link process__book-demo-link"
-              onClick={onLinkClick}
-            >
-              {linkText}
-            </button>
+            {onLinkClick ? (
+              <button
+                className="process__link process__book-demo-link"
+                onClick={onLinkClick}
+              >
+                {linkText}
+              </button>
+            ) : (
+              <a
+                href={_linkHref}
+                className="process__link process__book-demo-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {linkText}
+              </a>
+            )}
           </div>
         </div>
         <div className="process__steps">

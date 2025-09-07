@@ -138,9 +138,8 @@ These distractions limit focus on growth-driving work. Studies show employees wa
  Our three-step, AI-first methodology pinpoints these inefficiencies, implements intelligent automation to resolve them swiftly, and continuously refines your workflows to ensure sustainable, long-term performance gains.`}
          primaryButtonText="Get AI MVP"
          linkText="Book demo"
-         linkHref="#"
+         linkHref="https://calendly.com/balticai/30-min-bezmaksas-ai-konsultacija-clone"
          onPrimaryButtonClick={openPopup}
-         onLinkClick={openPopup}
         steps={[
           {
             id: "identify",
@@ -260,10 +259,10 @@ These distractions limit focus on growth-driving work. Studies show employees wa
 
 During the session, our experts will walk you through a tailored AI roadmap, demonstrate real-world case studies, and answer any questions about implementation timelines, ROI expectations, and ongoing support. You'll leave with clear next steps and confidence in your business's digital future.`}
         buttonText="Let's Set Your Appointment"
+        buttonHref="https://calendly.com/balticai/30-min-bezmaksas-ai-konsultacija-clone"
         formTitle="Book Your Consultation"
         formSubtitle="No fluff. Just a solution for your business automation."
         submitButtonText="Send request"
-        onButtonClick={openPopup}
         onFormSubmit={(data) => {
           console.log("Form submitted:", data);
           // Здесь можно добавить обработку отправки формы

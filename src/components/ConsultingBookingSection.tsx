@@ -10,6 +10,7 @@ interface ConsultingBookingSectionProps {
   title?: string;
   description?: string;
   buttonText?: string;
+  buttonHref?: string;
   formTitle?: string;
   formSubtitle?: string;
   submitButtonText?: string;
@@ -23,6 +24,7 @@ const ConsultingBookingSection: React.FC<ConsultingBookingSectionProps> = ({
 
 In your consultation, our specialists will map out a strategic AI adoption plan, answer your toughest questions, and show proven examples relevant to your industry. You'll leave with clarity, confidence, and a concrete roadmap to move forward—backed by ongoing expert support.`,
   buttonText = "Book My Strategy Session",
+  buttonHref,
   formTitle = "Book Your Consultation",
   formSubtitle = "No fluff. Just a solution for your business automation.",
   submitButtonText = "Send request",
@@ -71,12 +73,23 @@ In your consultation, our specialists will map out a strategic AI adoption plan,
                 </React.Fragment>
               ))}
             </p>
-            <button
-              className="consulting-booking__button consulting-booking__set-appointment-btn"
-              onClick={onButtonClick}
-            >
-              {buttonText}
-            </button>
+            {onButtonClick ? (
+              <button
+                className="consulting-booking__button consulting-booking__set-appointment-btn"
+                onClick={onButtonClick}
+              >
+                {buttonText}
+              </button>
+            ) : (
+              <a
+                href={buttonHref}
+                className="consulting-booking__button consulting-booking__set-appointment-btn"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {buttonText}
+              </a>
+            )}
           </div>
           <div className="consulting-booking__form">
             <div className="consulting-booking__form-header">

@@ -8,6 +8,7 @@ interface ConsultingIntroSectionProps {
   breadcrumbs: Array<{ text: string; href?: string; isCurrent?: boolean }>;
   stats: Array<{ number: string; title: string; description: string }>;
   primaryButtonText?: string;
+  primaryButtonHref?: string;
   linkText?: string;
   linkHref?: string;
   onPrimaryButtonClick?: () => void;
@@ -44,6 +45,7 @@ const ConsultingIntroSection: React.FC<ConsultingIntroSectionProps> = ({
   breadcrumbs,
   stats,
   primaryButtonText = "Book Consultation",
+  primaryButtonHref,
   linkText = "See client stories",
   linkHref: _linkHref = "#consulting-booking",
   onPrimaryButtonClick,
@@ -100,12 +102,23 @@ const ConsultingIntroSection: React.FC<ConsultingIntroSectionProps> = ({
             
             {/* 4. Кнопки */}
             <div className="intro__actions">
-              <button
-                className="button intro__button button--primary intro__get-started-btn"
-                onClick={onPrimaryButtonClick}
-              >
-                {primaryButtonText}
-              </button>
+              {onPrimaryButtonClick ? (
+                <button
+                  className="button intro__button button--primary intro__get-started-btn"
+                  onClick={onPrimaryButtonClick}
+                >
+                  {primaryButtonText}
+                </button>
+              ) : (
+                <a
+                  href={primaryButtonHref}
+                  className="button intro__button button--primary intro__get-started-btn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {primaryButtonText}
+                </a>
+              )}
               <button
                 className="intro__link intro__consultation-link"
                 onClick={onLinkClick}
@@ -190,12 +203,23 @@ const ConsultingIntroSection: React.FC<ConsultingIntroSectionProps> = ({
             </div>
           </div>
           <div className="consulting-intro__actions">
-            <button
-              className="button consulting-intro__button button--primary consulting-intro__get-started-btn"
-              onClick={onPrimaryButtonClick}
-            >
-              {primaryButtonText}
-            </button>
+            {onPrimaryButtonClick ? (
+              <button
+                className="button consulting-intro__button button--primary consulting-intro__get-started-btn"
+                onClick={onPrimaryButtonClick}
+              >
+                {primaryButtonText}
+              </button>
+            ) : (
+              <a
+                href={primaryButtonHref}
+                className="button consulting-intro__button button--primary consulting-intro__get-started-btn"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {primaryButtonText}
+              </a>
+            )}
             <button
               className="consulting-intro__link consulting-intro__consultation-link"
               onClick={onLinkClick}
