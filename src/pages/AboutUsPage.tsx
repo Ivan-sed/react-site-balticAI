@@ -11,6 +11,7 @@ import {
   Footer,
   BookingPopup,
 } from "../components";
+import { alenAvatar, krisAvatar, matissAvatar } from "../assets";
 
 const AboutUsPage: React.FC = () => {
   const { isOpen, openPopup, closePopup, handleFormSubmit } = useBookingPopup();
@@ -70,19 +71,19 @@ const AboutUsPage: React.FC = () => {
       id: "1",
       name: "Alens Laškovs",
       role: "CFO",
-      avatar: "",
+      avatar: alenAvatar,
     },
     {
       id: "2",
       name: "Kristofers Gulbis",
       role: "CTO",
-      avatar: "",
+      avatar: krisAvatar,
     },
     {
       id: "3",
       name: "Matīss Strautmanis",
       role: "Software Engineer",
-      avatar: "",
+      avatar: matissAvatar,
     },
     {
       id: "4",

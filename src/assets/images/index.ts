@@ -71,6 +71,11 @@ export { default as projectLogo } from "./project-logo.png";
 // Отзывы и аватары
 export { default as testimonialAvatar } from "./testimonial-avatar.png";
 
+// Team members
+export { default as alenAvatar } from "./alen.png";
+export { default as krisAvatar } from "./kris.png";
+export { default as matissAvatar } from "./matiss.png";
+
 // Процессы и трансформация
 export { default as processArrow1 } from "./process-arrow-1.svg";
 export { default as processArrow2 } from "./process-arrow-2.svg";
