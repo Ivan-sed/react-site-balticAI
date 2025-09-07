@@ -130,7 +130,15 @@ const AboutTeamSection: React.FC<AboutTeamSectionProps> = ({
                   className="about-team__member"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className="about-team__avatar"></div>
+                  <div className="about-team__avatar">
+                    {member.avatar && (
+                      <img 
+                        src={member.avatar} 
+                        alt={member.name}
+                        className="about-team__avatar-image"
+                      />
+                    )}
+                  </div>
                   <h3 className="about-team__name">{member.name}</h3>
                   <p className="about-team__role">{member.role}</p>
                 </li>
